@@ -1,0 +1,48 @@
+#loginOptions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        margin-bottom: 10px;
+        border: none;
+        background-color: rgba(255, 255, 255, 0);
+        color: rgba(255, 255, 255, 0.267);
+        font-weight: 700;
+        height: 60px;
+        width: 200px;
+        align-items: center;
+        font-size: 25px;
+        font-family: Espoir;
+
+        &:hover {
+            transition-timing-function: ease;
+            color: white;
+            transition-delay: 0.3s;
+        }
+    }
+}
+
+@media only screen and (max-width: 860px) {
+    #loginOptions div {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+#login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+#register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}

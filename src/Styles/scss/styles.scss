@@ -1,0 +1,29 @@
+@import "buttons";
+@import "utils";
+@import "config";
+
+#maps {
+    height: 600px;
+    width: 600px;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+
+#maps img {
+    width: 5px;
+}
+
+#rider {
+    color: white;
+}
+
+.cluster-marker {
+    color: white;
+    background-color: blue;
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
