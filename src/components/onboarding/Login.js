@@ -40,7 +40,7 @@ function Login() {
                 localStorage.setItem('token', data.accessToken)
                 localStorage.setItem('role', role)
                 setTimeout(() => {
-                    history.push('/RiderHome')
+                    history.push(`/${role}`)
                     setIsLoading(false)
                 }, 300)
                 console.log(data);
