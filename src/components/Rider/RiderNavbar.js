@@ -11,20 +11,21 @@ function RiderNavbar() {
         localStorage.removeItem('token');
         localStorage.removeItem('role');
         history.push('/loginOption')
+
     }
 
 
     return (
         <div>
             <Navbar collapseOnSelect expand="sm">
-                <Navbar.Brand href="#home">THE STABLE</Navbar.Brand>
+                <Navbar.Brand>THE STABLE</Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse>
                     <Nav>
-                        <Link >Something</Link>
-                        <Link >Pricing</Link>
-                        <Link >More deets</Link>
-                        <div eventKey={2} onClick={logout}> Log Out</div>
+                        <Link to='' >Something</Link>
+                        <Link to=''>Favorites</Link>
+                        <Link to=''>More deets</Link>
+                        <div onClick={logout}> Log Out</div>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

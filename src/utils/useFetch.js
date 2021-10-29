@@ -29,7 +29,7 @@ const useFetch = (url, token) => {
                     setError(err.message)
                 })
         }, 1000)
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [url])
 
     return { data, isPending, error }

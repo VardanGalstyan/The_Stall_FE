@@ -1,3 +1,14 @@
+.container-fluid,
+.container {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.row {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
 .theStable {
     font-family: Espoir;
     text-align: center;
@@ -8,11 +19,6 @@
 
 a {
     text-decoration: none !important;
-}
-
-.container-fluid, .container {
-    margin: 0 !important;
-    padding: 0 !important;
 }
 
 .form-group {
