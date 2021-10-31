@@ -27,8 +27,6 @@ function HorseOwnerNavbar() {
             {
                 isActive &&
                 <div className='isActiveOption'>
-                    <span>Option 1</span>
-                    <span>Option 2</span>
                     <span>Edit Profile</span>
                     <span onClick={logout}>Sign Out</span>
                 </div>

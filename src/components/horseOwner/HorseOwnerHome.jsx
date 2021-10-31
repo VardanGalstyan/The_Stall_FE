@@ -1,4 +1,5 @@
 import "../../Styles/css/horseOwner.css";
+import "../../Styles/css/userProfile.css";
 import { Container, Row, Col } from "react-bootstrap";
 import OwnerProfile from "./OwnerProfile";
 import HorseProfile from "./HorseProfile";
@@ -7,7 +8,7 @@ import HorseOwnerNavbar from "./HorseOwnerNavbar";
 function HorseOwnerHome() {
 
     return (
-        <Container id="horseOwner">
+        <Container className='usersProfile' id='horseOwner'>
             <HorseOwnerNavbar />
             <Row className="main-header">
                 <Col className="cover">
@@ -19,7 +20,7 @@ function HorseOwnerHome() {
                     </div>
                 </Col>
             </Row>
-            <Row className='profileHeader'>
+            <Row className='userProfileHeader'>
                 <OwnerProfile />
                 <HorseProfile />
             </Row>

@@ -1,13 +1,13 @@
 import './App.css';
+import './Styles/css/Styles.css'
 import { Container } from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import LoginOptions from './components/onboarding/LoginOptions';
 import Login from './components/onboarding/Login';
 import Register from './components/onboarding/Register';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import RiderHome from './components/Rider/RiderHome';
 import Error from './utils/Error';
-import './Styles/css/Styles.css'
-import StableOwnerHome from './components/stableOwner/StableOwnerHome';
+import StableOwnerHome from './components/stableOwner/StableOwnerHome.jsx';
 import HorseOwnerHome from './components/horseOwner/HorseOwnerHome';
 import Stable from './components/stables/Stable';
 

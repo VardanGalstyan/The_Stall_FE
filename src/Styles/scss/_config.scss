@@ -1,4 +1,6 @@
 .container-fluid,
+.container-lg,
+.container-xl,
 .container {
     margin: 0 !important;
     padding: 0 !important;
@@ -90,4 +92,12 @@ a {
     a {
         color: rgb(36, 36, 36);
     }
+}
+
+.userProfileImage {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border: solid white 4px;
+    object-fit: cover;
 }
