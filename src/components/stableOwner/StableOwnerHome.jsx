@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import "../../Styles/css/userProfile.css";
 import "../../Styles/css/stableOwner.css";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import HorseOwnerNavbar from "../horseOwner/HorseOwnerNavbar";
 import StableOwnerProfile from './StableOwnerProfile'
+import StableOwnerModal from './StableOwnerModal';
 import { HiViewGridAdd } from 'react-icons/hi'
 
 function StableOwnerHome() {
 
-    const [test, setTest] = useState(false)
+    const [modalShow, setModalShow] = useState(false);
 
     return (
         <Container fluid='xl' className='usersProfile'>
@@ -27,16 +28,20 @@ function StableOwnerHome() {
                 <StableOwnerProfile />
             </Row>
             <Row className='stableOptions'>
-                <Col md={4} xs={12} className='col mr-4' onClick={() => setTest(!test)}>
+                <Col md={4} xs={12} className='col mr-4'>
                     <div className='addStableButton'>
-                        <HiViewGridAdd />
-                        <p>Add a Stable</p>
+                        <HiViewGridAdd onClick={() => setModalShow(true)} />
+                        <p>Create a Stable</p>
                     </div>
                 </Col>
-                <Col className='col' onClick={() => setTest(!test)}>
-                    <h5>Create your first stable...</h5>
+                <Col className='col'>
+                    <h1>Welcome Anna</h1>
                 </Col>
             </Row>
+            <StableOwnerModal
+                show={modalShow}
+                onHide={() => { setModalShow(false) }}
+            />
         </Container>
     )
 }

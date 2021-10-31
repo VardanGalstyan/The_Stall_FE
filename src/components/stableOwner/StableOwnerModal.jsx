@@ -1,23 +1,27 @@
 import React, { useState } from 'react'
-import { Modal, Button, Form, Col, Row } from 'react-bootstrap'
-import { IoAddSharp } from 'react-icons/io5'
-import Loader from 'react-js-loader'
-import { AiOutlineCheckCircle } from 'react-icons/ai'
+import { Row, Col, Form, Button, Modal } from 'react-bootstrap'
 import { VscError } from 'react-icons/vsc'
-import { useHistory } from 'react-router-dom'
+import { IoAddSharp } from 'react-icons/io5'
+import { AiOutlineCheckCircle } from 'react-icons/ai'
+import { useHistory } from 'react-router'
+import Loader from 'react-js-loader'
 
-function AddHorseModal(props) {
+
+function StableOwnerModal(props) {
 
     const initialState = {
-        name: "",
-        gender: "",
-        date_of_birth: "",
-        breed: "",
-        training_style: "",
-        height: "",
+        stable_name: "",
+        "address.street_name": "",
+        "address.city": "",
+        "address.country": "",
+        number_of_boxes: "",
+        services: "",
+        facilities: "",
         avatar: "",
-        exp_level: "",
-        description: ""
+        description: "",
+        "contacts.phone": "",
+        "contacts.web": "",
+        "contacts.email": "",
     }
 
     const history = useHistory()
@@ -27,10 +31,12 @@ function AddHorseModal(props) {
     const [isLoading, setIsLoading] = useState(false)
     const [isDone, setIsDone] = useState(false)
     const [error, setError] = useState(false)
-    const [horse, setHorse] = useState(initialState)
+    const [stable, setStable] = useState(initialState)
     const [id, setId] = useState('')
 
-    const handleError = () => imageNull ? setError(false) : setError(false) && setHorse({ ...initialState })
+
+
+    const handleError = () => imageNull ? setError(false) : setError(false) && setStable({ ...initialState })
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -42,7 +48,7 @@ function AddHorseModal(props) {
                     setIsLoading(true)
                     const formData = new FormData()
                     formData.append('avatar', image)
-                    const res = await fetch(`http://localhost:3001/horseOwner/me/horse/${id}/avatar`, {
+                    const res = await fetch(`http://localhost:3001/stableowner/me/stable/${id}/avatar`, {
                         method: "POST",
                         body: formData,
                         headers: {
@@ -54,7 +60,7 @@ function AddHorseModal(props) {
                         setIsDone(true)
                         setId('')
                         setImageNull(false)
-                        setHorse({ ...initialState })
+                        setStable({ ...initialState })
                         props.onHide()
                         setTimeout(() => {
                             setImage(null)
@@ -64,9 +70,9 @@ function AddHorseModal(props) {
                 }
             } else {
                 setIsLoading(true)
-                const response = await fetch(`http://localhost:3001/horseOwner/me/horse`, {
+                const response = await fetch(`http://localhost:3001/stableowner/me/stable`, {
                     method: "POST",
-                    body: JSON.stringify(horse),
+                    body: JSON.stringify(stable),
                     headers: {
                         "Authorization": `Bearer ${token}`,
                         'Accept': 'application/json',
@@ -78,7 +84,7 @@ function AddHorseModal(props) {
                     setId(data._id)
                     const formData = new FormData()
                     formData.append('avatar', image)
-                    const res = await fetch(`http://localhost:3001/horseOwner/me/horse/${data._id}/avatar`, {
+                    const res = await fetch(`http://localhost:3001/stableowner/me/stable/${data._id}/avatar`, {
                         method: "POST",
                         body: formData,
                         headers: {
@@ -88,11 +94,13 @@ function AddHorseModal(props) {
                     if (res.ok) {
                         setIsDone(true)
                         setIsLoading(false)
-                        setHorse({ ...initialState })
+                        setStable({ ...initialState })
                         props.onHide()
                         setTimeout(() => {
+                            setImage(null)
                             setIsDone(false)
                         }, 200)
+
                     } else {
                         setIsLoading(false)
                         setImageNull(true)
@@ -110,46 +118,101 @@ function AddHorseModal(props) {
 
     }
 
-
     return (
         <Modal
             {...props}
+            size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
             className='addHorsesModal'
-            size='lg'
         >
             <Modal.Header closeButton>
                 <Modal.Title>
-                    Add a Horse
+                    Create a Stable
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={handleSubmit}>
                     <Row className='align-items-center'>
-                        <Col lg={4} className='mb-4'>
+                        <Col lg={4} className='mb-4 modalLogo'>
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOPyfvJRS9c3YymVIXifqqFXQ2eMDNfZjhMw&usqp=CAU" alt="updateImage" />
                             <div className='addHorseImage'>
-                                <input type="file" className='inputImage' onChange={(e) => setImage(e.target.files[0])} />
+                                <input
+                                    type="file"
+                                    className='inputImage'
+                                    onChange={(e) => setImage(e.target.files[0])}
+                                />
                                 <IoAddSharp />
                             </div>
                         </Col>
                         <Col>
                             <Row>
-                                <Form.Group as={Col}>
+                                <Form.Group as={Col} md={12}>
                                     <Form.Control
+                                        required
                                         type="text"
-                                        placeholder="Enter name"
-                                        value={horse.name}
-                                        onChange={(e) => setHorse({ ...horse, name: e.target.value })}
+                                        placeholder="Stable name"
+                                        value={stable.stable_name}
+                                        onChange={(e) => setStable({ ...stable, stable_name: e.target.value })}
+                                    />
+                                </Form.Group>
+                                <Form.Group as={Col} md={6}>
+                                    <Form.Control
+                                        required
+                                        type="text"
+                                        placeholder="Street"
+                                        value={stable['address.street_name']}
+                                        onChange={(e) => setStable({ ...stable, 'address.street_name': e.target.value })}
+                                    />
+                                </Form.Group>
+                                <Form.Group as={Col} md={3}>
+                                    <Form.Control
+                                        required
+                                        type="text"
+                                        placeholder="City"
+                                        value={stable['address.city']}
+                                        onChange={(e) => setStable({ ...stable, 'address.city': e.target.value })}
+                                    />
+                                </Form.Group>
+                                <Form.Group as={Col} md={3}>
+                                    <Form.Control
+                                        required
+                                        type="text"
+                                        placeholder="Country"
+                                        value={stable['address.country']}
+                                        onChange={(e) => setStable({ ...stable, 'address.country': e.target.value })}
+                                    />
+                                </Form.Group>
+                            </Row>
+                            <Row>
+                                <Form.Group as={Col} md={3}>
+                                    <Form.Control
+                                        required
+                                        type="number"
+                                        min='1'
+                                        max='100'
+                                        placeholder="Boxes"
+                                        value={stable.number_of_boxes}
+                                        onChange={(e) => setStable({ ...stable, number_of_boxes: e.target.value })}
                                     />
                                 </Form.Group>
                                 <Form.Group as={Col}>
                                     <Form.Control
-                                        as="select"
-                                        onChange={(e) => setHorse({ ...horse, gender: e.target.value })}
+                                        required
+                                        type="text"
+                                        placeholder="Services | Multiple Choice"
+                                        value={stable.services}
+                                        onChange={(e) => setStable({ ...stable, services: e.target.value })}
+                                    />
+                                </Form.Group>
+                                <Form.Group as={Col} md={12}>
+                                    <Form.Control
+                                        required
+                                        as='select'
+                                        placeholder="Facilities | Multiple Choice"
+                                        value={stable.facilities}
+                                        onChange={(e) => setStable({ ...stable, facilities: e.target.value })}
                                     >
-                                        <option>Gender</option>
                                         <option value='mare'>Mare</option>
                                         <option value='stallion'>Stallion</option>
                                         <option value='gelding'>Gelding</option>
@@ -159,59 +222,39 @@ function AddHorseModal(props) {
                             <Row>
                                 <Form.Group as={Col}>
                                     <Form.Control
-                                        type="number"
-                                        min='1990'
-                                        max='2030'
-                                        placeholder="Year"
-                                        value={horse.date_of_birth}
-                                        onChange={(e) => setHorse({ ...horse, date_of_birth: e.target.value })}
+                                        required
+                                        type="email"
+                                        placeholder="Email"
+                                        value={stable['contacts.email']}
+                                        onChange={(e) => setStable({ ...stable, 'contacts.email': e.target.value })}
+                                    />
+                                </Form.Group>
+                                <Form.Group as={Col}>
+                                    <Form.Control
+                                        type="phone"
+                                        placeholder="Phone"
+                                        value={stable['contacts.phone']}
+                                        onChange={(e) => setStable({ ...stable, 'contacts.phone': e.target.value })}
                                     />
                                 </Form.Group>
                                 <Form.Group as={Col}>
                                     <Form.Control
                                         type="text"
-                                        placeholder="Breed"
-                                        value={horse.breed}
-                                        onChange={(e) => setHorse({ ...horse, breed: e.target.value })}
-                                    />
-                                </Form.Group>
-                                <Form.Group as={Col}>
-                                    <Form.Control
-                                        type="number"
-                                        min='140'
-                                        max='200'
-                                        placeholder="Height"
-                                        value={horse.height}
-                                        onChange={(e) => setHorse({ ...horse, height: e.target.value })}
-                                    />
-                                </Form.Group>
-                            </Row>
-                            <Row>
-                                <Form.Group as={Col}>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Training Style"
-                                        value={horse.training_style}
-                                        onChange={(e) => setHorse({ ...horse, training_style: e.target.value })}
-                                    />
-                                </Form.Group>
-                                <Form.Group as={Col}>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Experience"
-                                        value={horse.exp_level}
-                                        onChange={(e) => setHorse({ ...horse, exp_level: e.target.value })}
+                                        placeholder="Web"
+                                        value={stable['contacts.web']}
+                                        onChange={(e) => setStable({ ...stable, 'contacts.web': e.target.value })}
                                     />
                                 </Form.Group>
                             </Row>
                             <Form.Group as={Col}>
                                 <Form.Control
+                                    required
                                     as='textarea'
                                     style={{ height: '100px' }}
                                     type="textarea"
                                     placeholder="Description"
-                                    value={horse.description}
-                                    onChange={(e) => setHorse({ ...horse, description: e.target.value })}
+                                    value={stable.description}
+                                    onChange={(e) => setStable({ ...stable, description: e.target.value })}
                                 />
                             </Form.Group>
                             {
@@ -221,7 +264,7 @@ function AddHorseModal(props) {
                                             {
                                                 imageNull ? <span> Want to add avatar? <span onClick={handleError}><AiOutlineCheckCircle /></span> <span ><VscError onClick={() => {
                                                     props.onHide()
-                                                    setHorse({ ...initialState })
+                                                    setStable({ ...initialState })
                                                 }} /></span> </span>
                                                     : <span>Missing credentials <span><VscError onClick={handleError} /></span></span>
                                             }
@@ -240,11 +283,11 @@ function AddHorseModal(props) {
             <Modal.Footer>
                 <Button className='formButton' onClick={() => {
                     props.onHide()
-                    setHorse({ ...initialState })
+                    setStable({ ...initialState })
                 }}>Close</Button>
             </Modal.Footer>
         </Modal>
     )
 }
 
-export default AddHorseModal
+export default StableOwnerModal

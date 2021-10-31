@@ -14,7 +14,7 @@ function HorseProfile() {
         <>
             <Col className='horsesProfile'>
                 <div>
-                    <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/B875/production/_102512274_gettyimages-518360318.jpg" alt="profile image" />
+                    <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/B875/production/_102512274_gettyimages-518360318.jpg" alt="profile avatar" />
                 </div>
                 <div>
                     <RatingView size={15} ratingValue={4} />
