@@ -1,0 +1,131 @@
+@import "utils";
+
+#geoModal {
+    .modal-content {
+        background-color: #7b8561;
+        color: white;
+        font-family: Cairo;
+        border-radius: 10px;
+    }
+
+    .modal-header {
+        border-bottom: rgba(255, 255, 255, 0.308) 1px solid;
+
+        button {
+            color: white;
+        }
+    }
+
+    .modal-body {
+        .selectedStable {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        button {
+            background-color: transparent;
+            border: none;
+            padding: 5px;
+            border-radius: 4px;
+            color: white;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.187);
+            }
+        }
+
+        .stableContacts {
+            & > div > span > :first-child {
+                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 0.746);
+                width: 25px;
+                height: 25px;
+                padding: 4px;
+                color: black;
+                margin-bottom: 5px;
+            }
+        }
+
+        .stableHorses {
+            display: flex;
+            align-items: center;
+
+            & > span:last-child {
+                margin: 0 0 2px 5px;
+
+                &:hover {
+                    color: rgba(0, 0, 0, 0.452);
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .horseStyles {
+            display: flex;
+            color: black;
+            margin-bottom: 5px;
+
+            & > span {
+                border-radius: 7px;
+                background-color: #ffffff7c;
+                padding: 2px 5px;
+                font-size: 13px;
+            }
+        }
+
+        .routerButton {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .modal-footer {
+        border-top: rgba(255, 255, 255, 0.308) 1px solid;
+        button {
+            background-color: transparent;
+            border: none;
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.187);
+            }
+        }
+    }
+
+    #maps {
+        height: 500px;
+        width: 100%;
+        object-fit: cover;
+        background-repeat: no-repeat;
+        border: white 10px solid;
+
+        .cluster-marker {
+            color: white;
+            background-color: $swatch_7;
+            border-radius: 50%;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: Cairo;
+            font-weight: 700;
+        }
+
+        .place-marker {
+            font-size: 25px;
+            color: white;
+            background-color: $swatch_7;
+            padding: 5px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

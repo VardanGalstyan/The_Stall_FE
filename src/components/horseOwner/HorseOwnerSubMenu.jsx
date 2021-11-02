@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import { GrMapLocation } from 'react-icons/gr'
 import { FaHorseHead } from 'react-icons/fa'
-import HorseOwnerGeoModal from './HorseOwnerGeoModal';
+import GeoModal from '../../utils/GeoModal';
 
 function HorseOwnerSubMenu() {
     const [modalShow, setModalShow] = useState(false);
@@ -20,7 +20,7 @@ function HorseOwnerSubMenu() {
             <Col>Find Stables</Col>
             <Col>Find Stables</Col>
 
-            <HorseOwnerGeoModal
+            <GeoModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />

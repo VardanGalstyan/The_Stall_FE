@@ -1,24 +1,35 @@
+import '../Styles/css/geoModal.css'
 import { useState, useRef, useEffect } from 'react'
 import { Modal, Button, Col, Row } from 'react-bootstrap'
-import { MdFavorite, MdOutlineFavoriteBorder } from 'react-icons/md'
 import { RatingView } from 'react-simple-star-rating'
 import { useHistory } from 'react-router-dom'
 import GoogleMapReact from 'google-map-react'
 import useSuperCluster from 'use-supercluster'
 import { GiHorseshoe } from 'react-icons/gi'
+import { BsFillTelephoneFill } from 'react-icons/bs'
+import { MdEmail } from 'react-icons/md'
+import { FaGlobe } from 'react-icons/fa'
+import { IoIosArrowDropdown, IoIosArrowDropup } from 'react-icons/io'
 
 
-function RiderModal(props) {
+
+
+
+
+function GeoModal(props) {
 
 
     const mapRef = useRef()
     const [cords, setCords] = useState("")
     const [zoom, setZoom] = useState(4)
+    const [moreHorses, setMoreHorses] = useState(false)
     const [bounds, setBounds] = useState(null)
     const [stables, setStables] = useState([])
     const [stableId, setStableId] = useState('')
     const Marker = ({ children }) => children
     const history = useHistory()
+
+    const arrowOptions = !moreHorses ? <IoIosArrowDropdown /> : <IoIosArrowDropup />
 
     const points = stables.map(stable => ({
         type: "Feature",
@@ -72,15 +83,17 @@ function RiderModal(props) {
             {...props}
             size="lg"
             centered
+            id='geoModal'
         >
             <Modal.Header closeButton>
                 <Modal.Title>
-                    Modal heading
+                    Stables Around You
                 </Modal.Title>
             </Modal.Header>
+
             <Modal.Body>
                 <Row>
-                    <Col md={8}>
+                    <Col md={12} sm={12} xs={12} lg={8}>
                         <div id="maps" className="maps">
                             <GoogleMapReact
                                 bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP }}
@@ -147,25 +160,65 @@ function RiderModal(props) {
                             stableId && stables.filter(stable => stable._id === stableId
                             ).map(single => {
                                 return (
-                                    <div key={single._id}>
-                                        <h1>{single.stable_name}</h1>
-                                        <RatingView ratingValue={4} />
-                                        <p>{single.location.formatted_address}</p>
-                                        <div>{`horses : ${single.horses.length}`}</div>
-                                        <div>{`Equestrians : ${single.equestrians.length}`}</div>
-                                        <div>{`horses : ${single.horses.length}`}</div>
-                                        <span><MdFavorite /></span>
-                                        <span><MdOutlineFavoriteBorder /></span>
-                                        <button onClick={() => history.push(`/stable/${single._id}`)}>Check it up!</button>
+                                    <div key={single._id} className='selectedStable'>
+                                        <div className='mt-2'>
+                                            <h1>{single.stable_name}</h1>
+                                            <RatingView ratingValue={5} />
+                                            <div className='stableAddress'>
+                                                <p>{single.location.formatted_address}</p>
+                                            </div>
+                                            <div className='stableContacts mb-4'>
+                                                <div>
+                                                    <span className='mr-3'><BsFillTelephoneFill /></span>
+                                                    <span>{single.contacts.phone}</span>
+                                                </div>
+                                                <div>
+                                                    <span className='mr-3'><MdEmail /></span>
+                                                    <span>{single.contacts.email}</span>
+                                                </div>
+                                                <div>
+                                                    <span className='mr-3'><FaGlobe /></span>
+                                                    <span>{single.contacts.web}</span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div className='stableHorses'>
+                                                    <span>{`Horses : ${single.horses.length}`}</span>
+                                                    <span onClick={() => setMoreHorses(!moreHorses)}>{arrowOptions}</span>
+                                                </div>
+                                                {
+                                                    moreHorses
+                                                    && single.horses.map(horse => {
+                                                        return (
+                                                            <>
+                                                                {single.horses.length !== 0 ?
+                                                                    <div className='horseStyles'>
+                                                                        <span>{horse.training_style}</span>
+                                                                    </div> :
+                                                                    <div>
+                                                                        <span>No horses in this stable... </span>
+                                                                    </div>
+                                                                }
+                                                            </>
+                                                        )
+                                                    })
+                                                }
+                                            </div>
+                                            <div>{`Equestrians : ${single.equestrians.length}`}</div>
+                                            <div>{`Available Boxes :${single.number_of_boxes - single.horses.length}`}</div>
+                                        </div>
+                                        <div className='routerButton'>
+                                            <button onClick={() => history.push(`/stable/${single._id}`)}>Check this out!</button>
+                                            <button>Favorite</button>
+                                        </div>
                                     </div>
                                 )
                             })
                         }
                     </Col>
                 </Row>
-
-
             </Modal.Body>
+
             <Modal.Footer>
                 <Button onClick={props.onHide}>Close</Button>
             </Modal.Footer>
@@ -173,5 +226,5 @@ function RiderModal(props) {
     );
 }
 
-export default RiderModal
+export default GeoModal
 

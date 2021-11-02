@@ -1,17 +1,115 @@
-#rider {
-    color: white;
-    background-color: --main-dark-background;
-    width: 100%;
-    height: 100%;
+.riderOptions {
+    position: relative;
+    color: black;
+    z-index: 2;
+    justify-content: center;
+    display: flex;
+    margin-top: 50px !important;
+    font-family: Cairo;
 
-    .row {
-        flex-wrap: nowrap;
-        margin: 0px 5px;
-    }
+    .singleRiderOption {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 10px 0 0;
+        border-radius: 5px;
+        padding: 5px 5px 0 5px;
+        box-shadow: 1px 1px 7px 0px rgba(39, 39, 39, 0.171);
+        background-color: rgba(255, 255, 255, 0.452);
+        height: 100%;
 
-    .col {
-        background-color: white;
-        border-radius: 7px;
-        margin: 2px;
+        .header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: rgba(0, 0, 0, 0.055) 1px solid;
+            padding: 7px;
+
+            svg {
+                width: 30px;
+                height: 30px;
+                padding: 5px;
+                border-radius: 50%;
+
+                &:hover {
+                    background-color: rgba(27, 27, 27, 0.178);
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .body {
+            display: flex;
+            padding: 7px;
+            align-items: center;
+            border-bottom: rgba(0, 0, 0, 0.055) 1px solid;
+
+            &:hover {
+                cursor: pointer;
+                background-color: rgba(192, 192, 192, 0.15);
+            }
+
+            & > div:first-child {
+                padding: 5px;
+
+                img {
+                    width: 50px;
+                    border-radius: 50%;
+                    border: white 2px solid;
+                }
+            }
+
+            & > div:nth-child(2) {
+                padding: 5px;
+
+                p {
+                    margin: 0px;
+                }
+
+                h4 {
+                    margin: 0px;
+                    font-size: 16px;
+                    font-weight: 700;
+                }
+
+                & > div {
+                    display: flex;
+                    align-items: center;
+
+                    svg {
+                        margin-right: 4px;
+                        color: green;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+
+        .extendedBody {
+            & > div {
+                & > div {
+                    display: flex;
+                    padding: 5px;
+                    align-items: center;
+                    justify-content: space-between;
+                    h5 {
+                        font-size: 17px;
+                        font-weight: 600;
+                        margin: 0 5px 0 0;
+                    }
+
+                    p {
+                        margin: 0px;
+                    }
+                }
+
+                .description {
+                    flex-direction: column;
+                    display: flex;
+                    align-items: baseline;
+                }
+            }
+        }
     }
 }
