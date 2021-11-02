@@ -6,8 +6,8 @@ import { AiOutlineCheckCircle } from 'react-icons/ai'
 import { useHistory } from 'react-router'
 import Loader from 'react-js-loader'
 
-
 function StableOwnerModal(props) {
+
 
     const initialState = {
         stable_name: "",

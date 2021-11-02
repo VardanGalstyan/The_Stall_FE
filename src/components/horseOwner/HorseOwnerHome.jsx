@@ -1,25 +1,17 @@
 import "../../Styles/css/horseOwner.css";
 import "../../Styles/css/userProfile.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import OwnerProfile from "./OwnerProfile";
 import HorseProfile from "./HorseProfile";
 import HorseOwnerNavbar from "./HorseOwnerNavbar";
+import Cover from "../../utils/Cover";
 
 function HorseOwnerHome() {
 
     return (
-        <Container className='usersProfile' id='horseOwner'>
+        <Container fluid  className='usersProfile' id='horseOwner'>
             <HorseOwnerNavbar />
-            <Row className="main-header">
-                <Col className="cover">
-                    <div>
-                        <img
-                            src="https://picsum.photos/1000/400"
-                            alt="profile background"
-                        />
-                    </div>
-                </Col>
-            </Row>
+            <Cover />
             <Row className='userProfileHeader'>
                 <OwnerProfile />
                 <HorseProfile />

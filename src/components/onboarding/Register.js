@@ -52,7 +52,7 @@ function Register() {
     }
 
     return (
-        <>  {
+        <div className='loginOptions'>  {
             isLoading ? <Loader /> :
                 <Col id='register' md={6}>
                     <div>
@@ -119,7 +119,7 @@ function Register() {
                     </Form>
                 </Col>
         }
-        </>
+        </div>
     )
 }
 

@@ -43,7 +43,6 @@ function Login() {
                     history.push(`/${role}`)
                     setIsLoading(false)
                 }, 300)
-                console.log(data);
             } else {
                 setIsLoading(false)
                 setIsError(true)
@@ -56,7 +55,7 @@ function Login() {
 
 
     return (
-        <> {
+        <div className='loginOptions'> {
             isLoading ? <Loader /> :
                 <Col id='login' md={6}>
                     <div>
@@ -104,12 +103,9 @@ function Login() {
                             Log in
                         </Button>
                     </Form>
-                    <div>
-                        Forgot Password?
-                    </div>
                 </Col>
         }
-        </>
+        </div>
     )
 }
 

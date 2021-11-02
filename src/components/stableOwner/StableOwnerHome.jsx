@@ -6,36 +6,25 @@ import HorseOwnerNavbar from "../horseOwner/HorseOwnerNavbar";
 import StableOwnerProfile from './StableOwnerProfile'
 import StableOwnerModal from './StableOwnerModal';
 import { HiViewGridAdd } from 'react-icons/hi'
+import Cover from '../../utils/Cover';
 
 function StableOwnerHome() {
 
     const [modalShow, setModalShow] = useState(false);
 
     return (
-        <Container fluid='xl' className='usersProfile'>
+        <Container fluid className='usersProfile'>
             <HorseOwnerNavbar />
-            <Row className="main-header">
-                <Col className="cover">
-                    <div>
-                        <img
-                            src="https://picsum.photos/1000/400"
-                            alt="profile background"
-                        />
-                    </div>
-                </Col>
-            </Row>
+            <Cover />
             <Row className='userProfileHeader'>
                 <StableOwnerProfile />
             </Row>
             <Row className='stableOptions'>
-                <Col md={4} xs={12} className='col mr-4'>
+                <Col className='testMenu' md={6}>
                     <div className='addStableButton'>
                         <HiViewGridAdd onClick={() => setModalShow(true)} />
                         <p>Create a Stable</p>
                     </div>
-                </Col>
-                <Col className='col'>
-                    <h1>Welcome Anna</h1>
                 </Col>
             </Row>
             <StableOwnerModal
