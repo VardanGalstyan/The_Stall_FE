@@ -7,19 +7,26 @@
     width: 100%;
     object-fit: cover;
     background-repeat: no-repeat;
-}
 
-#maps img {
-    width: 5px;
-}
+    .cluster-marker {
+        color: white;
+        background-color: blue;
+        border-radius: 50%;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
 
-.cluster-marker {
-    color: white;
-    background-color: blue;
-    border-radius: 50%;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+    }
+
+    .place-marker {
+        font-size: 25px;
+        background-color: white;
+        padding: 5px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        text-align: center;
+    }
 }

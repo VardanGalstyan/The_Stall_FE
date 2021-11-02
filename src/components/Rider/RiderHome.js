@@ -5,6 +5,9 @@ import Loaders from '../../utils/Loader.js'
 import RiderModal from './RiderModal.js'
 import RiderNavbar from './RiderNavbar.js'
 import '../../Styles/css/rider.css'
+import HorseOwnerNavbar from '../horseOwner/HorseOwnerNavbar.jsx'
+import Cover from '../../utils/Cover.jsx'
+import StableOwnerProfile from '../stableOwner/StableOwnerProfile.jsx'
 
 
 
@@ -19,22 +22,13 @@ function RiderHome() {
         <>
             {isPending ?
                 <Loaders /> :
-                <Container fluid id='rider'>
-                    <RiderNavbar />
+                <Container fluid className='usersProfile'>
+                    <HorseOwnerNavbar />
+                    <Cover />
+                    <Row className='userProfileHeader'>
+                        <StableOwnerProfile />
+                    </Row>
                     <Row>
-                        <Col md={2} className='col'>
-                            <button>This is for something else</button>
-                        </Col>
-                        <Col md={8} className='col'>
-                            <h1>Welcome {data && data.first_name}</h1>
-
-                            <Button variant="primary" onClick={() => setModalShow(true)}>
-                                Launch vertically centered modal
-                            </Button></Col>
-                        <Col md={2} className='col'>
-                            <button>This is for something else</button>
-                        </Col>
-
                         <RiderModal
                             show={modalShow}
                             onHide={() => setModalShow(false)}

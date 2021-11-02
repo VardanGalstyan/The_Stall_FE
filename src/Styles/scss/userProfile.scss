@@ -123,13 +123,6 @@
 
         &::after {
             content: "";
-            // background: linear-gradient(
-            //     180deg,
-            //     rgba(55, 22, 86, 0.678) 0%,
-            //     rgba(107, 83, 129, 0.651) 21%,
-            //     rgba(162, 148, 175, 0.781) 40%,
-            //     rgb(255, 255, 255) 100%
-            // );
             background: linear-gradient(
                 180deg,
                 rgba(131, 83, 83, 0.037) 0%,
@@ -140,6 +133,7 @@
             height: 600px;
             position: absolute;
             top: 0px;
+            z-index: 1;
         }
     }
 
@@ -147,7 +141,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        z-index: 3;
 
         div {
             display: flex;
@@ -161,6 +154,8 @@
             align-items: center;
             display: flex;
             flex-direction: column;
+            z-index: 2;
+        
         }
     }
 }

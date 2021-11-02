@@ -8,7 +8,7 @@ import useSuperCluster from 'use-supercluster'
 import { GiHorseshoe } from 'react-icons/gi'
 
 
-function RiderModal(props) {
+function HorseOwnerGeoModal(props) {
 
 
     const mapRef = useRef()
@@ -173,5 +173,5 @@ function RiderModal(props) {
     );
 }
 
-export default RiderModal
+export default HorseOwnerGeoModal
 

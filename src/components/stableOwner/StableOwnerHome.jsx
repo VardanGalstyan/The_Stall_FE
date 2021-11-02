@@ -20,7 +20,11 @@ function StableOwnerHome() {
                 <StableOwnerProfile />
             </Row>
             <Row className='stableOptions'>
-                <Col className='testMenu' md={6}>
+                <Col md={8} className='welcomeBox'>
+                    <h2>Welcome</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione ea ipsum corrupti quia culpa labore delectus nesciunt quidem alias autem cumque, voluptatem dolor ex ullam pariatur earum tempore, ipsam itaque.</p>
+                </Col>
+                <Col md={4} className='welcomeBox'>
                     <div className='addStableButton'>
                         <HiViewGridAdd onClick={() => setModalShow(true)} />
                         <p>Create a Stable</p>

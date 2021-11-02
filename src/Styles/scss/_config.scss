@@ -100,5 +100,39 @@ a {
     height: 200px;
     border: solid white 4px;
     object-fit: cover;
-}
+    -webkit-animation: flip-in-ver-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: flip-in-ver-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    cursor: pointer;
+    background-color: white;
+    font-family: "Cairo", sans-serif;
+    font-size: 15px;
 
+    p {
+        margin: 0px;
+    }
+
+    @-webkit-keyframes flip-in-ver-right {
+        0% {
+            -webkit-transform: rotateY(-80deg);
+            transform: rotateY(-80deg);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+            opacity: 1;
+        }
+    }
+    @keyframes flip-in-ver-right {
+        0% {
+            -webkit-transform: rotateY(-80deg);
+            transform: rotateY(-80deg);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+            opacity: 1;
+        }
+    }
+}
