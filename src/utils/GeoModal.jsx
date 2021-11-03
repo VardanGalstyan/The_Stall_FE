@@ -20,7 +20,7 @@ function GeoModal(props) {
 
 
     const mapRef = useRef()
-    const [cords, setCords] = useState("")
+    const [cords, setCords] = useState(null)
     const [zoom, setZoom] = useState(4)
     const [moreHorses, setMoreHorses] = useState(false)
     const [bounds, setBounds] = useState(null)
@@ -188,11 +188,11 @@ function GeoModal(props) {
                                                 </div>
                                                 {
                                                     moreHorses
-                                                    && single.horses.map(horse => {
+                                                    && single.horses.map((horse, i) => {
                                                         return (
                                                             <>
                                                                 {single.horses.length !== 0 ?
-                                                                    <div className='horseStyles'>
+                                                                    <div key={i} className='horseStyles'>
                                                                         <span>{horse.training_style}</span>
                                                                     </div> :
                                                                     <div>
@@ -220,7 +220,11 @@ function GeoModal(props) {
             </Modal.Body>
 
             <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
+                <Button onClick={() => {
+                    props.onHide()
+                    setMoreHorses(false)
+                }}>
+                    Close</Button>
             </Modal.Footer>
         </Modal >
     );

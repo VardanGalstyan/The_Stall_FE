@@ -70,30 +70,6 @@ a {
     }
 }
 
-.navbar {
-    height: 100px;
-    background-color: white !important;
-    color: black;
-    &-nav {
-        display: flex !important;
-        justify-content: space-between;
-        align-items: center;
-        width: 70%;
-        align-items: flex-end;
-        font-size: 20px;
-        flex-wrap: nowrap;
-    }
-    border-bottom: purple 1px solid;
-
-    &-collapse {
-        justify-content: center;
-    }
-
-    a {
-        color: rgb(36, 36, 36);
-    }
-}
-
 .userProfileImage {
     border-radius: 50%;
     width: 200px;

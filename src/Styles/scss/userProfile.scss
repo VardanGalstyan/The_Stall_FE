@@ -16,13 +16,11 @@
         font-family: "Cairo", sans-serif;
 
         .userProfile {
-            background-color: rgba(228, 219, 233, 0.185);
+            background-color: rgba(20, 20, 20, 0.541);
+            color: white;
             display: flex;
             padding: 5px 10px;
-            border-top-left-radius: 25px;
-            border-top-right-radius: 25px;
-            border-bottom-right-radius: 0px;
-            border-bottom-left-radius: 0px;
+            border-radius: 17px;
             align-items: center;
             justify-content: center;
 
@@ -33,7 +31,7 @@
 
             &:hover {
                 background-color: rgba(255, 255, 255, 0.356);
-                color: rgb(36, 34, 34);
+                color: rgb(41, 37, 37);
                 cursor: pointer;
             }
         }
@@ -44,53 +42,49 @@
 
         .isActiveOption {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             position: absolute;
-            top: 34px;
-            border-radius: 2px;
-            background-color: rgba(228, 219, 233, 0.185);
-            width: 127px;
+            justify-content: space-between;
+            align-items: center;
+            top: -5px;
+            right: 140px;
+            width: 300px;
             padding: 5px 5px;
-            -webkit-animation: isActiveOption 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
-            animation: isActiveOption 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
 
-            @-webkit-keyframes isActiveOption {
+            & span {
+                height: 34px;
+                border-radius: 17px;
+                margin-right: 10px;
+                padding: 0 30px;
+                width: 126px;
+                text-align: center;
+                background-color: rgba(20, 20, 20, 0.541);
+                color: white;
+            }
+            -webkit-animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+            animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+            @-webkit-keyframes slide-in-right {
                 0% {
-                    -webkit-transform: translateY(-0px) scaleY(2.5) scaleX(0.2);
-                    transform: translateY(-0px) scaleY(2.5) scaleX(0.2);
-                    -webkit-transform-origin: 50% 0%;
-                    transform-origin: 50% 0%;
-                    -webkit-filter: blur(40px);
-                    filter: blur(40px);
+                    -webkit-transform: translateX(1000px);
+                    transform: translateX(1000px);
                     opacity: 0;
                 }
                 100% {
-                    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
-                    transform: translateY(0) scaleY(1) scaleX(1);
-                    -webkit-transform-origin: 50% 50%;
-                    transform-origin: 50% 50%;
-                    -webkit-filter: blur(0);
-                    filter: blur(0);
+                    -webkit-transform: translateX(0);
+                    transform: translateX(0);
                     opacity: 1;
                 }
             }
-            @keyframes isActiveOption {
+            @keyframes slide-in-right {
                 0% {
-                    -webkit-transform: translateY(-400px) scaleY(2.5) scaleX(0.2);
-                    transform: translateY(-400px) scaleY(2.5) scaleX(0.2);
-                    -webkit-transform-origin: 50% 0%;
-                    transform-origin: 50% 0%;
-                    -webkit-filter: blur(40px);
-                    filter: blur(40px);
+                    -webkit-transform: translateX(200px);
+                    transform: translateX(200px);
                     opacity: 0;
                 }
                 100% {
-                    -webkit-transform: translateY(0) scaleY(1) scaleX(1);
-                    transform: translateY(0) scaleY(1) scaleX(1);
-                    -webkit-transform-origin: 50% 50%;
-                    transform-origin: 50% 50%;
-                    -webkit-filter: blur(0);
-                    filter: blur(0);
+                    -webkit-transform: translateX(0);
+                    transform: translateX(0);
                     opacity: 1;
                 }
             }
@@ -155,7 +149,6 @@
             display: flex;
             flex-direction: column;
             z-index: 2;
-        
         }
     }
 }
