@@ -13,9 +13,6 @@ import { IoIosArrowDropdown, IoIosArrowDropup } from 'react-icons/io'
 
 
 
-
-
-
 function GeoModal(props) {
 
 
@@ -51,9 +48,9 @@ function GeoModal(props) {
     const fetchData = async () => {
         try {
             const response = await fetch("http://localhost:3001/stables")
-            const data = await response.json()
-            if (data) {
-                setStables(data)
+            const {stables} = await response.json()
+            if (stables) {
+                setStables(stables)
             } else {
                 throw new Error('something went wrong')
             }

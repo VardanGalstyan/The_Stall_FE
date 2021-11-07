@@ -6,6 +6,7 @@ import HorseOwnerNavbar from '../horseOwner/HorseOwnerNavbar.jsx'
 import Cover from '../../utils/Cover.jsx'
 import StableOwnerProfile from '../stableOwner/StableOwnerProfile.jsx'
 import RiderOptions from './RiderOptions/RiderOptions.jsx'
+import AboutMe from './AboutMe/AboutMe.jsx'
 
 
 
@@ -24,6 +25,7 @@ function RiderHome() {
                     <Row className='userProfileHeader'>
                         <StableOwnerProfile />
                     </Row>
+                    <AboutMe />
                     <RiderOptions />
                 </Container >
             }

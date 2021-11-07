@@ -74,7 +74,7 @@ a {
     border-radius: 50%;
     width: 200px;
     height: 200px;
-    border: solid white 4px;
+    border: solid rgb(255, 255, 255) 5px;
     object-fit: cover;
     -webkit-animation: flip-in-ver-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation: flip-in-ver-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
@@ -112,3 +112,18 @@ a {
         }
     }
 }
+
+// .singleUserProfile {
+//     & > div:first-child {
+//         background: white;
+//         width: 200px;
+//         border-top-left-radius: 50%;
+//         border-top-right-radius: 50%;
+//     }
+
+//     & > div:last-child {
+//         background: white;
+//         width: 200px;
+
+//     }
+// }

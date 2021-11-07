@@ -6,13 +6,13 @@ import useFetch from '../../utils/useFetch'
 
 export default function OwnerProfile() {
 
-    const { data } = useFetch("http://localhost:3001/stables")
+    const { stables } = useFetch("http://localhost:3001/stables")
     const { id } = useParams()
 
 
     return (
         <>
-            {data && data.filter(stables => id === stables._id).map(stable => {
+            {stables && stables.filter(stables => id === stables._id).map(stable => {
                 return (
                     <Col key={stable._id} className='singleUserProfile'>
                         <div><img className='userProfileImage' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6Kjens-28BusmKVIEemYOkSzpjMBm7vilJw&usqp=CAU" alt="profile avatar" /></div>

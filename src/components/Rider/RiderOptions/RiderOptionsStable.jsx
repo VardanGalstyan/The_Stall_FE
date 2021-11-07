@@ -9,7 +9,7 @@ function RiderOptionsStable() {
     const [modalShow, setModalShow] = useState(false);
 
     return (
-        <Col md={4} xs={11} className='singleRiderOption'>
+        <Col md={4} sm={11} xs={11} className='singleRiderOption'>
             <div className='header'>
                 <span>Stables</span>
                 <IoAdd onClick={() => setModalShow(true)} />

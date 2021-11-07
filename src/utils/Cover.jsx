@@ -7,7 +7,7 @@ function Cover() {
             <Col className="cover">
                 <div>
                     <img
-                        src="https://picsum.photos/1000/400"
+                        src="https://wallpaperaccess.com/full/4881447.jpg"
                         alt="profile background"
                     />
                 </div>
