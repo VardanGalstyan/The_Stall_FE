@@ -1,0 +1,96 @@
+.MainStable {
+    justify-content: center;
+    z-index: 3 !important;
+    position: relative;
+    // background-color: #7b856131;
+    font-family: Cairo;
+
+    .StableStatMenu {
+        box-shadow: 1px 1px 7px 0px rgba(187, 185, 185, 0.192);
+        display: flex;
+        justify-content: center;
+
+        .singleStatMenu {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2px;
+            margin-right: 2px;
+            text-align: center;
+            cursor: pointer;
+            // background-color: #7b85618e;
+            color: ivory;
+
+            &:hover {
+                font-weight: 600;
+                background-color: #8f997731;
+            }
+
+            .statMenuHeader {
+                padding: 3px 10px;
+            }
+
+            .statMenuBody {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                display: none;
+
+                & > div {
+                    padding: 10px;
+                    text-align: center;
+                }
+
+                & > div:nth-child(2) {
+                    border-left: 1px solid rgba(192, 192, 192, 0.315);
+                }
+            }
+        }
+    }
+}
+
+.stableMainProfile {
+    z-index: 2 !important;
+    margin-bottom: 50px !important;
+    .stableProfileHeader {
+        width: 100%;
+        z-index: 2;
+        flex-direction: row;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+        img {
+            width: 150px;
+            height: 150px;
+            border: 5px solid white;
+            object-fit: cover;
+        }
+        .stableProfileDescription {
+            h1 {
+                margin: 0px;
+                padding: 0px;
+                font-size: 7vw;
+            }
+
+            .stableRatingValue {
+                align-items: center;
+                display: flex;
+                span {
+                    font-size: 20px;
+                    font-weight: 600;
+                }
+            }
+
+            p {
+                margin: 0px;
+                font-family: Cairo;
+            }
+        }
+    }
+    .stableProfileBody {
+    }
+}

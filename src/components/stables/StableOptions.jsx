@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Row } from 'react-bootstrap'
 import useFetch from '../../utils/useFetch'
 import RiderOptionsHorse from '../Rider/RiderOptions/RiderOptionsHorse'
 import { useParams } from 'react-router'
 import Calendar from 'react-calendar'
-import getDate from 'date-fns/getDate'
-import getYear from 'date-fns/getYear'
-import getMonth from 'date-fns/getMonth'
+// import getDate from 'date-fns/getDate'
+// import getYear from 'date-fns/getYear'
+// import getMonth from 'date-fns/getMonth'
 import isSameDay from 'date-fns/isSameDay'
 
 
@@ -42,10 +42,6 @@ function StableOptions() {
 
 
     // const date = `${getYear(value)}, ${getMonth(value)}, ${getDate(value)}`
-
-
-
-
 
     return (
         <>

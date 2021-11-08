@@ -3,18 +3,20 @@ import { Col } from 'react-bootstrap'
 import { IoAdd } from 'react-icons/io5'
 import { GoLocation } from 'react-icons/go'
 
+
 function RiderOptionsHorse({ horses }) {
 
     const [isExtended, setIsExtended] = useState(false)
 
+
     return (
-        <Col md={7} xs={11} xs={11} className='singleRiderOption'>
+        <Col md={7} xs={11} sm={11} className='singleRiderOption mb-4'>
             <>
                 <div className='riderOptionsHorseHeader'>
                     <span>Horses</span>
                     <IoAdd />
                 </div>
-                {horses && horses.map((horse, i) => {
+                {horses ? horses.map((horse, i) => {
                     return (
                         <div key={i} className='riderOptionsHorseBody' onClick={() => setIsExtended(!isExtended)}>
                             <Col sm={11} md={4} className='riderBodyProfile'>
@@ -63,7 +65,12 @@ function RiderOptionsHorse({ horses }) {
                         </div>
 
                     )
-                })
+                }) :
+                    <div className='riderOptionsStableBody justify-content-center'>
+                        <div className='emptyStableInfo'>
+                            <h4>Find a Horse?</h4>
+                        </div>
+                    </div>
                 }
             </>
         </Col>

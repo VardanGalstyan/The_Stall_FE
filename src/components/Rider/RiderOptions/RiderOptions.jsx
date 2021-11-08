@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { Row } from 'react-bootstrap'
 import RiderOptionsHorse from './RiderOptionsHorse'
 import RiderOptionsStable from './RiderOptionsStable'
@@ -12,8 +11,8 @@ function RiderOptions() {
 
     return (
         <Row className='riderOptions'>
-            <RiderOptionsHorse horses = {data && data.horses} />
-            <RiderOptionsStable />
+            <RiderOptionsHorse horses={data && data.horses} />
+            <RiderOptionsStable horses={data && data.horses} />
         </Row>
     )
 }

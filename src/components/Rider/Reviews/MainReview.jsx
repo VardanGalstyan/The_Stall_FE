@@ -2,7 +2,6 @@ import React from 'react'
 import { Rating } from 'react-simple-star-rating'
 import { Col } from 'react-bootstrap'
 import SingleReview from './SingleReview'
-import Calendar from 'react-calendar'
 
 function MainReview() {
     return (

@@ -1,10 +1,12 @@
+// R I D E R - H O R S E S
+
 .riderOptions {
     position: relative;
     color: black;
     z-index: 2;
     justify-content: center;
     flex-direction: row;
-    margin-top: 50px !important;
+    margin-top: 20px !important;
     font-family: Cairo;
 
     .singleRiderOption {
@@ -89,8 +91,66 @@
             }
         }
 
+        .riderOptionsStableBody {
+            display: flex;
+            padding: 7px;
+            background-color: white;
+            align-items: center;
+
+            .stableBodyProfile {
+                padding: 5px;
+
+                img {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    border: white 2px solid;
+                }
+            }
+
+            .emptyStableInfo {
+                font-family: Cairo;
+                padding: 8px;
+
+                h4 {
+                    font-weight: 500;
+                }
+            }
+
+            .stableInfo {
+                h4 {
+                    font-weight: 600;
+                    font-size: 16px;
+                    margin: 0;
+                    padding: 4px;
+                }
+
+                .StableInfoDetails {
+                    display: flex;
+                    font-size: 13px;
+                    align-items: center;
+
+                    p {
+                        margin: 0px;
+                        padding: 0px;
+                    }
+                }
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+            .extendedBody {
+                border-left: rgba(192, 192, 192, 0.418) 1px solid;
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .extendedBody {
+                border-top: rgba(192, 192, 192, 0.418) 1px solid;
+            }
+        }
+
         .extendedBody {
-            border-top: rgba(192, 192, 192, 0.418) 1px solid;
             padding: 5px;
             & > div {
                 & > div {
@@ -118,6 +178,8 @@
         }
     }
 }
+
+// A B O U T   M E
 
 .aboutMe {
     background: transparent;
@@ -301,6 +363,53 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+// C A L E N D A R
+
+.userCalendar {
+    position: fixed !important;
+    padding: 5px;
+    top: 25% !important;
+    right: 0px !important;
+    padding: 5px 10px 5px 13px !important;
+    cursor: pointer;
+    z-index: 100;
+    background-color: rgba(71, 66, 66, 0.39);
+    color: white;
+    font-size: 25px;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+
+}
+
+.ridingCalendar {
+    font-family: Cairo;
+
+    .modal-content {
+        background: rgba(255, 255, 255, 0.801);
+
+        .modal-header {
+            background-color: white;
+        }
+
+        .modal-body {
+            display: flex;
+            justify-content: center;
+            background-color: #7b85613b;
+        }
+
+        .modal-footer {
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            button {
+                background-color: transparent;
+                color: rgb(32, 31, 31);
+                border: none;
             }
         }
     }

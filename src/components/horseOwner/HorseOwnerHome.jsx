@@ -1,6 +1,6 @@
 import "../../Styles/css/horseOwner.css";
 import "../../Styles/css/userProfile.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import OwnerProfile from "./OwnerProfile";
 import HorseProfile from "./HorseProfile";
 import HorseOwnerNavbar from "./HorseOwnerNavbar";

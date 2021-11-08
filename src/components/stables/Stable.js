@@ -1,25 +1,36 @@
-import React from 'react'
+// import { useState } from 'react'
+import '../../Styles/css/stable.css'
+import 'react-calendar/dist/Calendar.css';
 import Cover from '../../utils/Cover.jsx'
 import { Container, Row } from 'react-bootstrap'
 import HorseOwnerNavbar from '../horseOwner/HorseOwnerNavbar'
-import OwnerProfile from '../horseOwner/OwnerProfile'
-import StableOptions from './StableOptions.jsx'
-import '../../Styles/css/Styles.css'
-import 'react-calendar/dist/Calendar.css';
+import StableProfile from './StableProfile';
+import AboutMe from '../Rider/AboutMe/AboutMe'
+import RiderOptionsHorse from '../Rider/RiderOptions/RiderOptionsHorse';
+import useFetch from '../../utils/useFetch';
+import { useParams } from 'react-router';
 
 function Stable() {
 
 
+    const { id } = useParams()
+    const { data } = useFetch(`http://localhost:3001/stables/${id}`)
+    setTimeout(() => {
+        data && console.log('this shitty data', data);
+
+    }, 1100);
 
     return (
         <Container fluid className='usersProfile'>
             <HorseOwnerNavbar />
             <Cover />
-            <Row className='userProfileHeader'>
-                <OwnerProfile />
+            <StableProfile data={data} />
+            <AboutMe />
+            <Row className='riderOptions'>
+                <RiderOptionsHorse horses={data && data.horses} />
             </Row>
-            <StableOptions />
-        </Container>
+
+        </Container >
     )
 }
 

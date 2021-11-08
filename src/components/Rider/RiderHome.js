@@ -7,13 +7,13 @@ import Cover from '../../utils/Cover.jsx'
 import StableOwnerProfile from '../stableOwner/StableOwnerProfile.jsx'
 import RiderOptions from './RiderOptions/RiderOptions.jsx'
 import AboutMe from './AboutMe/AboutMe.jsx'
-
+import UserCalendar from './Calendar/UserCalendar.jsx'
 
 
 function RiderHome() {
 
     const token = localStorage.getItem('token')
-    const { data, isPending } = useFetch("http://localhost:3001/rider/me", token)
+    const { isPending } = useFetch("http://localhost:3001/rider/me", token)
 
     return (
         <>
@@ -25,6 +25,7 @@ function RiderHome() {
                     <Row className='userProfileHeader'>
                         <StableOwnerProfile />
                     </Row>
+                    <UserCalendar />
                     <AboutMe />
                     <RiderOptions />
                 </Container >
