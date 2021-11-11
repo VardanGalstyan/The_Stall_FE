@@ -39,7 +39,6 @@ function RiderOptionsStable({ horses }) {
                             </div>
                     )
                 })
-
             }
             <GeoModal
                 show={modalShow}

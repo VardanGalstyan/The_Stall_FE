@@ -1,12 +1,65 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Col } from 'react-bootstrap'
 import { IoAdd } from 'react-icons/io5'
 import { GoLocation } from 'react-icons/go'
+import { useParams } from 'react-router'
+
 
 
 function RiderOptionsHorse({ horses }) {
 
+    const token = localStorage.getItem('token')
+    const { id } = useParams()
     const [isExtended, setIsExtended] = useState(false)
+    const [userData, setUserData] = useState(null)
+
+
+    useEffect(() => {
+        handleUserDataFetch()
+    }, [userData])
+
+    const handleUserDataFetch = async () => {
+        try {
+            const response = await fetch(`http://localhost:3001/rider/me`, {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            if (response.ok) {
+                const userData = await response.json()
+                setUserData(userData)
+            }
+        } catch (error) {
+            console.log({ error });
+        }
+    }
+
+
+    const handleRequest = async (horseId) => {
+        try {
+            const endpoint = userData.horses.every(foundHorse => foundHorse._id !== horseId)
+                ? `http://localhost:3001/rider/me/${id}/request`
+                : `http://localhost:3001/rider/me/${id}/recall`
+
+            const response = await fetch(endpoint, {
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                method: "PUT",
+                body: JSON.stringify({ id: horseId })
+            })
+
+            if (response.ok) {
+                console.log('Request is approved!');
+            } else {
+                console.log('The request has not been approved!');
+            }
+        } catch (error) {
+            console.log({ error });
+        }
+
+    }
 
 
     return (
@@ -18,17 +71,25 @@ function RiderOptionsHorse({ horses }) {
                 </div>
                 {horses ? horses.map((horse, i) => {
                     return (
-                        <div key={i} className='riderOptionsHorseBody' onClick={() => setIsExtended(!isExtended)}>
+                        <div key={i} className='riderOptionsHorseBody'>
                             <Col sm={11} md={4} className='riderBodyProfile'>
-                                <div className='ridersHorseImage'>
-                                    <img src={horse.avatar ? horse.avatar : "https://picsum.photos/200"} alt="stableCover" />
-                                </div>
-                                <div className='riderHorseInfo'>
-                                    <h4>{horse.name}</h4>
-                                    <div className='riderHorseInfoDetails'>
-                                        <GoLocation />
-                                        <span>{`${horse.horse_owner.first_name} ${horse.horse_owner.surname}`}</span>
+                                <div className='d-flex align-items-center'>
+                                    <div className='ridersHorseImage'>
+                                        <img src={horse.avatar ? horse.avatar : "https://picsum.photos/200"} alt="stableCover" />
                                     </div>
+                                    <div className='riderHorseInfo' onClick={() => setIsExtended(!isExtended)}>
+                                        <h4>{horse.name}</h4>
+                                        <div className='riderHorseInfoDetails'>
+                                            <GoLocation />
+                                            <span>{`${horse.horse_owner.first_name} ${horse.horse_owner.surname}`}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button
+                                        onClick={() => handleRequest(horse._id)}
+                                    >
+                                        {userData && userData.horses.find(myHorse => horse._id === myHorse._id) ? "Recall" : "Request"}</button>
                                 </div>
                             </Col>
                             {isExtended &&
@@ -60,10 +121,8 @@ function RiderOptionsHorse({ horses }) {
                                         </Col>
                                     </div>
                                 </Col>
-
                             }
                         </div>
-
                     )
                 }) :
                     <div className='riderOptionsStableBody justify-content-center'>

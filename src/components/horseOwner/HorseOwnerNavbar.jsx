@@ -6,9 +6,9 @@ import { CgProfile } from 'react-icons/cg'
 
 
 function HorseOwnerNavbar() {
-
     const [isActive, setIsActive] = useState(false)
     const history = useHistory()
+    const role = localStorage.getItem('role')
 
 
     const logout = () => {
@@ -17,17 +17,24 @@ function HorseOwnerNavbar() {
         history.push('/loginOption')
     }
 
+    const handleProfileChange = (profile) => {
+        history.push(`/${profile}`)
+    }
+
     return (
 
         <Row className='horseOwnerNavbar'>
-            <div onClick={() => setIsActive(!isActive)} className='userProfile'>
+            <div
+                onClick={() => setIsActive(!isActive)}
+                className='userProfile'
+            >
                 <CgProfile />
                 <p>Anna Bauer</p>
             </div>
             {
                 isActive &&
                 <div className='isActiveOption'>
-                    <span>Edit Profile</span>
+                    <span onClick={() => handleProfileChange(role)}> My Profile</span>
                     <span onClick={logout}>Sign Out</span>
                 </div>
             }

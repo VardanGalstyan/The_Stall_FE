@@ -1,4 +1,3 @@
-// import { useState } from 'react'
 import '../../Styles/css/stable.css'
 import 'react-calendar/dist/Calendar.css';
 import Cover from '../../utils/Cover.jsx'
@@ -12,13 +11,8 @@ import { useParams } from 'react-router';
 
 function Stable() {
 
-
     const { id } = useParams()
     const { data } = useFetch(`http://localhost:3001/stables/${id}`)
-    setTimeout(() => {
-        data && console.log('this shitty data', data);
-
-    }, 1100);
 
     return (
         <Container fluid className='usersProfile'>
@@ -29,7 +23,6 @@ function Stable() {
             <Row className='riderOptions'>
                 <RiderOptionsHorse horses={data && data.horses} />
             </Row>
-
         </Container >
     )
 }

@@ -55,7 +55,6 @@
             flex-wrap: wrap;
 
             &:hover {
-                cursor: pointer;
                 background-color: rgba(192, 192, 192, 0.15);
             }
 
@@ -63,6 +62,7 @@
                 display: flex;
                 align-items: center;
                 padding: 5px;
+                justify-content: space-between;
                 .ridersHorseImage {
                     padding: 5px;
                     img {
@@ -74,6 +74,7 @@
                 }
 
                 .riderHorseInfo {
+                    cursor: pointer;
                     h4 {
                         font-weight: 600;
                         font-size: 16px;
@@ -86,6 +87,17 @@
                         font-size: 13px;
                         display: flex;
                         align-items: center;
+                    }
+                }
+
+                button {
+                    background-color: transparent;
+                    border: none;
+                    padding: 10px;
+                    border-radius: 14px;
+
+                    &:hover {
+                        background-color: rgba(255, 255, 255, 0.829);
                     }
                 }
             }
@@ -383,7 +395,6 @@
     font-size: 25px;
     border-top-left-radius: 7px;
     border-bottom-left-radius: 7px;
-
 }
 
 .ridingCalendar {
@@ -399,7 +410,7 @@
         .modal-body {
             display: flex;
             justify-content: center;
-            background-color: #7b85613b;
+            background-color: white;
         }
 
         .modal-footer {

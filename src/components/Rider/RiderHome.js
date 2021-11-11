@@ -14,21 +14,23 @@ function RiderHome() {
 
     const token = localStorage.getItem('token')
     const { isPending } = useFetch("http://localhost:3001/rider/me", token)
+    const shit = 2
 
     return (
         <>
-            {isPending ?
-                <Loaders /> :
-                <Container fluid className='usersProfile'>
-                    <HorseOwnerNavbar />
-                    <Cover />
-                    <Row className='userProfileHeader'>
-                        <StableOwnerProfile />
-                    </Row>
-                    <UserCalendar />
-                    <AboutMe />
-                    <RiderOptions />
-                </Container >
+            {
+                isPending ?
+                    <Loaders /> :
+                    <Container fluid className='usersProfile'>
+                        <HorseOwnerNavbar />
+                        < Cover />
+                        <Row className='userProfileHeader'>
+                            <StableOwnerProfile />
+                        </Row>
+                        <UserCalendar />
+                        <AboutMe />
+                        <RiderOptions />
+                    </Container >
             }
         </>
     )
