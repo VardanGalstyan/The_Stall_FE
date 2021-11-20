@@ -14,7 +14,6 @@ function RiderHome() {
 
     const token = localStorage.getItem('token')
     const { isPending } = useFetch("http://localhost:3001/rider/me", token)
-    const shit = 2
 
     return (
         <>
