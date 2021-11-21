@@ -50,19 +50,19 @@ function SearchBar() {
                         setSearchValue(e.target.value)
                     }
                 />
-                {/* {
-                    searchValue.length >= 3 && */}
-                <div
-                    onClick={handleSearch}
-                    className={`sendSearchValue-icon ${searchValue.length < 3 ? 'rollOut' : 'roll-in d-block'}`}
-                >
-                    Go!
-                </div>
-                {/* } */}
+                {
+                    searchValue.length >= 3 &&
+                    <div
+                        onClick={handleSearch}
+                        className={`sendSearchValue-icon`}
+                    >
+                        Go!
+                    </div>
+                }
                 <IoFilter className='filter-icon' onClick={() => setIsActive(!isActive)} />
                 {
                     isActive &&
-                    <div className='search-filter-dropDown'>
+                    <div className={`search-filter-dropDown ${isActive ? "slide-in" : "slide-out" }`}>
                         <div onClick={(e) => handleFilterClick(e)} className='filteredBy-stables'>
                             <span >Stables</span>
                             {
