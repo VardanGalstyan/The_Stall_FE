@@ -1,31 +1,49 @@
 import React, { useState } from 'react'
+import Loader from 'react-loader-spinner'
 import validator from 'validator'
-import './register.css'
+import { VscError } from 'react-icons/vsc'
+import '../Styles/onboarding.css'
 import { useHistory } from 'react-router'
 import { Modal, Button, Form } from 'react-bootstrap'
 
 
 function RegisterModal(props) {
 
-    const history = useHistory()
-    const [isLoading, setIsLoading] = useState(false)
-    const [role, setRole] = useState('')
-    const [user, setUser] = useState({
+    const initialState = {
         first_name: "",
         surname: "",
         "contacts.email": "",
         password: ""
-    })
+    }
+
+    const history = useHistory()
+    const [isLoading, setIsLoading] = useState(false)
+    const [isError, setIsError] = useState(true)
+    const [role, setRole] = useState('')
+    const [validated, setValidated] = useState(false)
+    const [user, setUser] = useState(initialState)
 
     const validEmail = validator.isEmail(user['contacts.email'])
-    // const validPassword = validator.isStrongPassword(user['contacts.email'])
+    // const validPassword = validator.isStrongPassword(user.password)
     const validPassword = user.password.length >= 4
     const validFirstName = user.first_name.length >= 2
     const validSurname = user.surname.length >= 2
 
+    const handleClose = () => {
+        props.onHide()
+        setUser(initialState)
+    }
+
+    const handleError = () => {
+        setIsError(false)
+        setUser(initialState)
+        setRole(false)
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (validEmail && validFirstName && validSurname && role) {
+            setValidated(true)
             try {
                 setIsLoading(true)
                 const response = await fetch(`http://localhost:3001/${role}/register`, {
@@ -41,11 +59,13 @@ function RegisterModal(props) {
                     localStorage.setItem('token', data.accessToken)
                     localStorage.setItem('role', role)
                     setTimeout(() => {
-                        history.push('/RiderHome')
+                        history.push(`/${role}`)
                         setIsLoading(false)
+                        setValidated(false)
                     }, 1000)
                 } else {
-                    alert('something went wrong')
+                    setIsError(true)
+                    setIsLoading(false)
                 }
             } catch (error) {
                 console.log(error.response);
@@ -60,9 +80,9 @@ function RegisterModal(props) {
             size="md"
             aria-labelledby="contained-modal-title-vcenter"
             centered
-            id='register-modal'
+            id='onboarding-modal'
         >
-            <Modal.Header closeButton>
+            <Modal.Header closeButton onClick={handleClose}>
                 <Modal.Title id="contained-modal-title-vcenter">
                     SIGN UP
                 </Modal.Title>
@@ -94,7 +114,7 @@ function RegisterModal(props) {
                             as="select"
                             onChange={e => setRole(e.target.value)}
                         >
-                            <option value={false}>Select the Role</option>
+                            <option value={false}></option>
                             <option value='horseOwner'>Horse Owner</option>
                             <option value='rider'>Rider</option>
                             <option value='stableOwner'>Stable Owner</option>
@@ -106,7 +126,7 @@ function RegisterModal(props) {
                             isValid={validEmail}
                             type="email"
                             placeholder="Enter email"
-                            value={user.email}
+                            value={user['contacts.email']}
                             onChange={(e) => setUser({ ...user, "contacts.email": e.target.value })}
                         />
                     </Form.Group>
@@ -123,15 +143,32 @@ function RegisterModal(props) {
                             Must be 8-20 characters long.
                         </Form.Text> */}
                     </Form.Group>
-                    <Button className='formButton' type="submit">
-                        SIGN UP
-                    </Button>
+                    {
+                        isError &&
+                        <div className='incorrectCredentials'>
+                            <span>Credentials are Incorrect</span>
+                            <span><VscError onClick={handleError} /></span>
+                        </div>
+                    }
+                    { !isError &&
+                        <div className='SignUpButton'>
+                            {
+                                validFirstName && validSurname && validEmail && role && !isError ?
+                                    <Button className='formButton dataIsReady' type="submit"> Join! </Button> :
+                                    (user.first_name.length > 1 || user.surname.length > 1) && !isError ?
+                                        <Button className='formButton fillingDataIn' type="submit">
+                                            <Loader type="ThreeDots" color="#ffcc56" height={25} width={25} />
+                                        </Button> :
+                                        <Button className='formButton invisible' type="submit"> CANCEL </Button>
+                            }
+                        </div>
+                    }
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={props.onHide}>Cancel</Button>
+                <Button onClick={handleClose}>Cancel</Button>
             </Modal.Footer>
-        </Modal>
+        </Modal >
     )
 }
 

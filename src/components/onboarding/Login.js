@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { Col, Form, Button } from 'react-bootstrap'
 import { useHistory } from 'react-router-dom'
-import Loader from '../../utils/Loader'
 import { VscError } from 'react-icons/vsc'
+import Loader from '../../utils/Loader'
 
 function Login() {
     const history = useHistory()

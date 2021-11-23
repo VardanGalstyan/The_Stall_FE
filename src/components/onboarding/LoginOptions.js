@@ -1,6 +1,5 @@
 import React from 'react'
 import { Col, Button } from 'react-bootstrap'
-import '../../Styles/css/onboarding.css'
 import { useHistory } from 'react-router-dom'
 
 

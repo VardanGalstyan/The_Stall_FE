@@ -5,13 +5,16 @@ import { MdOutlineArrowDropDown, MdOutlineArrowDropUp } from 'react-icons/md'
 import { AiOutlineMenu } from 'react-icons/ai'
 import { GrClose } from 'react-icons/gr'
 import RegisterModal from '../onboarding/Register/RegisterModal.jsx'
+import LoginModal from '../onboarding/Login/LoginModal.jsx'
 
 function Feed() {
 
     const [modalShow, setModalShow] = useState(false);
+    const [loginModalShow, setLoginModalShow] = useState(false);
     const [show, setShow] = useState(false)
     const [responsive, setResponsive] = useState(false)
     const token = localStorage.getItem('token')
+    console.log(token);
 
     return (
         <div id='navbar'>
@@ -25,9 +28,9 @@ function Feed() {
                         {
                             responsive &&
                             <div className={`responsive-dropDown`}>
-                                {!token ?
+                                {token ?
                                     <div className='responsive-dropDown-guest'>
-                                        <button className='signInButton'>Sign in</button>
+                                        <button onClick={() => setLoginModalShow(true)} className='signInButton'>Sign in</button>
                                         <button onClick={() => setModalShow(true)} className='signUpButton'>Sign up</button>
                                     </div>
                                     :
@@ -41,11 +44,11 @@ function Feed() {
                         }
                     </div>
                 </div>
-                <div className={`navbar-feed-guest ${token === null ? 'd-flex' : 'd - none'}`}>
-                    <button className='signInButton'>Sign in</button>
+                <div className={`navbar-feed-guest ${token === null ? 'd-flex' : 'd-none'}`}>
+                    <button onClick={() => setLoginModalShow(true)} className='signInButton'>Sign in</button>
                     <button onClick={() => setModalShow(true)} className='signUpButton'>Sign up</button>
                 </div>
-                <div className={`navbar-feed-elements ${token === null ? 'd-none' : 'd - flex'}`}>
+                <div className={`navbar-feed-elements ${token === null ? 'd-none' : 'd-flex'}`}>
                     <span>Home</span>
                     <div onClick={() => setShow(!show)} className='navbarDropDownFeed'>
                         <span>My Profile</span>
@@ -63,6 +66,10 @@ function Feed() {
             <RegisterModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
+            />
+            <LoginModal
+                show={loginModalShow}
+                onHide={() => setLoginModalShow(false)}
             />
         </div>
     )
