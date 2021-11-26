@@ -58,7 +58,7 @@ function LoginModal(props) {
                 setIsError(true)
             }
         } catch (error) {
-            console.log(error.response);
+            console.log(error);
         }
 
     }
@@ -123,11 +123,11 @@ function LoginModal(props) {
                         <div className='SignUpButton'>
                             {
                                 validEmail && (role !== false && role !== '') && !isError ?
-                                    <Button className='dataIsReady' type="submit"> Go! </Button> :
+                                    <button className='dataIsReady' type="submit"> Go! </button> :
                                     (user.email.length > 1 || user.password.length > 1) && !isError ?
-                                        <Button className='fillingDataIn'>
+                                        <button className='fillingDataIn'>
                                             <Loader type="ThreeDots" color="#ffcc56" height={25} width={25} />
-                                        </Button> :
+                                        </button> :
                                         <Button className='invisible'> CANCEL </Button>
                             }
                         </div>

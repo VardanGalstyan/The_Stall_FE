@@ -78,9 +78,11 @@
 }
 
 #search-container .search-bar .sendSearchValue-icon:hover {
-  cursor: pointer;
-  color: white;
+  background-color: white !important;
+  color: #ffcc56 !important;
   animation: vibrate-1 0.3s linear infinite both;
+  font-size: 30px;
+  cursor: pointer;
 }
 
 @keyframes roll-out-top {

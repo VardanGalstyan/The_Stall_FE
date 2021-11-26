@@ -93,6 +93,7 @@
 .SignUpButton {
     text-align: center;
     margin-top: 5px;
+    height: 18px !important;
 }
 
 .dataIsReady {
@@ -109,6 +110,11 @@
         animation: vibrate-1 0.3s linear infinite both;
         font-size: 30px;
     }
+
+    &:focus {
+        outline: none !important;
+        box-shadow: none;
+    }
 }
 
 .fillingDataIn {
@@ -119,6 +125,9 @@
         box-shadow: none !important;
         outline-color: none !important;
         cursor: auto !important;
+    }
+    svg {
+        outline: none;
     }
 }
 
