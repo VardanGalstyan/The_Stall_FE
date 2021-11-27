@@ -28,7 +28,7 @@
         font-weight: 600;
         font-size: 16px;
 
-        span {
+        &>span {
             margin-right: 10px;
             user-select: none;
 
@@ -57,7 +57,7 @@
         right: 5px;
         width: 15%;
         background-color: #f7f7f7;
-        z-index: 2;
+        z-index: 5 !important;
         border-radius: 3px;
         animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
 

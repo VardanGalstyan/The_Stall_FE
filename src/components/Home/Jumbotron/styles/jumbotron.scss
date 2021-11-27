@@ -1,0 +1,38 @@
+#jumbotron {
+    background-color: white;
+    padding: 10px 20px 0px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    width: 100%;
+    position: relative;
+    top: 80px;
+    user-select: none;
+
+    .jumbotron-cover-image {
+        width: 60%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .jumbotron-positive-reviews {
+        position: absolute;
+        top: 30px;
+        width: 50%;
+        right: 0px;
+        font-size: 2vw;
+        padding: 5px 10px;
+        // z-index: 4;
+    }
+}
+
+@media (max-width: 510px) {
+    #jumbotron {
+        display: none !important;
+    }
+
+    #search-container .search-bar input {
+        width: 100%;
+        height: 50px;
+    }
+}
