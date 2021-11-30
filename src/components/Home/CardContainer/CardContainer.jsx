@@ -1,16 +1,18 @@
 import React from 'react'
 import SingleCard from './SingleCard/SingleCard'
+import { Container } from 'react-bootstrap'
 
 function CardContainer() {
     return (
-        <div id='card-container'>
+        <Container id='card-container'>
             <SingleCard />
             <SingleCard />
             <SingleCard />
             <SingleCard />
             <SingleCard />
             <SingleCard />
-        </div>
+
+        </Container>
     )
 }
 

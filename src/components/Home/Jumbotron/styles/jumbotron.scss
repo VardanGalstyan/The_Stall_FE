@@ -1,28 +1,32 @@
 #jumbotron {
     background-color: white;
-    padding: 10px 20px 0px 20px;
-    margin-bottom: 20px;
     border-radius: 5px;
-    width: 100%;
     position: relative;
-    top: 80px;
     user-select: none;
+    border: 1px solid #e6e6e6;
+    top: 80px !important;
+    height: 100%;
 
-    .jumbotron-cover-image {
-        width: 60%;
+    .jumbotron-main-content {
         height: 100%;
-        object-fit: cover;
-        border-radius: 5px;
-    }
+        display: flex;
+        flex-direction: row;
 
-    .jumbotron-positive-reviews {
-        position: absolute;
-        top: 30px;
-        width: 50%;
-        right: 0px;
-        font-size: 2vw;
-        padding: 5px 10px;
-        // z-index: 4;
+        .jumbotron-cover-image {
+            width: 60%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .jumbotron-positive-reviews {
+            position: absolute;
+            top: 30px;
+            width: 50%;
+            right: 0px;
+            font-size: 2vw;
+            padding: 5px 10px;
+            // z-index: 4;
+        }
     }
 }
 

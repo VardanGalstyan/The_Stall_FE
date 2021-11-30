@@ -4,6 +4,7 @@ import UserContactDetails from './UserContactDetails'
 import CardBody from './CardBody'
 import UserRatingView from './UserRatingView'
 import { RatingView } from 'react-simple-star-rating'
+import { Col } from 'react-bootstrap'
 
 function SingleCard() {
     const [showReview, setShowReview] = useState(false)
@@ -20,7 +21,7 @@ function SingleCard() {
                     {!showReview
                         ?
                         <div className='rating-stars'>
-                            <RatingView size={15} ratingValue={4} emptyColor={'#fff'}/>
+                            <RatingView size={15} ratingValue={4} emptyColor={'#fff'} />
                         </div>
                         :
                         <UserRatingView />

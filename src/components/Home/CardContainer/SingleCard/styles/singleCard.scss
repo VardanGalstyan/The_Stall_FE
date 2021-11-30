@@ -3,9 +3,10 @@
     border-radius: 5px;
     padding: 15px;
     color: #3b3b3b;
-    width: 100%;
+    max-width: 250px;
     margin-bottom: 10px;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+    height: 350px;
 
     .card-image-holder {
         position: relative;
@@ -184,7 +185,7 @@
     }
 }
 
-// M E D I A  Q U E R I E S
+M E D I A  Q U E R I E S
 
 @media screen and (max-width: 450px) {
     #home-single-card {
@@ -195,38 +196,38 @@
 @media screen and (min-width: 450px) {
     #home-single-card {
         width: 75%;
-        margin-right: 10px;
+        // margin-right: 10px;
     }
 }
 
 @media screen and (min-width: 596px) {
     #home-single-card {
         width: 40%;
-        margin-right: 10px;
+        // margin-right: 10px;
     }
 }
 
 @media screen and (min-width: 783px) {
     #home-single-card {
         width: 30%;
-        margin-right: 10px;
+        // margin-right: 10px;
     }
 }
 @media screen and (min-width: 983px) {
     #home-single-card {
         width: 23%;
-        margin-right: 10px;
+        // margin-right: 10px;
     }
 }
 @media screen and (min-width: 1185px) {
     #home-single-card {
         width: 18%;
-        margin-right: 10px;
+        // margin-right: 10px;
     }
 }
 @media screen and (min-width: 1706px) {
     #home-single-card {
         width: 14%;
-        margin-right: 10px;
+        // margin-right: 10px;
     }
 }

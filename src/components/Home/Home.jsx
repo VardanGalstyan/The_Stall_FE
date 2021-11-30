@@ -4,6 +4,7 @@ import SearchBar from './SearchBar/SearchBar'
 import './home.css'
 import Jumbotron from './Jumbotron/Jumbotron'
 import CardContainer from './CardContainer/CardContainer'
+import { SiOpenstreetmap } from 'react-icons/si'
 
 function Home() {
     return (
@@ -11,7 +12,20 @@ function Home() {
             <Feed />
             <Jumbotron />
             <SearchBar />
-            <CardContainer />
+            <div className='stable-container'>
+                <div className='stable-container-title'>
+                    <h5>Horses</h5>
+                    <SiOpenstreetmap className='stable-container-icon' />
+                </div>
+                <CardContainer />
+            </div>
+            <div className='stable-container'>
+                <div className='stable-container-title'>
+                    <h5>Stables</h5>
+                    <SiOpenstreetmap className='stable-container-icon' />
+                </div>
+                <CardContainer />
+            </div>
         </div>
     )
 }

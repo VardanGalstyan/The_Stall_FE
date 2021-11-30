@@ -11,6 +11,8 @@
     z-index: 2;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
+    display: flex;
+    justify-content: center;
 
     .navbar-feed-container {
         display: flex;
@@ -28,7 +30,7 @@
         font-weight: 600;
         font-size: 16px;
 
-        &>span {
+        & > span {
             margin-right: 10px;
             user-select: none;
 

@@ -7,6 +7,7 @@ import { GrClose } from 'react-icons/gr'
 import RegisterModal from '../onboarding/Register/RegisterModal.jsx'
 import LoginModal from '../onboarding/Login/LoginModal.jsx'
 import { useHistory } from 'react-router-dom'
+import { Container } from 'react-bootstrap'
 
 function Feed() {
 
@@ -27,7 +28,7 @@ function Feed() {
 
     return (
         <div id='navbar'>
-            <div className='navbar-feed-container'>
+            <Container className='navbar-feed-container'>
                 <div className='navbar-logo' onClick={() => history.push('/home')}><img src={image} alt="logo" /></div>
                 <div className='navbar-feed-responsive'>
                     <div >
@@ -79,7 +80,7 @@ function Feed() {
                     </div>
 
                 }
-            </div>
+            </Container>
             <RegisterModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
