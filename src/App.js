@@ -9,8 +9,9 @@ import RiderHome from './components/Rider/RiderHome';
 import Error from './utils/Error';
 import StableOwnerHome from './components/stableOwner/StableOwnerHome.jsx';
 import HorseOwnerHome from './components/horseOwner/HorseOwnerHome';
-import Stable from './components/stables/Stable';
+// import Stable from './components/stables/Stable';
 import Home from './components/Home/Home';
+import Stable from './components/Stable/Stable';
 
 function App() {
   const token = localStorage.getItem('token')
@@ -37,7 +38,9 @@ function App() {
           <Route exact path='/home' component={Home} />
           <Route exact path='/stableOwner' component={StableOwnerHome} />
           <Route exact path='/horseOwner' component={HorseOwnerHome} />
-          <Route exact path='/stable/:id' component={Stable} />
+          {/* <Route exact path='/stable/:id' component={Stable} /> */}
+
+          <Route exact path='/stable' component={Stable} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/loginOption' component={LoginOptions} />
           <Route exact path='/error' component={Error} />

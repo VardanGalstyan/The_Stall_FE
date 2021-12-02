@@ -8,19 +8,21 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 100;
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
     display: flex;
     justify-content: center;
+    // padding: 5px 20px;
 
     .navbar-feed-container {
         display: flex;
         justify-content: space-between;
-        padding: 5px 20px;
+        padding: 5px 20px !important;
         align-items: center;
         height: 100%;
         background-color: #f7f7f7;
+        position: relative;
     }
 
     .navbar-feed-elements {
