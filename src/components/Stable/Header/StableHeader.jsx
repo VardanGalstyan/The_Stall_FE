@@ -1,9 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import './styles/StableHeader.css'
-import { ImLocation2 } from 'react-icons/im'
-import { IoCall } from 'react-icons/io5'
-import { MdEmail } from 'react-icons/md'
+
 
 function StableHeader() {
     return (
@@ -14,12 +12,6 @@ function StableHeader() {
                 </div>
                 <div className='stable-header-description'>
                     <span className='stable-header-name'>PferdeResort</span>
-                    {/* <div className='stable-header-location'>
-                        <span className='stable-location-icon'><ImLocation2 /></span>
-                        <span className='stable-location-icon'><IoCall /></span>
-                        <span className='stable-location-icon'><MdEmail /></span>
-                        <span className='stable-location-text'>Mögglinger Str. 83, 73540 Heubach</span>
-                    </div> */}
                 </div>
             </div>
             <div className='stable-header-wave'>

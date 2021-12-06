@@ -1,17 +1,13 @@
 import React from 'react'
-import SingleCard from './SingleCard/SingleCard'
 import { Container } from 'react-bootstrap'
+import SingleHorseCard from '../../Cards/HorseCards/SingleHorseCard'
+import StableCards from '../../Cards/StableCards/StableCards'
 
 function CardContainer() {
     return (
         <Container id='card-container'>
-            <SingleCard />
-            <SingleCard />
-            <SingleCard />
-            <SingleCard />
-            <SingleCard />
-            <SingleCard />
-
+            <SingleHorseCard />
+            <StableCards />
         </Container>
     )
 }

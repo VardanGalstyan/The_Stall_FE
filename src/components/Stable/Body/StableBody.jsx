@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Container, Col } from 'react-bootstrap'
 import './styles/StableBody.css'
 import StableOwnerProfile from './StableOwnerProfile/StableOwnerProfile'
 import { GiHorseHead, GiStable, GiPerson } from 'react-icons/gi'
+import SingleCard from '../../Home/CardContainer/SingleCard/SingleCard'
+import StableTeam from './StableContent/StableTeam'
+import StableGallery from './StableContent/StableGallery'
+import SingleHorseCard from '../../Cards/HorseCards/SingleHorseCard'
 
 
 
@@ -63,10 +67,6 @@ function StableBody() {
                         <span>Services</span>
                     </div>
                     <div className='stable-body-facility-items'>
-                        <div>
-                            <span>something</span>
-                            <span>something</span>
-                        </div>
                         <span>something</span>
                         <span>something</span>
                         <span>something</span>
@@ -74,20 +74,31 @@ function StableBody() {
                         <span>something</span>
                     </div>
                 </div>
+                <div className='stable-body-horses'>
+                    <div className='stable-body-horses-title'>
+                        <span>In-house Horses</span>
+                    </div>
+                    <div className='stable-inHouse-horses'>
+                        <SingleHorseCard />
+                        <SingleHorseCard />
+                        <SingleHorseCard />
+                        <SingleHorseCard />
+                    </div>
+                </div>
                 <div className='stable-body-property-photos'>
                     <div className='stable-body-photos-title'>
                         <span>Photos</span>
                     </div>
-                    <div className='stable-property-images'>
-                        <Col className='stable-property-images-partOne' xs={11} sm={11} md={7}  >
-                            <img src="https://picsum.photos/200/300" alt="image-1" />
-                            <img src="https://picsum.photos/200/300" alt="image-2" />
-                            <img src="https://picsum.photos/400/200" alt="image-3" />
-                            {/* <img src="https://picsum.photos/300/200" alt="image-4" /> */}
-                        </Col>
-                        <Col className='stable-property-images-partTwo'>
-                            <img src="https://picsum.photos/300/200" alt="image-4" />
-                        </Col>
+                    <StableGallery />
+                </div>
+                <div className='stable-body-team-container'>
+                    <div className='stable-body-team-title'>
+                        <span>Our Team</span>
+                    </div>
+                    <div className='team-members-container'>
+                        <StableTeam />
+                        <StableTeam />
+                        <StableTeam />
                     </div>
                 </div>
             </Col>

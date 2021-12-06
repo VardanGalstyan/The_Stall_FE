@@ -27,7 +27,7 @@ function StableOwnerProfile() {
     }
 
     return (
-        <Col className='stable-owner-profile' sm={6} md={5} lg={4} xl={3}>
+        <Col className='stable-owner-profile' lg={4} xl={3}>
             <div className='so-profile-header'>
                 <img src='https://picsum.photos/200/300' alt='Stable Owner Profile' />
             </div>

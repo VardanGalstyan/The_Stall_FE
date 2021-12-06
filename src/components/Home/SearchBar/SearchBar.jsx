@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import './searchBar.css'
+import './styles/SearchBar.css'
 import { IoFilter } from 'react-icons/io5'
 import { BsSearch } from 'react-icons/bs'
 import { ImRadioUnchecked, ImRadioChecked2 } from 'react-icons/im'
 import { MdCancel } from 'react-icons/md'
+import { Container } from 'react-bootstrap'
 
 function SearchBar() {
 
@@ -30,7 +31,7 @@ function SearchBar() {
     }
 
     return (
-        <div id="search-container">
+        <Container id="search-container">
             <div className={`search-bar ${isActive && 'dropDown-activated-style'}`}>
                 {
                     searchValue !== '' ?
@@ -62,7 +63,7 @@ function SearchBar() {
                 <IoFilter className='filter-icon' onClick={() => setIsActive(!isActive)} />
                 {
                     isActive &&
-                    <div className={`search-filter-dropDown ${isActive ? "slide-in" : "slide-out" }`}>
+                    <div className={`search-filter-dropDown ${isActive ? "slide-in" : "slide-out"}`}>
                         <div onClick={(e) => handleFilterClick(e)} className='filteredBy-stables'>
                             <span >Stables</span>
                             {
@@ -78,7 +79,7 @@ function SearchBar() {
                     </div>
                 }
             </div>
-        </div>
+        </Container>
     )
 }
 
