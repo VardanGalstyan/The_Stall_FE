@@ -1,0 +1,252 @@
+#profile-body {
+    padding: 20px 0px 20px 0px !important;
+    width: 100%;
+    top: 80px !important;
+    margin-top: 20px !important;
+    position: relative;
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
+    .profile-body-properties {
+        height: 100%;
+        background-color: #fff;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        padding: 10px 0px;
+        width: 100%;
+
+        .body-properties-header {
+            display: flex;
+            padding: 10px;
+            justify-content: space-around;
+            width: 100%;
+            border-bottom: 1px solid #e6e6e652;
+
+            .properties-title {
+                font-weight: 700;
+                font-size: 16px;
+                color: #3b3b3b;
+                width: 100%;
+            }
+
+            .properties-boxes {
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+
+                .property-items {
+                    // background-color: #ffcc56;
+                    border-radius: 25px;
+                    padding: 0px 15px;
+                    border: 1px solid #e6e6e698;
+                }
+            }
+
+            svg {
+                font-size: 35px;
+                padding: 5px;
+                color: #3b3b3b;
+                border-radius: 50%;
+            }
+        }
+
+        .profile-body-aboutUs {
+            padding: 5px 20px;
+            border-bottom: 1px solid #e6e6e652;
+
+            .profile-body-aboutUs-title {
+                font-size: 15px;
+                padding: 5px 0px;
+            }
+
+            .profile-body-aboutUs-content {
+                padding: 10px 0px;
+                font-size: 14px;
+            }
+        }
+
+        .profile-body-property-facilities {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e6e6e652;
+
+            .profile-body-facilities-title {
+                font-size: 15px;
+                padding: 5px 0px;
+            }
+
+            .profile-body-facility-items {
+                display: flex;
+                align-items: center;
+                gap: 3px;
+                flex-wrap: wrap;
+                padding: 5px 0px;
+
+                span {
+                    font-size: 12px;
+                    padding: 5px 10px;
+                    font-weight: 600;
+                    border: 1px solid #ffcc56;
+                    border-radius: 8px;
+                }
+            }
+        }
+
+        .profile-body-property-photos {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            padding: 50px 20px;
+            height: 100%;
+
+            .profile-body-photos-title {
+                font-size: 15px;
+                padding: 5px 0px;
+            }
+
+            .profile-property-images {
+                height: 100%;
+                padding: 15px 0px;
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+
+                img {
+                    object-fit: cover;
+                    height: 200px;
+                    width: 30%;
+                    border-radius: 3px;
+                    margin: 2px;
+                }
+            }
+        }
+
+        .profile-body-horses {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            padding: 50px 20px;
+            height: 100%;
+            width: 100%;
+
+            .profile-body-horses-title {
+                font-size: 15px;
+                padding: 5px 0px;
+            }
+
+            .profile-inHouse-horses {
+                display: flex;
+                overflow: scroll;
+                flex-wrap: nowrap;
+                width: 100%;
+            }
+        }
+
+        .profile-body-team-container {
+            display: flex;
+            flex-direction: column;
+            padding: 30px 20px;
+            height: 100%;
+            width: 100%;
+
+            .profile-body-team-title {
+                font-size: 15px;
+                font-weight: 600;
+                padding: 10px;
+            }
+
+            .team-members-container {
+                overflow: scroll;
+                display: flex;
+                padding: 5px 0px;
+                width: 100%;
+                gap: 10px;
+                flex-wrap: nowrap;
+
+                .single-team-member {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 7px;
+                    background-color: #ffcc56;
+                    border-radius: 12px;
+
+                    .single-team-member-avatar {
+                        padding: 7px;
+
+                        img {
+                            width: 200px;
+                            height: 200px;
+                            border-radius: 50%;
+                            border: 5px solid #fff;
+                        }
+                    }
+
+                    .single-team-member-details {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+
+                        .member-name {
+                            font-size: 15px;
+                            font-weight: 700;
+                            color: #3b3b3b;
+                        }
+                        .member-position {
+                            font-size: 11px;
+                            font-weight: 600;
+                            color: #3b3b3b;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .profile-body-properties {
+        width: 60% !important;
+    }
+}
+
+@media (max-width: 1200px) {
+    .profile-body-properties {
+        width: 60% !important;
+    }
+}
+
+@media (max-width: 993px) {
+    .profile-property-images {
+        img {
+            height: 100px !important;
+        }
+    }
+
+    .profile-body-properties {
+        width: 55% !important;
+    }
+}
+
+@media (max-width: 771px) {
+    #profile-body {
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+    }
+
+    .profile-owner-profile {
+        width: 100% !important;
+    }
+
+    .profile-body-properties {
+        width: 100% !important;
+    }
+}
