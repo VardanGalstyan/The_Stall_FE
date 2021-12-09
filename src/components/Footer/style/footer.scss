@@ -1,0 +1,15 @@
+@import "../../../Styles/scss/config";
+@import "../../../Styles/scss/utils";
+
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+    height: 50px;
+    font-size: 14px;
+    background-color: $textColor;
+}

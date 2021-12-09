@@ -1,10 +1,9 @@
-import { Container, Row } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import useFetch from '../../utils/useFetch.js'
 import Loaders from '../../utils/Loader.js'
 import '../../Styles/css/rider.css'
 import HorseOwnerNavbar from '../horseOwner/HorseOwnerNavbar.jsx'
 import Cover from '../../utils/Cover.jsx'
-import StableOwnerProfile from '../stableOwner/StableOwnerProfile.jsx'
 import RiderOptions from './RiderOptions/RiderOptions.jsx'
 import AboutMe from './AboutMe/AboutMe.jsx'
 import UserCalendar from './Calendar/UserCalendar.jsx'
@@ -22,10 +21,7 @@ function RiderHome() {
                     <Loaders /> :
                     <Container fluid className='usersProfile'>
                         <HorseOwnerNavbar />
-                        < Cover />
-                        <Row className='userProfileHeader'>
-                            <StableOwnerProfile />
-                        </Row>
+                        <Cover />
                         <UserCalendar />
                         <AboutMe />
                         <RiderOptions />

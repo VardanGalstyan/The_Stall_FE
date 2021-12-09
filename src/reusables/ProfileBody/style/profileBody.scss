@@ -1,9 +1,10 @@
+@import "../../../Styles/scss/config.scss";
+@import "../../../Styles/scss/utils.scss";
+
 #profile-body {
     padding: 20px 0px 20px 0px !important;
     width: 100%;
-    top: 80px !important;
     margin-top: 20px !important;
-    position: relative;
     height: 100%;
     border-radius: 5px;
     display: flex;
@@ -12,12 +13,12 @@
 
     .profile-body-properties {
         height: 100%;
-        background-color: #fff;
-        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: none;
         display: flex;
         flex-direction: column;
-        padding: 10px 0px;
+        padding: 0;
         width: 100%;
+        gap: 5px;
 
         .body-properties-header {
             display: flex;
@@ -56,18 +57,46 @@
             }
         }
 
-        .profile-body-aboutUs {
-            padding: 5px 20px;
-            border-bottom: 1px solid #e6e6e652;
+        .profile-body-aboutUs-content {
+            padding: 10px 0px;
+            font-size: 14px;
+        }
+        .show-more {
+            padding: 5px;
+            height: 100%;
+            position: relative;
+        }
 
-            .profile-body-aboutUs-title {
-                font-size: 15px;
-                padding: 5px 0px;
-            }
+        .show-less {
+            padding: 5px;
+            max-height: 80px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
 
-            .profile-body-aboutUs-content {
-                padding: 10px 0px;
-                font-size: 14px;
+        .profile-body-experience-content {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+
+            .profile-body-experience-item {
+                display: flex;
+                flex-direction: column;
+                justify-content: start;
+                align-items: flex-start;
+                padding: 10px 15px;
+
+                .experience-index {
+                    font-size: 25px;
+                    font-weight: 600;
+                    color: $textColor;
+                }
+
+                .experience-value {
+                    font-size: 12px;
+                    color: #3b3b3b;
+                }
             }
         }
 

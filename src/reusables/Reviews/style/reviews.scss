@@ -1,0 +1,107 @@
+@import "../../../Styles/scss/config";
+@import "../../../Styles/scss/utils";
+
+.star-rating-header {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.review-container-header {
+    padding: 10px 0px;
+}
+
+.review-body {
+    .single-review-container {
+        overflow: scroll;
+        height: 200px;
+
+        .single-review {
+            border-radius: 7px;
+            border-top-right-radius: 0;
+            border-bottom-left-radius: 0;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            padding: 8px;
+            margin-top: 10px;
+            background-color: $yellow;
+
+            .single-review-header {
+                display: flex;
+                justify-content: space-between;
+
+                .single-review-user {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    .single-review-avatar {
+                        img {
+                            width: 50px;
+                            height: 50px;
+                            border-radius: 50%;
+                            border: 3px solid white;
+                        }
+                    }
+
+                    .single-review-user-details {
+                        display: flex;
+                        flex-direction: column;
+
+                        .user-name {
+                            font-weight: 600;
+                            font-size: 15px;
+                            color: $text-font;
+                        }
+                        .user-experience {
+                            font-size: 11px;
+                        }
+                    }
+                }
+            }
+
+            .single-review-body {
+                font-size: 14px;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 510px) {
+    .single-review-header {
+        flex-direction: row;
+    }
+
+    .single-review-user {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 3px !important;
+    }
+
+    .single-review-avatar {
+        display: none;
+    }
+
+    .single-review-average-rating {
+        font-size: 11px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .rating-value {
+            padding: 2px 5px;
+            background-color: white !important;
+            border-radius: 7px;
+        }
+    }
+
+    .review-container-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
