@@ -4,8 +4,8 @@ import './styles/StableBody.css'
 import StableOwnerProfile from './StableOwnerProfile/StableOwnerProfile'
 import { GiHorseHead, GiStable, GiPerson } from 'react-icons/gi'
 import StableTeam from './StableContent/StableTeam'
-import StableGallery from './StableContent/StableGallery'
 import SingleHorseCard from '../../Cards/HorseCards/SingleHorseCard'
+import ImageGallery from '../../Gallery/ImageGallery'
 
 
 
@@ -89,7 +89,7 @@ function StableBody() {
                     <div className='stable-body-photos-title'>
                         <span>Photos</span>
                     </div>
-                    <StableGallery />
+                    <ImageGallery />
                 </div>
                 <div className='stable-body-team-container'>
                     <div className='stable-body-team-title'>

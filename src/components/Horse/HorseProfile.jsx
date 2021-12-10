@@ -1,18 +1,18 @@
 import React from 'react'
-import ProfileHeader from '../../reusables/ProfileHeader/ProfileHeader'
+import './style/horse.css'
 import Feed from '../Navbar/Feed'
+import ProfileHeader from '../../reusables/ProfileHeader/ProfileHeader'
 import { Container, Col } from 'react-bootstrap'
 import UserProfile from '../../reusables/UserProfile/UserProfile'
-import './style/rider.css'
-import SingleHorseCard from '../Cards/HorseCards/SingleHorseCard'
-import StableCards from '../Cards/StableCards/StableCards'
+import AboutUser from '../../reusables/AboutUser/AboutUser'
 import Calendar from '../../reusables/Calendar/CalendarPlanner'
+import StableCards from '../Cards/StableCards/StableCards'
 import Reviews from '../../reusables/Reviews/Reviews'
 import Footer from '../Footer/Footer'
-import AboutUser from '../../reusables/AboutUser/AboutUser'
+import ImageGallery from '../Gallery/ImageGallery'
 
 
-function RiderProfile() {
+function HorseProfile() {
     return (
         <div className='container-holder'>
             <Feed />
@@ -65,11 +65,10 @@ function RiderProfile() {
                     </div>
                     <div className='profile-container'>
                         <div className='profile-container-title'>
-                            <span>Horses</span>
+                            <span>Gallery</span>
                         </div>
-                        <div className='profile-container-scrollable'>
-                            <SingleHorseCard />
-                            <SingleHorseCard />
+                        <div className='profile-container-flex'>
+                            <ImageGallery />
                         </div>
                     </div>
                     <div className='profile-container'>
@@ -88,4 +87,4 @@ function RiderProfile() {
     )
 }
 
-export default RiderProfile
+export default HorseProfile

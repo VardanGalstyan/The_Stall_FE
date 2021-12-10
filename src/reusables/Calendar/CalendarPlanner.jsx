@@ -1,7 +1,6 @@
 import React from 'react'
 import Calendar from 'react-calendar'
 import { Col } from 'react-bootstrap'
-import { GiPlainCircle } from 'react-icons/gi'
 import { TiDelete } from 'react-icons/ti'
 import { MdModeEditOutline } from 'react-icons/md'
 import './style/calendarStyle.css'
@@ -9,42 +8,34 @@ import './style/calendarStyle.css'
 function CalendarPlanner() {
     return (
         <div id='calendar-planner'>
-            <Col className='calendar' xs={11} sm={11} md={5}>
+            <div className='calendar'>
                 <Calendar
                 // value={value}
                 // onChange={onChange}
                 // tileClassName={selectedClassName}
                 // allowPartialRange
                 />
-            </Col>
-            <Col className='calendar-planner-details'>
+            </div>
+            <div className='calendar-planner-details' >
                 <div className='calendar-planner-header'>
-                    <span>Current Plans</span>
-                    <span>History</span>
+                    <span className='current-plans'>
+                        Current Plans
+                    </span>
+                    <span className='history'>
+                        History
+                    </span>
                 </div>
                 <div className='calendar-planner-item'>
-                    <div>
-                        <span className='color-code'><GiPlainCircle /></span>
-                        <span>With horseName</span>
+                    <div className='calendar-planner-constants'>
+                        <span className='planner-title'>Scatto</span>
                         <span className='planner-date'>June 25, 2022</span>
                     </div>
-                    <div>
+                    <div className='private-buttons'>
                         <span className='delete-button'><TiDelete /></span>
                         <span className='edit-button'><MdModeEditOutline /></span>
                     </div>
                 </div>
-                <div className='calendar-planner-item'>
-                    <div>
-                        <span className='color-code'><GiPlainCircle /></span>
-                        <span>With horseName</span>
-                        <span className='planner-date'>June 25, 2022</span>
-                    </div>
-                    <div>
-                        <span className='delete-button'><TiDelete /></span>
-                        <span className='edit-button'><MdModeEditOutline /></span>
-                    </div>
-                </div>
-            </Col>
+            </div>
 
         </div>
     )

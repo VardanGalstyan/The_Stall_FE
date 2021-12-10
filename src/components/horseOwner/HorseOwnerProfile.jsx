@@ -1,18 +1,16 @@
-import React from 'react'
-import ProfileHeader from '../../reusables/ProfileHeader/ProfileHeader'
+import './style/horseOwner.css'
 import Feed from '../Navbar/Feed'
 import { Container, Col } from 'react-bootstrap'
+import React from 'react'
+import ProfileHeader from '../../reusables/ProfileHeader/ProfileHeader'
 import UserProfile from '../../reusables/UserProfile/UserProfile'
-import './style/rider.css'
+import AboutUser from '../../reusables/AboutUser/AboutUser'
 import SingleHorseCard from '../Cards/HorseCards/SingleHorseCard'
 import StableCards from '../Cards/StableCards/StableCards'
 import Calendar from '../../reusables/Calendar/CalendarPlanner'
 import Reviews from '../../reusables/Reviews/Reviews'
-import Footer from '../Footer/Footer'
-import AboutUser from '../../reusables/AboutUser/AboutUser'
 
-
-function RiderProfile() {
+function HorseOwnerProfile() {
     return (
         <div className='container-holder'>
             <Feed />
@@ -83,9 +81,8 @@ function RiderProfile() {
                     <Reviews />
                 </Col>
             </Container>
-            <Footer />
         </div>
     )
 }
 
-export default RiderProfile
+export default HorseOwnerProfile

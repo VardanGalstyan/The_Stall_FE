@@ -276,37 +276,6 @@
             }
         }
 
-        .stable-body-property-photos {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            padding: 50px 20px;
-            height: 100%;
-
-            .stable-body-photos-title {
-                font-size: 15px;
-                padding: 5px 0px;
-                // border-bottom: 1px solid #e6e6e652;
-            }
-
-            .stable-property-images {
-                height: 100%;
-                padding: 15px 0px;
-                display: flex;
-                // flex-flow: row wrap;
-                justify-content: center;
-                flex-wrap: wrap;
-
-                img {
-                    object-fit: cover;
-                    height: 200px;
-                    width: 30%;
-                    border-radius: 3px;
-                    margin: 2px;
-                }
-            }
-        }
-
         .stable-body-horses {
             display: flex;
             flex-direction: column;
