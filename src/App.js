@@ -42,8 +42,8 @@ function App() {
           <Route exact path='/stableOwner' component={StableOwnerMainProfile} />
           <Route exact path='/horseOwner' component={HorseOwnerProfile} />
           <Route exact path='/horseOwners' component={HorseOwnerHome} />
-          <Route exact path='/stable' component={Stable} />
-          <Route exact path='/horse' component={HorseProfile} />
+          <Route exact path='/stables/:id' component={Stable} />
+          <Route exact path='/horses/:id' component={HorseProfile} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/loginOption' component={LoginOptions} />
           <Route exact path='/error' component={Error} />

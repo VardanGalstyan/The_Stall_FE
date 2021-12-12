@@ -1,11 +1,9 @@
 import React from 'react'
 import Calendar from 'react-calendar'
-import { Col } from 'react-bootstrap'
-import { TiDelete } from 'react-icons/ti'
-import { MdModeEditOutline } from 'react-icons/md'
+import CalendarPlannerItem from './CalendarPlannertem'
 import './style/calendarStyle.css'
 
-function CalendarPlanner() {
+function CalendarPlanner({ bookings }) {
     return (
         <div id='calendar-planner'>
             <div className='calendar'>
@@ -25,16 +23,11 @@ function CalendarPlanner() {
                         History
                     </span>
                 </div>
-                <div className='calendar-planner-item'>
-                    <div className='calendar-planner-constants'>
-                        <span className='planner-title'>Scatto</span>
-                        <span className='planner-date'>June 25, 2022</span>
-                    </div>
-                    <div className='private-buttons'>
-                        <span className='delete-button'><TiDelete /></span>
-                        <span className='edit-button'><MdModeEditOutline /></span>
-                    </div>
-                </div>
+                {
+                    bookings === null
+                        ? <div>No Bookings available yet</div> // we need to fix this one CSS mostly
+                        : bookings.map(booking => <CalendarPlannerItem key={booking.id} booking={booking} />)
+                }
             </div>
 
         </div>

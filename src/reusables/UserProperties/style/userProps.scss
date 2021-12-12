@@ -1,0 +1,18 @@
+@import "../../../Styles/scss/config";
+@import "../../../Styles/scss/utils";
+
+.stable-user-property-items {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    flex-wrap: wrap;
+    padding: 5px 0px;
+
+    span {
+        font-size: 12px;
+        padding: 5px 10px;
+        font-weight: 600;
+        border: 1px solid $yellow;
+        border-radius: 8px;
+    }
+}

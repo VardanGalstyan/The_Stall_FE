@@ -42,7 +42,6 @@
                 text-align: center;
 
                 .property-items {
-                    // background-color: #ffcc56;
                     border-radius: 25px;
                     padding: 0px 15px;
                     border: 1px solid #e6e6e698;
@@ -109,35 +108,6 @@
             }
         }
 
-        .profile-body-property-photos {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            padding: 50px 20px;
-            height: 100%;
-
-            .profile-body-photos-title {
-                font-size: 15px;
-                padding: 5px 0px;
-            }
-
-            .profile-property-images {
-                height: 100%;
-                padding: 15px 0px;
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-
-                img {
-                    object-fit: cover;
-                    height: 200px;
-                    width: 30%;
-                    border-radius: 3px;
-                    margin: 2px;
-                }
-            }
-        }
-
         .profile-body-horses {
             display: flex;
             flex-direction: column;
@@ -156,68 +126,6 @@
                 overflow: scroll;
                 flex-wrap: nowrap;
                 width: 100%;
-            }
-        }
-
-        .profile-body-team-container {
-            display: flex;
-            flex-direction: column;
-            padding: 30px 20px;
-            height: 100%;
-            width: 100%;
-
-            .profile-body-team-title {
-                font-size: 15px;
-                font-weight: 600;
-                padding: 10px;
-            }
-
-            .team-members-container {
-                overflow: scroll;
-                display: flex;
-                padding: 5px 0px;
-                width: 100%;
-                gap: 10px;
-                flex-wrap: nowrap;
-
-                .single-team-member {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 7px;
-                    background-color: #ffcc56;
-                    border-radius: 12px;
-
-                    .single-team-member-avatar {
-                        padding: 7px;
-
-                        img {
-                            width: 200px;
-                            height: 200px;
-                            border-radius: 50%;
-                            border: 5px solid #fff;
-                        }
-                    }
-
-                    .single-team-member-details {
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-
-                        .member-name {
-                            font-size: 15px;
-                            font-weight: 700;
-                            color: #3b3b3b;
-                        }
-                        .member-position {
-                            font-size: 11px;
-                            font-weight: 600;
-                            color: #3b3b3b;
-                        }
-                    }
-                }
             }
         }
     }
@@ -296,6 +204,47 @@
         font-size: 15px;
         padding: 5px 0px;
         font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+
+        .profile-aboutUs-options {
+            cursor: pointer;
+            line-height: 30px;
+
+            &:hover {
+                color: #ffcc56;
+            }
+        }
+
+        .container-item-settings-button {
+            position: absolute;
+            justify-content: center;
+            flex-direction: column;
+            display: flex;
+            align-items: center;
+            right: 0px;
+            top: 30px;
+            background-color: #f7f7f7;
+            width: 80px;
+            border-radius: 3px;
+
+            span {
+                font-size: 12px;
+                padding: 5px 10px;
+                font-weight: 600;
+                width: 100%;
+                text-align: center;
+                cursor: pointer;
+                border-bottom: 1px solid #e6e6e652;
+
+                &:hover {
+                    color: white;
+                    background-color: #ffcc56;
+                }
+            }
+        }
     }
 
     .profile-container-scrollable {
@@ -303,6 +252,7 @@
         overflow: scroll;
         flex-wrap: nowrap;
         width: 100%;
+        gap: 10px;
     }
 
     .profile-container-flex {
@@ -310,6 +260,13 @@
         justify-content: center;
         align-items: center;
     }
+}
+
+.spinner-loader {
+    height: 100%;
+    width: 100%;
+    display: inline;
+    text-align: center;
 }
 
 @media (min-width: 1200px) {

@@ -123,6 +123,8 @@
             font-size: 1.2rem;
             font-weight: bold;
             margin-bottom: 0px;
+            white-space: nowrap;
+            overflow: ellipsis;
             &:hover {
                 cursor: pointer;
             }

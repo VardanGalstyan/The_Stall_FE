@@ -6,14 +6,20 @@ import UserRatingView from './UserRatingView'
 import { RatingView } from 'react-simple-star-rating'
 
 
-function SingleCard() {
+
+function SingleCard({ stable }) {
     const [showReview, setShowReview] = useState(false)
     const [contactDetails, setContactDetails] = useState(false)
+
 
     return (
         <div id='home-single-card'>
             <div className='card-image-holder'>
-                <img src="https://st2.depositphotos.com/1751039/6621/i/600/depositphotos_66219013-stock-photo-horse-barn-animal-sport-paddock.jpg" alt="" />
+                {
+                    !stable.avatar
+                        ? <img src='https://www.messagetech.com/wp-content/themes/ml_mti/images/no-image.jpg' alt="stable-avatar" />
+                        : <img src={stable.avatar} alt="stable-avatar" />
+                }
                 <div className={`${!showReview ? 'card-rating-view' : 'card-rating-full-view'}`}
                     onMouseEnter={() => setShowReview(true)}
                     onMouseLeave={() => setShowReview(false)}
@@ -29,10 +35,10 @@ function SingleCard() {
                 </div>
                 {
                     contactDetails &&
-                    <UserContactDetails />
+                    <UserContactDetails stable={stable} />
                 }
             </div>
-            <CardBody handleContactDetails={() => setContactDetails(!contactDetails)} />
+            <CardBody stable={stable} handleContactDetails={() => setContactDetails(!contactDetails)} />
         </div >
     )
 }

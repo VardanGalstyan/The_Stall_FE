@@ -1,7 +1,7 @@
 import './style/horseOwner.css'
+import React, { useState, useEffect } from 'react'
 import Feed from '../Navbar/Feed'
 import { Container, Col } from 'react-bootstrap'
-import React from 'react'
 import ProfileHeader from '../../reusables/ProfileHeader/ProfileHeader'
 import UserProfile from '../../reusables/UserProfile/UserProfile'
 import AboutUser from '../../reusables/AboutUser/AboutUser'
@@ -9,17 +9,32 @@ import SingleHorseCard from '../Cards/HorseCards/SingleHorseCard'
 import StableCards from '../Cards/StableCards/StableCards'
 import Calendar from '../../reusables/Calendar/CalendarPlanner'
 import Reviews from '../../reusables/Reviews/Reviews'
+import useFetch from '../../utils/useFetch.js'
+
 
 function HorseOwnerProfile() {
+
+    const token = localStorage.getItem('token')
+    const { data, isPending, error } = useFetch(`http://localhost:3001/horseOwner/me`, token)
+    const name = data && `${data.first_name} ${data.surname}`
+
+    console.log(data);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
+
+
     return (
         <div className='container-holder'>
             <Feed />
             <ProfileHeader
-                image={'https://i1.wp.com/92067magazine.com/wp-content/uploads/sites/16/2017/12/f_student-lyman-001.jpg'}
-                name={'Julia Abbas'}
+                image={data && data.avatar}
+                name={name}
             />
             <Container className='profile-body'>
-                <UserProfile />
+                <UserProfile data={data} lading={isPending} />
                 <Col className='profile-body-properties'>
                     <div className='profile-container'>
                         <div className='profile-container-title'>
@@ -52,13 +67,13 @@ function HorseOwnerProfile() {
                             </div>
                         </div>
                     </div>
-                    <AboutUser />
+                    <AboutUser content={data && data.description} loading={isPending} />
                     <div className='profile-container'>
                         <div className='profile-container-title'>
                             <span>Calendar</span>
                         </div>
                         <div className='profile-container-flex'>
-                            <Calendar />
+                            {/* <Calendar /> */}
                         </div>
                     </div>
                     <div className='profile-container'>
@@ -66,8 +81,9 @@ function HorseOwnerProfile() {
                             <span>Horses</span>
                         </div>
                         <div className='profile-container-scrollable'>
-                            <SingleHorseCard />
-                            <SingleHorseCard />
+                            {
+                                data && data.horses.map((horse, index) => <SingleHorseCard key={index} horse={horse} loading={isPending} />)
+                            }
                         </div>
                     </div>
                     <div className='profile-container'>
@@ -75,7 +91,7 @@ function HorseOwnerProfile() {
                             <span>Stables</span>
                         </div>
                         <div className='profile-container-scrollable'>
-                            <StableCards />
+                            {/* <StableCards /> */}
                         </div>
                     </div>
                     <Reviews />

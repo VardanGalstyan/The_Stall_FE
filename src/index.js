@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-calendar/dist/Calendar.css';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 
 

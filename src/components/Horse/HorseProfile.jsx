@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './style/horse.css'
 import Feed from '../Navbar/Feed'
 import ProfileHeader from '../../reusables/ProfileHeader/ProfileHeader'
@@ -10,18 +10,28 @@ import StableCards from '../Cards/StableCards/StableCards'
 import Reviews from '../../reusables/Reviews/Reviews'
 import Footer from '../Footer/Footer'
 import ImageGallery from '../Gallery/ImageGallery'
+import useFetch from '../../utils/useFetch.js'
+import { useParams } from 'react-router-dom'
 
 
 function HorseProfile() {
+
+    const { id } = useParams()
+    const { data, isPending, error } = useFetch(`http://localhost:3001/horses/${id}`)
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <div className='container-holder'>
             <Feed />
             <ProfileHeader
-                image={'https://i1.wp.com/92067magazine.com/wp-content/uploads/sites/16/2017/12/f_student-lyman-001.jpg'}
-                name={'Julia Abbas'}
+                image={data && data.avatar}
+                name={data && data.name}
             />
             <Container className='profile-body'>
-                <UserProfile />
+                <UserProfile data={data && data.horse_owner} loading={isPending} />
                 <Col className='profile-body-properties'>
                     <div className='profile-container'>
                         <div className='profile-container-title'>
@@ -54,13 +64,13 @@ function HorseProfile() {
                             </div>
                         </div>
                     </div>
-                    <AboutUser />
+                    <AboutUser content={data && data.description} loading={isPending} />
                     <div className='profile-container'>
                         <div className='profile-container-title'>
                             <span>Calendar</span>
                         </div>
                         <div className='profile-container-flex'>
-                            <Calendar />
+                            <Calendar bookings={data && data.bookings} loading={isPending} />
                         </div>
                     </div>
                     <div className='profile-container'>
@@ -76,7 +86,7 @@ function HorseProfile() {
                             <span>Stables</span>
                         </div>
                         <div className='profile-container-scrollable'>
-                            <StableCards />
+                            {/* <StableCards /> */}
                         </div>
                     </div>
                     <Reviews />

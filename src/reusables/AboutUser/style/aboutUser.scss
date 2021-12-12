@@ -25,3 +25,52 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+#about-user-modal {
+    font-family: "Montserrat", sans-serif !important;
+    .modal-content {
+        .modal-header {
+            .modal-title {
+                font-size: 20px !important;
+                font-weight: 600;
+            }
+            border: none !important;
+        }
+
+        .modal-body {
+            border: none !important;
+            padding-bottom: 0;
+            .form-control {
+                color: $textColor;
+                width: 100%;
+                border: solid 1px #e5e5e5;
+                height: 100px;
+            }
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: space-between;
+            border: none !important;
+            button {
+                background-color: transparent;
+                border: none;
+                color: $textColor;
+                padding: 7px 15px;
+                border-radius: 5px;
+
+                &:hover {
+                    background-color: $textColor;
+                    color: white;
+                }
+            }
+
+            .modal-save-button {
+                &:hover {
+                    background-color: $yellow;
+                    color: white;
+                }
+            }
+        }
+    }
+}

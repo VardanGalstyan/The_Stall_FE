@@ -1,3 +1,4 @@
+import './style/userProfile.css'
 import React, { useState, } from 'react'
 import { Col } from 'react-bootstrap'
 import { ImLocation2, ImMobile } from 'react-icons/im'
@@ -6,10 +7,14 @@ import { MdEmail } from 'react-icons/md'
 import { SiMinutemailer } from 'react-icons/si'
 import { IoLogoWhatsapp } from 'react-icons/io'
 import { FaMapPin } from 'react-icons/fa'
-import './style/userProfile.css'
 import GoogleMap from '../GoogleMap/GoogleMap'
+import Loader from 'react-loader-spinner'
 
-function StableOwnerProfile() {
+function UserProfile(props) {
+
+    const name = props.data && `${props.data.first_name} ${props.data.surname}`
+    const detailedLocation = props.location && props.location.formatted_address.split(' ').slice(0, 2).join(' ')
+    const cityAndCountry = props.location && props.location.formatted_address.split(' ').slice(3, 8).join(' ')
 
     const [location, setLocation] = useState(true)
     const [phone, setPhone] = useState(false)
@@ -26,58 +31,71 @@ function StableOwnerProfile() {
     }
 
     return (
-        <Col className='user-profile' lg={4} xl={3}>
-            <div className='user-profile-header'>
-                <img src='https://picsum.photos/200/300' alt='user-profile-avatar' />
-            </div>
-            <div className='user-profile-title'>
-                <span>Mrs. Anna Bauer</span>
-                <div className='user-contact-details'>
-                    <span onClick={() => handleContactDetails(setLocation, location)}><ImLocation2 /></span>
-                    <span onClick={() => handleContactDetails(setPhone, phone)}><IoCall /></span>
-                    <span onClick={() => handleContactDetails(setEmail, email)}><MdEmail /></span>
-                    <span onClick={() => handleContactDetails(setMessage, message)}><SiMinutemailer /></span>
-                </div>
-            </div>
+        <>
             {
-                location &&
-                <>
-                    <div className='user-profile-details-location'>
-                        <div className='details-location-icon'>
-                            <span><FaMapPin /></span>
+                props.loading ?
+                    <Col className='user-profile' lg={4} xl={3}>
+                        <Loader type="ThreeDots" color="#3b3b3b" height={25} width={25} />
+                    </Col>
+                    :
+                    <Col className='user-profile' lg={4} xl={3}>
+                        <div className='user-profile-header'>
+                            {/* {
+                                !props.data.avatar
+                                    ? <img src="https://autohaus-lemke.de/site/assets/files/1085/platzhalter-mann.jpg" alt="user-thumbnail" />
+                                    : <img src={props.data.avatar} alt="profile-cover" />
+                            } */}
                         </div>
-                        <div className='details-location-text'>
-                            <span> Mögglinger Str.83</span>
-                            <span> Heubach Germany</span>
+                        <div className='user-profile-title'>
+                            <span>{name}</span>
+                            <div className='user-contact-details'>
+                                <span onClick={() => handleContactDetails(setLocation, location)}><ImLocation2 /></span>
+                                <span onClick={() => handleContactDetails(setPhone, phone)}><IoCall /></span>
+                                <span onClick={() => handleContactDetails(setEmail, email)}><MdEmail /></span>
+                                <span onClick={() => handleContactDetails(setMessage, message)}><SiMinutemailer /></span>
+                            </div>
                         </div>
-                    </div>
-                    <GoogleMap location={'stuttgart'} />
-                </>
+                        {
+                            location &&
+                            <>
+                                <div className='user-profile-details-location'>
+                                    <div className='details-location-icon'>
+                                        <span><FaMapPin /></span>
+                                    </div>
+                                    <div className='details-location-text'>
+                                        <span> {detailedLocation}</span>
+                                        <span>{cityAndCountry}</span>
+                                    </div>
+                                </div>
+                                <GoogleMap location={props.location && props.location} />
+                            </>
+                        }
+                        {
+                            phone &&
+                            <div className='user-profile-details-mobile'>
+                                <div className='mobile-number'>
+                                    <span className='details-mobile-icon'><ImMobile /></span>
+                                    <span className='details-mobile-text'>{`+ ${props.data.contacts.mobile}`}</span>
+                                </div>
+                                <div className='whatsapp-number'>
+                                    <span className='details-whatsapp-icon'><IoLogoWhatsapp /></span>
+                                    <span className='details-whatsapp-text'>{`+ ${props.data.contacts.mobile}`}</span>
+                                </div>
+                            </div>
+                        }
+                        {
+                            email &&
+                            <div className='user-profile-details-email'>
+                                <input placeholder="Your Email" type="email" />
+                                <input placeholder="Subject" type="email" />
+                                <textarea placeholder='Tell us more...' rows='4' type="text" />
+                                <button>Send</button>
+                            </div>
+                        }
+                    </Col>
             }
-            {
-                phone &&
-                <div className='user-profile-details-mobile'>
-                    <div className='mobile-number'>
-                        <span className='details-mobile-icon'><ImMobile /></span>
-                        <span className='details-mobile-text'> + 491 174 234 23</span>
-                    </div>
-                    <div className='whatsapp-number'>
-                        <span className='details-whatsapp-icon'><IoLogoWhatsapp /></span>
-                        <span className='details-whatsapp-text'> + 491 174 234 23</span>
-                    </div>
-                </div>
-            }
-            {
-                email &&
-                <div className='user-profile-details-email'>
-                    <input placeholder="Your Email" type="email" />
-                    <input placeholder="Subject" type="email" />
-                    <textarea placeholder='Tell us more...' rows='4' type="text" />
-                    <button>Send</button>
-                </div>
-            }
-        </Col>
+        </>
     )
 }
 
-export default StableOwnerProfile
+export default UserProfile

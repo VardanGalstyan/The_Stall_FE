@@ -8,7 +8,11 @@ function ProfileHeader(props) {
         <Container id='profile-header'>
             <div className='profile-header-content'>
                 <div className='profile-cover-image'>
-                    <img src={props.image} alt="profile-cover" />
+                    {
+                        !props.image
+                            ? <img src="https://autohaus-lemke.de/site/assets/files/1085/platzhalter-mann.jpg" alt="user-thumbnail" />
+                            : <img src={props.image} alt="profile-cover" />
+                    }
                 </div>
                 <div className='profile-header-description'>
                     <span className='profile-header-name'>{props.name}</span>

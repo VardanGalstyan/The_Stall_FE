@@ -7,28 +7,26 @@ const useFetch = (url, token) => {
     const [error, setError] = useState(null)
 
     useEffect(() => {
-        setTimeout(() => {
-            fetch(url, {
-                headers: {
-                    "Authorization": `Bearer ${token}`
+        fetch(url, {
+            headers: {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw Error('Could not fetch the data')
                 }
+                return response.json()
             })
-                .then(response => {
-                    if (!response.ok) {
-                        throw Error('Could not fetch the data')
-                    }
-                    return response.json()
-                })
-                .then(data => {
-                    setData(data)
-                    setIsPending(false)
-                    setError(null)
-                })
-                .catch(err => {
-                    setIsPending(false)
-                    setError(err.message)
-                })
-        }, 1000)
+            .then(data => {
+                setData(data)
+                setIsPending(false)
+                setError(null)
+            })
+            .catch(err => {
+                setIsPending(false)
+                setError(err.message)
+            })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [url])
 
