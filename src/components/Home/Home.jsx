@@ -29,7 +29,7 @@ function Home() {
                 </div>
                 <Container className='card-container'>
                     {
-                        data && data.map(horse => <SingleHorseCard key={horse.id} horse={horse} />)
+                        data && data.map(horse => <SingleHorseCard key={horse._id} horse={horse} />)
                     }
                 </Container>
             </Container>

@@ -58,6 +58,7 @@ function RegisterModal(props) {
                     const data = await response.json()
                     localStorage.setItem('token', data.accessToken)
                     localStorage.setItem('role', role)
+                    localStorage.setItem('user', data._id)
                     setTimeout(() => {
                         history.push(`/${role}`)
                         setIsLoading(false)
@@ -150,7 +151,7 @@ function RegisterModal(props) {
                             <span><VscError onClick={handleError} /></span>
                         </div>
                     }
-                    { !isError &&
+                    {!isError &&
                         <div className='SignUpButton'>
                             {
                                 validFirstName && validSurname && validEmail && role && !isError ?

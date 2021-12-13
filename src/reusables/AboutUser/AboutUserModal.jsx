@@ -5,11 +5,13 @@ function AboutUserModal(props) {
 
     const token = localStorage.getItem('token')
     const role = localStorage.getItem('role')
+    const [isLoading, setIsLoading] = useState(false)
     const [description, setDescription] = useState({ description: '' })
 
     const handleUpdateDescription = async (e) => {
         try {
             e.preventDefault()
+            setIsLoading(true)
             const response = await fetch(`http://localhost:3001/${role}/me`, {
                 method: 'PUT',
                 headers: {
@@ -20,11 +22,13 @@ function AboutUserModal(props) {
             })
             if (response.ok) {
                 const data = await response.json()
-                alert('all went well')
+                setIsLoading(false)
+                props.onHide()
+                props.handleFetch()
 
             } else {
                 const error = await response.json()
-                alert(error.message)
+                setIsLoading(false)
             }
 
         } catch (error) {
@@ -59,7 +63,12 @@ function AboutUserModal(props) {
 
             </Modal.Body>
             <Modal.Footer>
-                <button onClick={(e) => handleUpdateDescription(e)} className='modal-save-button'>Save</button>
+                <button
+                    onClick={(e) => handleUpdateDescription(e)}
+                    className='modal-save-button'
+                >
+                    {isLoading ? 'Loading...' : 'Save'}
+                </button>
                 <Button onClick={props.onHide}>Close</Button>
             </Modal.Footer>
         </Modal>

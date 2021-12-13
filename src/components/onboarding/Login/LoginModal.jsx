@@ -49,6 +49,7 @@ function LoginModal(props) {
                 const data = await response.json()
                 localStorage.setItem('token', data.accessToken)
                 localStorage.setItem('role', role)
+                console.log('boo', data);
                 setTimeout(() => {
                     history.push(`/${role}`)
                     setIsLoading(false)
