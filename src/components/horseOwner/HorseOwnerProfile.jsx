@@ -21,11 +21,10 @@ function HorseOwnerProfile() {
     const [error, setError] = useState(false)
 
 
-
-    const handleFetch = async () => {
+    const handlefetch = async () => {
         try {
             setIsPending(true)
-            const response = await fetch(`http://localhost:3001/horseOwner/me`, {
+            const response = await fetch(`http://localhost:3001/horseOwner/${id}`, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -49,9 +48,10 @@ function HorseOwnerProfile() {
     const validateUser = () => data && data.horses.some(horse => horse._id === id) && data._id === id
 
     useEffect(() => {
-        handleFetch()
+        handlefetch()
         window.scrollTo(0, 0)
         validateUser()
+        console.log('another data to check', data);
 
     }, [])
 
@@ -99,7 +99,7 @@ function HorseOwnerProfile() {
                                     </div>
                                 </div>
                             </div>
-                            <AboutUser content={data && data.description} loading={isPending} isValid={validateUser} handleFetch={handleFetch} />
+                            <AboutUser content={data && data.description} loading={isPending} isValid={validateUser} handlefetch={handlefetch} />
                             <div className='profile-container'>
                                 <div className='profile-container-title'>
                                     <span>Calendar</span>
@@ -114,7 +114,15 @@ function HorseOwnerProfile() {
                                 </div>
                                 <div className='profile-container-scrollable'>
                                     {
-                                        data && data.horses.map((horse, index) => <SingleHorseCard key={index} horse={horse} loading={isPending} />)
+                                        data &&
+                                        data.horses.map((horse, index) =>
+                                            <SingleHorseCard
+                                                key={index}
+                                                horse={horse}
+                                                loading={isPending}
+                                                name={name}
+                                            />
+                                        )
                                     }
                                 </div>
                             </div>

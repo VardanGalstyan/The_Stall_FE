@@ -5,7 +5,7 @@ import { BsThreeDots } from 'react-icons/bs'
 import AboutUserModal from './AboutUserModal'
 import './style/aboutUser.css'
 
-function BodyAboutUs({ content, loading, isValid, handleFetch }) {
+function BodyAboutUs({ content, loading, isValid, handlefetch }) {
 
     const role = localStorage.getItem('role')
 
@@ -64,7 +64,7 @@ function BodyAboutUs({ content, loading, isValid, handleFetch }) {
                         <AboutUserModal
                             show={modalShow}
                             onHide={() => setModalShow(false)}
-                            handleFetch={handleFetch}
+                            handlefetch={handlefetch}
                         />
                     </>
             }

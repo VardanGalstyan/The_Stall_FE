@@ -24,7 +24,7 @@ function AboutUserModal(props) {
                 const data = await response.json()
                 setIsLoading(false)
                 props.onHide()
-                props.handleFetch()
+                props.handlefetch()
 
             } else {
                 const error = await response.json()

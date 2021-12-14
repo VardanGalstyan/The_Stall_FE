@@ -29,7 +29,13 @@ function Home() {
                 </div>
                 <Container className='card-container'>
                     {
-                        data && data.map(horse => <SingleHorseCard key={horse._id} horse={horse} />)
+                        data && data.map(horse =>
+                            <SingleHorseCard
+                                key={horse._id}
+                                horse={horse}
+                                name={horse.name}
+                            />
+                        )
                     }
                 </Container>
             </Container>
@@ -39,7 +45,12 @@ function Home() {
                     <SiOpenstreetmap className='stable-container-icon' />
                 </div>
                 <Container className='card-container'>
-                    {stables.data && stables.data.stables.map(stable => <StableCards key={stable._id} stable={stable} />)}
+                    {stables.data && stables.data.stables.map(stable =>
+                        <StableCards
+                            key={stable._id}
+                            stable={stable}
+                        />
+                    )}
                 </Container>
             </Container>
         </div>

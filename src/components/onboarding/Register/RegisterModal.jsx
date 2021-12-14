@@ -60,7 +60,7 @@ function RegisterModal(props) {
                     localStorage.setItem('role', role)
                     localStorage.setItem('user', data._id)
                     setTimeout(() => {
-                        history.push(`/${role}`)
+                        history.push(`/${role}/${data._id}`)
                         setIsLoading(false)
                         setValidated(false)
                     }, 1000)

@@ -21,8 +21,8 @@ function Feed() {
     const handleLogOut = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('role')
+        localStorage.removeItem('user')
         history.push('/home')
-
     }
 
 
@@ -48,6 +48,7 @@ function Feed() {
                                     </div>
                                     :
                                     <div className='responsive-dropDown-user'>
+                                        <span>My Profile</span>
                                         <span>Settings</span>
                                         <span>Help</span>
                                         <span onClick={handleLogOut}>Log out</span>
@@ -72,6 +73,7 @@ function Feed() {
                         </div>
                         <div className={`${!show ? 'd-none' : 'd-block'} navbarDropDown`}>
                             <div className='navbarDropDown-elements'>
+                                <span>My Profile</span>
                                 <span>Settings</span>
                                 <span>Help</span>
                                 <span onClick={handleLogOut}>Log out</span>

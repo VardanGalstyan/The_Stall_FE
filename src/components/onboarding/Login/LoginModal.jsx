@@ -20,6 +20,7 @@ function LoginModal(props) {
     const [user, setUser] = useState(initialState)
     const validEmail = validator.isEmail(user.email)
 
+
     const handleError = () => {
         setIsError(false)
         setUser(initialState)
@@ -47,11 +48,12 @@ function LoginModal(props) {
             });
             if (response.ok) {
                 const data = await response.json()
+                console.log('response', data);
                 localStorage.setItem('token', data.accessToken)
                 localStorage.setItem('role', role)
-                console.log('boo', data);
+                localStorage.setItem('user', data.id)
                 setTimeout(() => {
-                    history.push(`/${role}`)
+                    history.push(`/${role}/${data.id}`)
                     setIsLoading(false)
                 }, 300)
             } else {
