@@ -15,7 +15,6 @@ function StableOwnerModal(props) {
         "address.city": "",
         "address.country": "",
         number_of_boxes: "",
-        services: "",
         facilities: "",
         avatar: "",
         description: "",
@@ -124,7 +123,7 @@ function StableOwnerModal(props) {
             size="lg"
             aria-labelledby="contained-modal-title-vcenter"
             centered
-            className='addHorsesModal'
+            className='add-stable-modal'
         >
             <Modal.Header closeButton>
                 <Modal.Title>
@@ -133,119 +132,109 @@ function StableOwnerModal(props) {
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={handleSubmit}>
-                    <Row className='align-items-center'>
-                        <Col lg={4} className='mb-4 modalLogo'>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOPyfvJRS9c3YymVIXifqqFXQ2eMDNfZjhMw&usqp=CAU" alt="updateImage" />
-                            <div className='addHorseImage'>
-                                <input
-                                    type="file"
-                                    className='inputImage'
-                                    onChange={(e) => setImage(e.target.files[0])}
+                    <Col md={4} className='modal-avatar'>
+                        <img src="https://autohaus-lemke.de/site/assets/files/1085/platzhalter-mann.jpg" alt="updateImage" />
+                        <div className='add-horse-image'>
+                            <input
+                                type="file"
+                                onChange={(e) => setImage(e.target.files[0])}
+                            />
+                            <IoAddSharp />
+                        </div>
+                    </Col>
+                    <Col className='add-stable-modal-form'>
+                        <Row>
+                            <Form.Group as={Col} md={12}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    placeholder="Stable name"
+                                    value={stable.stable_name}
+                                    onChange={(e) => setStable({ ...stable, stable_name: e.target.value })}
                                 />
-                                <IoAddSharp />
-                            </div>
-                        </Col>
-                        <Col>
-                            <Row>
-                                <Form.Group as={Col} md={12}>
-                                    <Form.Control
-                                        required
-                                        type="text"
-                                        placeholder="Stable name"
-                                        value={stable.stable_name}
-                                        onChange={(e) => setStable({ ...stable, stable_name: e.target.value })}
-                                    />
-                                </Form.Group>
-                                <Form.Group as={Col} md={6}>
-                                    <Form.Control
-                                        required
-                                        type="text"
-                                        placeholder="Street"
-                                        value={stable['address.street_name']}
-                                        onChange={(e) => setStable({ ...stable, 'address.street_name': e.target.value })}
-                                    />
-                                </Form.Group>
-                                <Form.Group as={Col} md={3}>
-                                    <Form.Control
-                                        required
-                                        type="text"
-                                        placeholder="City"
-                                        value={stable['address.city']}
-                                        onChange={(e) => setStable({ ...stable, 'address.city': e.target.value })}
-                                    />
-                                </Form.Group>
-                                <Form.Group as={Col} md={3}>
-                                    <Form.Control
-                                        required
-                                        type="text"
-                                        placeholder="Country"
-                                        value={stable['address.country']}
-                                        onChange={(e) => setStable({ ...stable, 'address.country': e.target.value })}
-                                    />
-                                </Form.Group>
-                            </Row>
-                            <Row>
-                                <Form.Group as={Col} md={3}>
-                                    <Form.Control
-                                        required
-                                        type="number"
-                                        min='1'
-                                        max='100'
-                                        placeholder="Boxes"
-                                        value={stable.number_of_boxes}
-                                        onChange={(e) => setStable({ ...stable, number_of_boxes: e.target.value })}
-                                    />
-                                </Form.Group>
-                                <Form.Group as={Col}>
-                                    <Form.Control
-                                        required
-                                        type="text"
-                                        placeholder="Services | Multiple Choice"
-                                        value={stable.services}
-                                        onChange={(e) => setStable({ ...stable, services: e.target.value })}
-                                    />
-                                </Form.Group>
-                                <Form.Group as={Col} md={12}>
-                                    <Form.Control
-                                        required
-                                        as='select'
-                                        placeholder="Facilities | Multiple Choice"
-                                        value={stable.facilities}
-                                        onChange={(e) => setStable({ ...stable, facilities: e.target.value })}
-                                    >
-                                        <option value='mare'>Mare</option>
-                                        <option value='stallion'>Stallion</option>
-                                        <option value='gelding'>Gelding</option>
-                                    </Form.Control>
-                                </Form.Group>
-                            </Row>
-                            <Row>
-                                <Form.Group as={Col}>
-                                    <Form.Control
-                                        required
-                                        type="email"
-                                        placeholder="Email"
-                                        value={stable['contacts.email']}
-                                        onChange={(e) => setStable({ ...stable, 'contacts.email': e.target.value })}
-                                    />
-                                </Form.Group>
-                                <Form.Group as={Col}>
-                                    <Form.Control
-                                        type="phone"
-                                        placeholder="Phone"
-                                        value={stable['contacts.phone']}
-                                        onChange={(e) => setStable({ ...stable, 'contacts.phone': e.target.value })}
-                                    />
-                                </Form.Group>
-                                <Form.Group as={Col}>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Web"
-                                        value={stable['contacts.web']}
-                                        onChange={(e) => setStable({ ...stable, 'contacts.web': e.target.value })}
-                                    />
-                                </Form.Group>
-                            </Row>
+                            </Form.Group>
+                            <Form.Group as={Col} md={6}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    placeholder="Street"
+                                    value={stable['address.street_name']}
+                                    onChange={(e) => setStable({ ...stable, 'address.street_name': e.target.value })}
+                                />
+                            </Form.Group>
+                            <Form.Group as={Col} md={3}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    placeholder="City"
+                                    value={stable['address.city']}
+                                    onChange={(e) => setStable({ ...stable, 'address.city': e.target.value })}
+                                />
+                            </Form.Group>
+                            <Form.Group as={Col} md={3}>
+                                <Form.Control
+                                    required
+                                    type="text"
+                                    placeholder="Country"
+                                    value={stable['address.country']}
+                                    onChange={(e) => setStable({ ...stable, 'address.country': e.target.value })}
+                                />
+                            </Form.Group>
+                        </Row>
+                        <Row>
+                            <Form.Group as={Col} md={3}>
+                                <Form.Control
+                                    required
+                                    type="number"
+                                    min='1'
+                                    max='100'
+                                    placeholder="Boxes"
+                                    value={stable.number_of_boxes}
+                                    onChange={(e) => setStable({ ...stable, number_of_boxes: e.target.value })}
+                                />
+                            </Form.Group>
+                            <Form.Group as={Col} md={9}>
+                                <Form.Control
+                                    required
+                                    as='select'
+                                    placeholder="Facilities | Multiple Choice"
+                                    value={stable.facilities}
+                                    onChange={(e) => setStable({ ...stable, facilities: e.target.value })}
+                                >
+                                    <option value='mare'>Mare</option>
+                                    <option value='stallion'>Stallion</option>
+                                    <option value='gelding'>Gelding</option>
+                                </Form.Control>
+                            </Form.Group>
+                        </Row>
+                        <Row>
+                            <Form.Group as={Col}>
+                                <Form.Control
+                                    required
+                                    type="email"
+                                    placeholder="Email"
+                                    value={stable['contacts.email']}
+                                    onChange={(e) => setStable({ ...stable, 'contacts.email': e.target.value })}
+                                />
+                            </Form.Group>
+                            <Form.Group as={Col}>
+                                <Form.Control
+                                    type="phone"
+                                    placeholder="Phone"
+                                    value={stable['contacts.phone']}
+                                    onChange={(e) => setStable({ ...stable, 'contacts.phone': e.target.value })}
+                                />
+                            </Form.Group>
+                            <Form.Group as={Col}>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Web"
+                                    value={stable['contacts.web']}
+                                    onChange={(e) => setStable({ ...stable, 'contacts.web': e.target.value })}
+                                />
+                            </Form.Group>
+                        </Row>
+                        <Row>
                             <Form.Group as={Col}>
                                 <Form.Control
                                     required
@@ -257,31 +246,31 @@ function StableOwnerModal(props) {
                                     onChange={(e) => setStable({ ...stable, description: e.target.value })}
                                 />
                             </Form.Group>
-                            {
-                                isLoading ? <Loader type='spinner-circle' size={30} /> :
-                                    error ?
-                                        <div className='incorrectCredentials'>
-                                            {
-                                                imageNull ? <span> Want to add avatar? <span onClick={handleError}><AiOutlineCheckCircle /></span> <span ><VscError onClick={() => {
-                                                    props.onHide()
-                                                    setStable({ ...initialState })
-                                                }} /></span> </span>
-                                                    : <span>Missing credentials <span><VscError onClick={handleError} /></span></span>
-                                            }
-                                        </div>
-                                        :
-                                        <Button className='formButton' variant="primary" type="submit">
-                                            {
-                                                !isDone ? "Submit" : "Done"
-                                            }
-                                        </Button>
-                            }
-                        </Col>
-                    </Row>
+                        </Row>
+                        {
+                            isLoading ? <Loader type='spinner-circle' size={30} /> :
+                                error ?
+                                    <div className='incorrectCredentials'>
+                                        {
+                                            imageNull ? <span> Want to add avatar? <span onClick={handleError}><AiOutlineCheckCircle /></span> <span ><VscError onClick={() => {
+                                                props.onHide()
+                                                setStable({ ...initialState })
+                                            }} /></span> </span>
+                                                : <span>Missing credentials <span><VscError onClick={handleError} /></span></span>
+                                        }
+                                    </div>
+                                    :
+                                    <Button className='form-button' variant="primary" type="submit">
+                                        {
+                                            !isDone ? "Submit" : "Done"
+                                        }
+                                    </Button>
+                        }
+                    </Col>
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button className='formButton' onClick={() => {
+                <Button className='form-button' onClick={() => {
                     props.onHide()
                     setStable({ ...initialState })
                 }}>Close</Button>

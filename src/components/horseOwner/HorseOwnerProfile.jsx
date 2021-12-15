@@ -45,7 +45,7 @@ function HorseOwnerProfile() {
 
 
     const name = data && `${data.first_name} ${data.surname}`
-    const validateUser = () => data && data.horses.some(horse => horse._id === id) && data._id === id
+    const validateUser = () => data && data._id !== id
 
     useEffect(() => {
         handlefetch()
@@ -66,7 +66,7 @@ function HorseOwnerProfile() {
                         name={name}
                     />
                     <Container className='profile-body'>
-                        <UserProfile data={data} lading={isPending} />
+                        <UserProfile data={data} loading={isPending} />
                         <Col className='profile-body-properties'>
                             <div className='profile-container'>
                                 <div className='profile-container-title'>

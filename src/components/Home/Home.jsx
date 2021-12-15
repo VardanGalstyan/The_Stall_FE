@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Feed from '../Navbar/Feed'
 import SearchBar from './SearchBar/SearchBar'
 import './style/home.css'
@@ -8,13 +8,14 @@ import { Container } from 'react-bootstrap'
 import useFetch from '../../utils/useFetch'
 import SingleHorseCard from '../Cards/HorseCards/SingleHorseCard'
 import StableCards from '../Cards/StableCards/StableCards'
+import Footer from '../Footer/Footer'
+import GeoModal from '../../utils/GeoModal'
 
 function Home() {
 
     const { data, isPending, error } = useFetch('http://localhost:3001/horses')
     const stables = useFetch('http://localhost:3001/stables')
-
-
+    const [modalShow, setModalShow] = useState(false);
 
 
     return (
@@ -25,7 +26,13 @@ function Home() {
             <Container className='mt-5 stable-container'>
                 <div className='stable-container-title'>
                     <h5>Horses</h5>
-                    <SiOpenstreetmap className='stable-container-icon' />
+                    <SiOpenstreetmap
+                        className='stable-container-icon'
+                        onClick={() => {
+                            setModalShow(true)
+                        }}
+
+                    />
                 </div>
                 <Container className='card-container'>
                     {
@@ -39,10 +46,13 @@ function Home() {
                     }
                 </Container>
             </Container>
-            <Container className=' mt-5 stable-container'>
+            <Container className=' my-5 stable-container'>
                 <div className='stable-container-title'>
                     <h5>Stables</h5>
-                    <SiOpenstreetmap className='stable-container-icon' />
+                    <SiOpenstreetmap
+                        className='stable-container-icon'
+                        onClick={() => setModalShow(true)}
+                    />
                 </div>
                 <Container className='card-container'>
                     {stables.data && stables.data.stables.map(stable =>
@@ -52,7 +62,12 @@ function Home() {
                         />
                     )}
                 </Container>
+                <GeoModal
+                    show={modalShow}
+                    onHide={() => setModalShow(false)}
+                />
             </Container>
+            <Footer />
         </div>
     )
 }

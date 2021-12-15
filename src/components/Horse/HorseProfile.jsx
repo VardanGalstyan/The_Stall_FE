@@ -19,6 +19,8 @@ function HorseProfile() {
     const { id } = useParams()
     const { data, isPending, error } = useFetch(`http://localhost:3001/horses/${id}`)
 
+    const name = data && `${data.horse_owner.first_name} ${data.horse_owner.surname}`
+
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -31,7 +33,14 @@ function HorseProfile() {
                 name={data && data.name}
             />
             <Container className='profile-body'>
-                <UserProfile data={data && data.horse_owner} loading={isPending} />
+                <UserProfile
+                    data={data && data}
+                    loading={isPending}
+                    location={data && data.stable.location}
+                    contacts={data && data.stable.contacts}
+                    avatar={data && data.stable.avatar}
+                    name={name}
+                />
                 <Col className='profile-body-properties'>
                     <div className='profile-container'>
                         <div className='profile-container-title'>

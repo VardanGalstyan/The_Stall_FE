@@ -1,4 +1,4 @@
-import '../Styles/css/geoModal.css'
+import '../Styles/scss/geoModal.css'
 import { useState, useRef, useEffect } from 'react'
 import { Modal, Button, Col, Row } from 'react-bootstrap'
 import { RatingView } from 'react-simple-star-rating'
@@ -48,7 +48,7 @@ function GeoModal(props) {
     const fetchData = async () => {
         try {
             const response = await fetch("http://localhost:3001/stables")
-            const {stables} = await response.json()
+            const { stables } = await response.json()
             if (stables) {
                 setStables(stables)
             } else {
@@ -74,7 +74,7 @@ function GeoModal(props) {
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    
+
 
     return (
         <Modal
@@ -190,7 +190,7 @@ function GeoModal(props) {
                                                         return (
                                                             <>
                                                                 {single.horses.length !== 0 ?
-                                                                    <div key={i} className='horseStyles'>
+                                                                    <div key={i} className='horse-styles'>
                                                                         <span>{horse.training_style}</span>
                                                                     </div> :
                                                                     <div>
@@ -202,11 +202,11 @@ function GeoModal(props) {
                                                     })
                                                 }
                                             </div>
-                                            <div>{`Equestrians : ${single.equestrians.length}`}</div>
+                                            <div>{`Equestrians : ${single.riders.length}`}</div>
                                             <div>{`Available Boxes :${single.number_of_boxes - single.horses.length}`}</div>
                                         </div>
                                         <div className='routerButton'>
-                                            <button onClick={() => history.push(`/stable/${single._id}`)}>Check this out!</button>
+                                            <button onClick={() => history.push(`/stables/${single._id}`)}>Check this out!</button>
                                             <button>Favorite</button>
                                         </div>
                                     </div>

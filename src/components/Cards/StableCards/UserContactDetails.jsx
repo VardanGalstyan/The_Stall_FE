@@ -7,10 +7,9 @@ function UserContactDetails({ stable, horse }) {
 
     const history = useHistory()
 
-    console.log(stable);
 
     return (
-        <div className='user-contact-details'>
+        <div className='card-user-contact-details'>
             <span className='user-contact-header'>Contact Us</span>
             <div className='user-contact-body'>
                 <div className='user-contact-call'>
@@ -19,7 +18,7 @@ function UserContactDetails({ stable, horse }) {
                 </div>
                 <div className='user-contact-email'>
                     <span className='user-contact-email-icon'><MdEmail /></span>
-                    <span className='user-contact-email-address'>john.doe@gmail.com</span>
+                    <span className='user-contact-email-address'>{stable && stable.contacts.email || horse && horse.horse_owner.contacts.email}</span>
                 </div>
             </div>
             <div className='user-contact-button-holder'>

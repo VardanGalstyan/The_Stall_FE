@@ -40,14 +40,14 @@ function UserProfile(props) {
                     :
                     <Col className='user-profile' lg={4} xl={3}>
                         <div className='user-profile-header'>
-                            {/* {
-                                !props.data.avatar
+                            {
+                                !props.avatar
                                     ? <img src="https://autohaus-lemke.de/site/assets/files/1085/platzhalter-mann.jpg" alt="user-thumbnail" />
-                                    : <img src={props.data.avatar} alt="profile-cover" />
-                            } */}
+                                    : <img src={props.avatar} alt="profile-cover" />
+                            }
                         </div>
                         <div className='user-profile-title'>
-                            <span>{name}</span>
+                            <span>{name && props.name}</span>
                             <div className='user-contact-details'>
                                 <span onClick={() => handleContactDetails(setLocation, location)}><ImLocation2 /></span>
                                 <span onClick={() => handleContactDetails(setPhone, phone)}><IoCall /></span>
@@ -75,11 +75,11 @@ function UserProfile(props) {
                             <div className='user-profile-details-mobile'>
                                 <div className='mobile-number'>
                                     <span className='details-mobile-icon'><ImMobile /></span>
-                                    <span className='details-mobile-text'>{`+ ${props.data.contacts.mobile}`}</span>
+                                    <span className='details-mobile-text'>{`+ ${props.contacts.phone}`}</span>
                                 </div>
                                 <div className='whatsapp-number'>
                                     <span className='details-whatsapp-icon'><IoLogoWhatsapp /></span>
-                                    <span className='details-whatsapp-text'>{`+ ${props.data.contacts.mobile}`}</span>
+                                    <span className='details-whatsapp-text'>{`+ ${props.contacts.phone}`}</span>
                                 </div>
                             </div>
                         }

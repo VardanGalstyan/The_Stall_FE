@@ -11,7 +11,6 @@ function SingleCard({ stable }) {
     const [showReview, setShowReview] = useState(false)
     const [contactDetails, setContactDetails] = useState(false)
 
-
     return (
         <div id='home-single-card'>
             <div className='card-image-holder'>

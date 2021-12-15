@@ -1,16 +1,3 @@
-.formButton {
-    background-color: transparent !important;
-    color: white !important;
-    font-size: 20px !important;
-    font-family: "Cairo", sans-serif;
-    font-weight: 700 !important;
-    border: none !important;
-
-    &:hover {
-        background-color: rgba(255, 255, 255, 0.123) !important;
-    }
-}
-
 @mixin social-media($color) {
     background-color: $color;
     display: flex;
@@ -25,5 +12,3 @@
     background-color: black;
     z-index: 2 !important;
 }
-
-

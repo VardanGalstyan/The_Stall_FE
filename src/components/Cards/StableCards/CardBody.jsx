@@ -36,7 +36,7 @@ function CardBody(props) {
                     onClick={() => props.handleContactDetails()}
                 >
                     {props.stable.stable_owner ?
-                        props.stable.stable_owner.first_name
+                        `${props.stable.stable_owner.first_name} ${props.stable.stable_owner.surname}` 
                         : 'Add Name'
                     }
                 </span>

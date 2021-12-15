@@ -2,8 +2,8 @@
 
 #geoModal {
     .modal-content {
-        background-color: #7b8561;
-        color: white;
+        background-color: #fff;
+        color: #3b3b3b;
         font-family: Cairo;
         border-radius: 10px;
     }
@@ -12,7 +12,7 @@
         border-bottom: rgba(255, 255, 255, 0.308) 1px solid;
 
         button {
-            color: white;
+            color: #3b3b3b;
         }
     }
 
@@ -29,10 +29,10 @@
             border: none;
             padding: 5px;
             border-radius: 4px;
-            color: white;
+            color: #3b3b3b;
 
             &:hover {
-                background-color: rgba(255, 255, 255, 0.187);
+                background-color: #3b3b3b17;
             }
         }
 
@@ -43,7 +43,7 @@
                 width: 25px;
                 height: 25px;
                 padding: 4px;
-                color: black;
+                color: #3b3b3b;
                 margin-bottom: 5px;
             }
         }
@@ -62,12 +62,13 @@
             }
         }
 
-        .horseStyles {
+        .horse-styles {
             display: flex;
-            color: black;
+            color: #3b3b3b;
             margin-bottom: 5px;
 
             & > span {
+                border: #ffcc56 1px solid;
                 border-radius: 7px;
                 background-color: #ffffff7c;
                 padding: 2px 5px;
@@ -83,13 +84,14 @@
     }
 
     .modal-footer {
-        border-top: rgba(255, 255, 255, 0.308) 1px solid;
+        border-top: rgba(109, 109, 109, 0.13) 1px solid;
         button {
             background-color: transparent;
+            color: #3b3b3b;
             border: none;
 
             &:hover {
-                background-color: rgba(255, 255, 255, 0.187);
+                background-color: #3b3b3b17;
             }
         }
     }
@@ -99,11 +101,11 @@
         width: 100%;
         object-fit: cover;
         background-repeat: no-repeat;
-        border: white 10px solid;
+        border: #ffcc56 5px solid;
 
         .cluster-marker {
             color: white;
-            background-color: $swatch_7;
+            background-color: #3b3b3b;
             border-radius: 50%;
             padding: 10px;
             display: flex;
@@ -118,7 +120,7 @@
         .place-marker {
             font-size: 25px;
             color: white;
-            background-color: $swatch_7;
+            background-color: #3b3b3b;
             padding: 5px;
             width: 40px;
             height: 40px;

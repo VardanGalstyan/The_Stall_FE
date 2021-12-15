@@ -1,5 +1,5 @@
 import './App.css';
-import './Styles/css/Styles.css'
+import './Styles/scss/styles.css'
 import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import Error from './utils/Error';

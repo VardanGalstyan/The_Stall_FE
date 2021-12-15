@@ -8,6 +8,7 @@ import RegisterModal from '../onboarding/Register/RegisterModal.jsx'
 import LoginModal from '../onboarding/Login/LoginModal.jsx'
 import { useHistory } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
+import useFetch from '../..//utils/useFetch'
 
 function Feed() {
 
@@ -17,6 +18,7 @@ function Feed() {
     const [responsive, setResponsive] = useState(false)
     const history = useHistory()
     const token = localStorage.getItem('token')
+    const role = localStorage.getItem('role')
 
     const handleLogOut = () => {
         localStorage.removeItem('token')
@@ -24,6 +26,8 @@ function Feed() {
         localStorage.removeItem('user')
         history.push('/home')
     }
+
+    const { data } = useFetch(`http://localhost:3001/${role}/me`, token)
 
 
     return (
@@ -48,7 +52,7 @@ function Feed() {
                                     </div>
                                     :
                                     <div className='responsive-dropDown-user'>
-                                        <span>My Profile</span>
+                                        <span onClick={() => history.push(`/${role}/${data && data._id}`)} >My Profile</span>
                                         <span>Settings</span>
                                         <span>Help</span>
                                         <span onClick={handleLogOut}>Log out</span>
@@ -60,12 +64,12 @@ function Feed() {
                 </div>
                 {!token
                     ?
-                    <div className={`navbar-feed-guest`}>
+                    <div className='navbar-feed-guest'>
                         <button onClick={() => setLoginModalShow(true)} className='signInButton'>Sign in</button>
                         <button onClick={() => setModalShow(true)} className='signUpButton'>Sign up</button>
                     </div>
                     :
-                    <div className={`navbar-feed-elements`}>
+                    <div className='navbar-feed-elements'>
                         <span>Home</span>
                         <div onClick={() => setShow(!show)} className='navbarDropDownFeed'>
                             <span>My Profile</span>
@@ -73,7 +77,7 @@ function Feed() {
                         </div>
                         <div className={`${!show ? 'd-none' : 'd-block'} navbarDropDown`}>
                             <div className='navbarDropDown-elements'>
-                                <span>My Profile</span>
+                                <span onClick={() => history.push(`/${role}/${data._id}`)}>My Profile</span>
                                 <span>Settings</span>
                                 <span>Help</span>
                                 <span onClick={handleLogOut}>Log out</span>
