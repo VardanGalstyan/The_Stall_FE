@@ -10,6 +10,10 @@ import StableCards from '../Cards/StableCards/StableCards'
 import Calendar from '../../reusables/Calendar/CalendarPlanner'
 import Reviews from '../../reusables/Reviews/Reviews'
 import { useParams } from 'react-router-dom'
+import { BsThreeDots } from 'react-icons/bs'
+import AddHorseModal from './AddHorseModal.jsx'
+
+
 
 
 function HorseOwnerProfile() {
@@ -18,7 +22,9 @@ function HorseOwnerProfile() {
     const token = localStorage.getItem('token')
     const [data, setData] = useState(null)
     const [isPending, setIsPending] = useState(false)
+    const [settings, setSettings] = useState(false)
     const [error, setError] = useState(false)
+    const [modalShow, setModalShow] = useState(false)
 
 
     const handlefetch = async () => {
@@ -111,6 +117,28 @@ function HorseOwnerProfile() {
                             <div className='profile-container'>
                                 <div className='profile-container-title'>
                                     <span>Horses</span>
+                                    {
+                                        validateUser &&
+                                        <>
+                                            <span
+                                                className='profile-aboutUs-options'
+                                                onClick={() => setSettings(!settings)}
+                                            >
+                                                <BsThreeDots />
+                                            </span>
+                                            {
+                                                settings &&
+                                                <div className='container-item-settings-button'>
+                                                    <span onClick={() => {
+                                                        setModalShow(true)
+                                                        setSettings(false)
+                                                    }}
+                                                        className='edit-button'>Add Horse</span>
+                                                    <span className='hide-button'>Hide</span>
+                                                </div>
+                                            }
+                                        </>
+                                    }
                                 </div>
                                 <div className='profile-container-scrollable'>
                                     {
@@ -137,6 +165,10 @@ function HorseOwnerProfile() {
                             <Reviews />
                         </Col>
                     </Container>
+                    <AddHorseModal
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                    />
                 </>
             }
         </div >

@@ -18,6 +18,7 @@ function SingleHorseCard({ horse, loading, name }) {
     const history = useHistory()
 
     return (
+
         <div id='home-single-horse-card'>
             {
                 loading ?

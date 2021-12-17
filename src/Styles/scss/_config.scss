@@ -226,9 +226,11 @@
             align-items: center;
             right: 0px;
             top: 30px;
-            background-color: #f7f7f7;
-            width: 80px;
+            background-color: #fff;
+            width: 200px;
             border-radius: 3px;
+            z-index: 2;
+            box-shadow: #3b3b3b4b 0px 0px 5px;
 
             span {
                 font-size: 12px;
@@ -240,8 +242,8 @@
                 border-bottom: 1px solid #e6e6e652;
 
                 &:hover {
-                    color: white;
-                    background-color: #ffcc56;
+                    background-color: #a8a8a823;
+                    color: #3b3b3b;
                 }
             }
         }

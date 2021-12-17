@@ -65,6 +65,7 @@ function Home() {
                 <GeoModal
                     show={modalShow}
                     onHide={() => setModalShow(false)}
+
                 />
             </Container>
             <Footer />

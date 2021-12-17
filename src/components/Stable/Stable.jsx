@@ -19,6 +19,8 @@ function Stable() {
     const { id } = useParams()
     const { data, isPending, error } = useFetch(`http://localhost:3001/stables/${id}`)
 
+    const name = data && `${data.stable_owner && data.stable_owner.first_name} ${data.stable_owner && data.stable_owner.surname}`
+
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -31,8 +33,15 @@ function Stable() {
                 image={data && data.avatar}
                 name={data && data.stable_name}
             />
+
             <Container className='profile-body'>
-                <UserProfile data={data && data.stable_owner} location={data && data.location} />
+                <UserProfile
+                    data={data && data.stable_owner}
+                    contacts={data && data.contacts}
+                    location={data && data.location}
+                    name={name}
+
+                />
                 <Col className='profile-body-properties'>
                     <div className='profile-container'>
                         <div className='profile-container-title'>

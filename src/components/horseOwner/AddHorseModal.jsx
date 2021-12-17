@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal, Button, Form, Col, Row } from 'react-bootstrap'
 import { IoAddSharp } from 'react-icons/io5'
 import Loader from 'react-js-loader'
 import { AiOutlineCheckCircle } from 'react-icons/ai'
 import { VscError } from 'react-icons/vsc'
 import { useHistory } from 'react-router-dom'
+import StableSearchResult from './NewHorseModal/StableSearchResult'
+
 
 function AddHorseModal(props) {
 
@@ -17,7 +19,8 @@ function AddHorseModal(props) {
         height: "",
         avatar: "",
         exp_level: "",
-        description: ""
+        description: "",
+        stable: ""
     }
 
     const history = useHistory()
@@ -30,7 +33,15 @@ function AddHorseModal(props) {
     const [horse, setHorse] = useState(initialState)
     const [id, setId] = useState('')
 
+
+
     const handleError = () => imageNull ? setError(false) : setError(false) && setHorse({ ...initialState })
+    const validate = () => {
+        if (horse.name.length > 3 && horse.gender.length > 2 && horse.date_of_birth.length > 3 && horse.breed.length > 3) {
+            return true
+        }
+    }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -110,13 +121,12 @@ function AddHorseModal(props) {
 
     }
 
-
     return (
         <Modal
             {...props}
             aria-labelledby="contained-modal-title-vcenter"
             centered
-            className='addHorsesModal'
+            className='add-horse-modal'
             size='lg'
         >
             <Modal.Header closeButton>
@@ -126,84 +136,87 @@ function AddHorseModal(props) {
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={handleSubmit}>
-                    <Row className='align-items-center'>
-                        <Col lg={4} className='mb-4'>
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOPyfvJRS9c3YymVIXifqqFXQ2eMDNfZjhMw&usqp=CAU" alt="updateImage" />
-                            <div className='addHorseImage'>
-                                <input type="file" className='inputImage' onChange={(e) => setImage(e.target.files[0])} />
-                                <IoAddSharp />
-                            </div>
-                        </Col>
-                        <Col>
-                            <Row>
-                                <Form.Group as={Col}>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Enter name"
-                                        value={horse.name}
-                                        onChange={(e) => setHorse({ ...horse, name: e.target.value })}
-                                    />
-                                </Form.Group>
-                                <Form.Group as={Col}>
-                                    <Form.Control
-                                        as="select"
-                                        onChange={(e) => setHorse({ ...horse, gender: e.target.value })}
-                                    >
-                                        <option>Gender</option>
-                                        <option value='mare'>Mare</option>
-                                        <option value='stallion'>Stallion</option>
-                                        <option value='gelding'>Gelding</option>
-                                    </Form.Control>
-                                </Form.Group>
-                            </Row>
-                            <Row>
-                                <Form.Group as={Col}>
-                                    <Form.Control
-                                        type="number"
-                                        min='1990'
-                                        max='2030'
-                                        placeholder="Year"
-                                        value={horse.date_of_birth}
-                                        onChange={(e) => setHorse({ ...horse, date_of_birth: e.target.value })}
-                                    />
-                                </Form.Group>
-                                <Form.Group as={Col}>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Breed"
-                                        value={horse.breed}
-                                        onChange={(e) => setHorse({ ...horse, breed: e.target.value })}
-                                    />
-                                </Form.Group>
-                                <Form.Group as={Col}>
-                                    <Form.Control
-                                        type="number"
-                                        min='140'
-                                        max='200'
-                                        placeholder="Height"
-                                        value={horse.height}
-                                        onChange={(e) => setHorse({ ...horse, height: e.target.value })}
-                                    />
-                                </Form.Group>
-                            </Row>
-                            <Row>
-                                <Form.Group as={Col}>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Training Style"
-                                        value={horse.training_style}
-                                        onChange={(e) => setHorse({ ...horse, training_style: e.target.value })}
-                                    />
-                                </Form.Group>
-                                <Form.Group as={Col}>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder="Experience"
-                                        value={horse.exp_level}
-                                        onChange={(e) => setHorse({ ...horse, exp_level: e.target.value })}
-                                    />
-                                </Form.Group>
-                            </Row>
+                    <Col lg={4} className='modal-avatar'>
+                        <img src="https://autohaus-lemke.de/site/assets/files/1085/platzhalter-mann.jpg" alt="updateImage" />
+                        <div className='add-horse-image'>
+                            <input
+                                type="file"
+                                onChange={(e) => setImage(e.target.files[0])}
+                            />
+                            <IoAddSharp />
+                        </div>
+                    </Col>
+                    <Col className='add-horse-modal-form'>
+                        <Row>
+                            <Form.Group as={Col}>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Enter name"
+                                    value={horse.name}
+                                    onChange={(e) => setHorse({ ...horse, name: e.target.value })}
+                                />
+                            </Form.Group>
+                            <Form.Group as={Col}>
+                                <Form.Control
+                                    as="select"
+                                    onChange={(e) => setHorse({ ...horse, gender: e.target.value })}
+                                >
+                                    <option>Gender</option>
+                                    <option value='mare'>Mare</option>
+                                    <option value='stallion'>Stallion</option>
+                                    <option value='gelding'>Gelding</option>
+                                </Form.Control>
+                            </Form.Group>
+                        </Row>
+                        <Row>
+                            <Form.Group as={Col}>
+                                <Form.Control
+                                    type="number"
+                                    min='1990'
+                                    max='2030'
+                                    placeholder="Year"
+                                    value={horse.date_of_birth}
+                                    onChange={(e) => setHorse({ ...horse, date_of_birth: e.target.value })}
+                                />
+                            </Form.Group>
+                            <Form.Group as={Col}>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Breed"
+                                    value={horse.breed}
+                                    onChange={(e) => setHorse({ ...horse, breed: e.target.value })}
+                                />
+                            </Form.Group>
+                            <Form.Group as={Col}>
+                                <Form.Control
+                                    type="number"
+                                    min='140'
+                                    max='200'
+                                    placeholder="Height"
+                                    value={horse.height}
+                                    onChange={(e) => setHorse({ ...horse, height: e.target.value })}
+                                />
+                            </Form.Group>
+                        </Row>
+                        <Row>
+                            <Form.Group as={Col}>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Training Style"
+                                    value={horse.training_style}
+                                    onChange={(e) => setHorse({ ...horse, training_style: e.target.value })}
+                                />
+                            </Form.Group>
+                            <Form.Group as={Col}>
+                                <Form.Control
+                                    type="text"
+                                    placeholder="Experience"
+                                    value={horse.exp_level}
+                                    onChange={(e) => setHorse({ ...horse, exp_level: e.target.value })}
+                                />
+                            </Form.Group>
+                        </Row>
+                        <Row>
                             <Form.Group as={Col}>
                                 <Form.Control
                                     as='textarea'
@@ -214,36 +227,41 @@ function AddHorseModal(props) {
                                     onChange={(e) => setHorse({ ...horse, description: e.target.value })}
                                 />
                             </Form.Group>
-                            {
-                                isLoading ? <Loader type='spinner-circle' size={30} /> :
-                                    error ?
-                                        <div className='incorrectCredentials'>
-                                            {
-                                                imageNull ? <span> Want to add avatar? <span onClick={handleError}><AiOutlineCheckCircle /></span> <span ><VscError onClick={() => {
-                                                    props.onHide()
-                                                    setHorse({ ...initialState })
-                                                }} /></span> </span>
-                                                    : <span>Missing credentials <span><VscError onClick={handleError} /></span></span>
-                                            }
-                                        </div>
-                                        :
-                                        <Button className='formButton' variant="primary" type="submit">
-                                            {
-                                                !isDone ? "Submit" : "Done"
-                                            }
-                                        </Button>
-                            }
-                        </Col>
-                    </Row>
+                        </Row>
+                        <StableSearchResult
+                            stableValue={(stableId) => setHorse({ ...horse, stable: stableId })}
+                            isStableValue={horse.stable}
+                        />
+
+                        {
+                            isLoading ? <Loader type='spinner-circle' size={30} /> :
+                                error ?
+                                    <div className='incorrectCredentials'>
+                                        {
+                                            imageNull ? <span> Want to add avatar? <span onClick={handleError}><AiOutlineCheckCircle /></span> <span ><VscError onClick={() => {
+                                                props.onHide()
+                                                setHorse({ ...initialState })
+                                            }} /></span> </span>
+                                                : <span>Missing credentials <span><VscError onClick={handleError} /></span></span>
+                                        }
+                                    </div>
+                                    : validate() &&
+                                    <Button className='form-button' variant="primary" type="submit">
+                                        {
+                                            !isDone ? "Submit" : "Done"
+                                        }
+                                    </Button>
+                        }
+                    </Col>
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button className='formButton' onClick={() => {
+                <Button className='form-button' onClick={() => {
                     props.onHide()
                     setHorse({ ...initialState })
                 }}>Close</Button>
             </Modal.Footer>
-        </Modal>
+        </Modal >
     )
 }
 
