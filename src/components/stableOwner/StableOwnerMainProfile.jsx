@@ -6,7 +6,6 @@ import { Col, Container } from 'react-bootstrap'
 import './style/soStyle.css'
 import { IoAddSharp } from 'react-icons/io5'
 import StableOwnerModal from './StableOwnerModal'
-import useFetch from '../../utils/useFetch'
 import AboutUser from '../../reusables/AboutUser/AboutUser.jsx'
 import StableCards from '../Cards/StableCards/StableCards.jsx'
 import { useParams } from 'react-router-dom'
@@ -97,7 +96,7 @@ function StableOwnerMainProfile() {
                                             <span>Stables</span>
                                         </div>
                                         <div className='profile-container-scrollable'>
-                                            {data && data.stable.map(stable => 
+                                            {data && data.stable.map(stable =>
                                                 <StableCards
                                                     key={stable.id}
                                                     stable={stable}

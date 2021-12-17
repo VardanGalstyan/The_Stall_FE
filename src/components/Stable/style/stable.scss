@@ -1,49 +1,12 @@
 @import "../../../Styles/scss/config.scss";
 @import "../../../Styles/scss/utils.scss";
 
-.body-properties-header {
-    display: flex;
-    padding: 10px;
-    justify-content: space-around;
-    width: 100%;
-
-    .properties-title {
-        font-weight: 700;
-        font-size: 16px;
-        color: #3b3b3b;
-        width: 100%;
-    }
-
-    .properties-boxes {
-        justify-content: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-
-        .property-items {
-            // background-color: #ffcc56;
-            border-radius: 25px;
-            padding: 0px 15px;
-            border: 1px solid #e6e6e698;
-        }
-    }
-
-    svg {
-        font-size: 35px;
-        padding: 5px;
-        color: #3b3b3b;
-        border-radius: 50%;
-    }
-}
-
 .single-team-member {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 7px;
-    background-color: #ffcc56;
     border-radius: 7px;
 
     .single-team-member-avatar {
@@ -53,7 +16,7 @@
             width: 200px;
             height: 200px;
             border-radius: 50%;
-            border: 5px solid #fff;
+            border: 5px solid $yellow;
         }
     }
 

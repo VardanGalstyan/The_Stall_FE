@@ -8,11 +8,22 @@
     flex-wrap: wrap;
     padding: 5px 0px;
 
+    .add-property-item {
+        border: 1px solid #837d7d28;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover {
+            border: 1px solid #837d7d;
+            color: #837d7d;
+        }
+    }
+
     span {
         font-size: 12px;
         padding: 5px 10px;
-        font-weight: 600;
+        font-weight: 500;
         border: 1px solid $yellow;
-        border-radius: 8px;
+        border-radius: 3px;
     }
 }

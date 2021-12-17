@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Modal, Button, Form, Col, Row } from 'react-bootstrap'
 import { IoAddSharp } from 'react-icons/io5'
 import Loader from 'react-js-loader'
@@ -37,7 +37,14 @@ function AddHorseModal(props) {
 
     const handleError = () => imageNull ? setError(false) : setError(false) && setHorse({ ...initialState })
     const validate = () => {
-        if (horse.name.length > 3 && horse.gender.length > 2 && horse.date_of_birth.length > 3 && horse.breed.length > 3) {
+        if (horse.name.length > 3 &&
+            horse.gender.length > 2 &&
+            horse.date_of_birth.length > 3 &&
+            horse.breed.length > 3 &&
+            horse.training_style.length > 3 &&
+            horse.height.length > 2 &&
+            horse.exp_level.length > 3 &&
+            horse.description.length > 3) {
             return true
         }
     }
@@ -245,7 +252,8 @@ function AddHorseModal(props) {
                                                 : <span>Missing credentials <span><VscError onClick={handleError} /></span></span>
                                         }
                                     </div>
-                                    : validate() &&
+                                    :
+                                    validate() &&
                                     <Button className='form-button' variant="primary" type="submit">
                                         {
                                             !isDone ? "Submit" : "Done"

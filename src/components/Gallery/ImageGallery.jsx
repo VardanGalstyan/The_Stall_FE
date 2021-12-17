@@ -5,7 +5,7 @@ function ImageGallery() {
     return (
         <div className='profile-container'>
             <div className='profile-container-title'>
-                <span>In-house Horses</span>
+                <span>Gallery</span>
             </div>
             <div className='gallery'>
                 <figure className='gallery__item gallery__item--1'>

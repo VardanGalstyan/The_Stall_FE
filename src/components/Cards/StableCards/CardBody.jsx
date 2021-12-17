@@ -35,8 +35,8 @@ function CardBody(props) {
                     onMouseLeave={() => setContactUser(false)}
                     onClick={() => props.handleContactDetails()}
                 >
-                    {props.stable.stable_owner ?
-                        `${props.stable.stable_owner.first_name} ${props.stable.stable_owner.surname}` 
+                    {props.stable && props.stable.stable_owner ?
+                        `${props.stable.stable_owner.first_name} ${props.stable.stable_owner.surname}`
                         : 'Add Name'
                     }
                 </span>

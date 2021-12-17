@@ -11,13 +11,14 @@ function SingleCard({ stable }) {
     const [showReview, setShowReview] = useState(false)
     const [contactDetails, setContactDetails] = useState(false)
 
+    console.log(stable);
     return (
         <div id='home-single-card'>
             <div className='card-image-holder'>
                 {
-                    !stable.avatar
+                    stable && !stable.avatar
                         ? <img src='https://www.messagetech.com/wp-content/themes/ml_mti/images/no-image.jpg' alt="stable-avatar" />
-                        : <img src={stable.avatar} alt="stable-avatar" />
+                        : <img src={stable && stable.avatar} alt="stable-avatar" />
                 }
                 <div className={`${!showReview ? 'card-rating-view' : 'card-rating-full-view'}`}
                     onMouseEnter={() => setShowReview(true)}
@@ -26,7 +27,11 @@ function SingleCard({ stable }) {
                     {!showReview
                         ?
                         <div className='rating-stars'>
-                            <RatingView size={15} ratingValue={4} emptyColor={'#fff'} />
+                            <RatingView
+                                size={15}
+                                ratingValue={4}
+                                emptyColor={'#fff'}
+                            />
                         </div>
                         :
                         <UserRatingView />
@@ -34,10 +39,13 @@ function SingleCard({ stable }) {
                 </div>
                 {
                     contactDetails &&
-                    <UserContactDetails stable={stable} />
+                    <UserContactDetails stable={stable && stable} />
                 }
             </div>
-            <CardBody stable={stable} handleContactDetails={() => setContactDetails(!contactDetails)} />
+            <CardBody
+                stable={stable && stable}
+                handleContactDetails={() => setContactDetails(!contactDetails)}
+            />
         </div >
     )
 }

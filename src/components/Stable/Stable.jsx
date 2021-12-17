@@ -12,6 +12,7 @@ import ImageGallery from '../Gallery/ImageGallery'
 import SingleHorseCard from '../Cards/HorseCards/SingleHorseCard'
 import StableTeam from './StableTeam'
 import useFetch from '../../utils/useFetch'
+import InfoHeader from '../../reusables/InfoHeader/InfoHeader'
 
 
 function Stable() {
@@ -24,6 +25,9 @@ function Stable() {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
+
+    const services = ['Half Board', 'Full Board', 'Self-Sufficiency']
+    const facilities = ['Open Stable', 'Paddock', 'Outdoor boxes', 'Pension and Guest Boxes', 'Sumer Pasture', 'Riding Arena', 'Washing Arena']
 
 
     return (
@@ -43,36 +47,12 @@ function Stable() {
 
                 />
                 <Col className='profile-body-properties'>
-                    <div className='profile-container'>
-                        <div className='profile-container-title'>
-                            <span>Properties</span>
-                        </div>
-                        <div className='body-properties-header'>
-                            <div className='properties-boxes'>
-                                <span className='properties-title'>Boxes</span>
-                                <div className='property-items'>
-                                    <span><GiStable /></span>
-                                    <span>26/31</span>
-                                </div>
-                            </div>
-                            <div className='properties-boxes'>
-                                <span className='properties-title'>Horses</span>
-                                <div className='property-items'>
-                                    <span><GiHorseHead /></span>
-                                    <span>18</span>
-                                </div>
-                            </div>
-                            <div className='properties-boxes'>
-                                <span className='properties-title'>Horse Owners</span>
-                                <div className='property-items'>
-                                    <span><GiPerson /></span>
-                                    <span>16</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <UserProperties title={'services'} />
-                    <UserProperties title={'Facilities'} />
+                    <InfoHeader
+                        boxes={data && data.number_of_boxes}
+                        horses={data && data.horses}
+                    />
+                    <UserProperties data={services} title={'services'} />
+                    <UserProperties data={facilities} title={'Facilities'} />
                     <AboutUser content={data && data.description} loading={isPending} />
                     <div className='profile-container'>
                         <div className='profile-container-title'>
@@ -80,7 +60,11 @@ function Stable() {
                         </div>
                         <div className='profile-container-scrollable'>
                             {
-                                data && data.horses.map((horse, index) => <SingleHorseCard key={index} horse={horse} loading={isPending} />)
+                                data && data.horses.map((horse, index) => <SingleHorseCard
+                                    key={index}
+                                    horse={horse}
+                                    loading={isPending}
+                                />)
                             }
                         </div>
                     </div>
@@ -90,8 +74,6 @@ function Stable() {
                             <span>Our Team</span>
                         </div>
                         <div className='profile-container-scrollable'>
-                            <StableTeam />
-                            <StableTeam />
                             <StableTeam />
                         </div>
                     </div>

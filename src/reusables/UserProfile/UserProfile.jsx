@@ -47,7 +47,7 @@ function UserProfile(props) {
                             }
                         </div>
                         <div className='user-profile-title'>
-                            <span>{name && props.name}</span>
+                            <span>{props.name && props.name || name}</span>
                             <div className='user-contact-details'>
                                 <span onClick={() => handleContactDetails(setLocation, location)}><ImLocation2 /></span>
                                 <span onClick={() => handleContactDetails(setPhone, phone)}><IoCall /></span>
@@ -75,11 +75,11 @@ function UserProfile(props) {
                             <div className='user-profile-details-mobile'>
                                 <div className='mobile-number'>
                                     <span className='details-mobile-icon'><ImMobile /></span>
-                                    <span className='details-mobile-text'>{`+ ${props.contacts.phone}`}</span>
+                                    <span className='details-mobile-text'>{`+ ${props.contacts && props.contacts.phone}`}</span>
                                 </div>
                                 <div className='whatsapp-number'>
                                     <span className='details-whatsapp-icon'><IoLogoWhatsapp /></span>
-                                    <span className='details-whatsapp-text'>{`+ ${props.contacts.phone}`}</span>
+                                    <span className='details-whatsapp-text'>{`+ ${props.contacts && props.contacts.phone}`}</span>
                                 </div>
                             </div>
                         }

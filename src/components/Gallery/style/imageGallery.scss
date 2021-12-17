@@ -3,8 +3,8 @@
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(9, 5vw);
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(6, 3vw);
     grid-gap: 10px;
     width: 100%;
 
@@ -35,7 +35,7 @@
 
     .gallery__item--3 {
         grid-column-start: 5;
-        grid-column-end: 9;
+        grid-column-end: 13;
         grid-row-start: 1;
         grid-row-end: 10;
     }

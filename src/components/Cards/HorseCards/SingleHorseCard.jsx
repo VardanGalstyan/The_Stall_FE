@@ -66,7 +66,7 @@ function SingleHorseCard({ horse, loading, name }) {
                                 <span className='card-description'> {horse.breed}</span>
                             </div>
                             <div className='riding-style'>
-                                <span>Western</span>
+                                <span>{horse.training_style}</span>
                             </div>
                             <div className='horse-card-belongs'>
                                 <div className='card-contact-user'>

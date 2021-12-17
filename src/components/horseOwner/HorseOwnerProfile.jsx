@@ -12,7 +12,7 @@ import Reviews from '../../reusables/Reviews/Reviews'
 import { useParams } from 'react-router-dom'
 import { BsThreeDots } from 'react-icons/bs'
 import AddHorseModal from './AddHorseModal.jsx'
-
+import ImageGallery from '../Gallery/ImageGallery.jsx'
 
 
 
@@ -57,7 +57,7 @@ function HorseOwnerProfile() {
         handlefetch()
         window.scrollTo(0, 0)
         validateUser()
-        console.log('another data to check', data);
+        console.log('another data to check', data && data);
 
     }, [])
 
@@ -72,7 +72,11 @@ function HorseOwnerProfile() {
                         name={name}
                     />
                     <Container className='profile-body'>
-                        <UserProfile data={data} loading={isPending} />
+                        <UserProfile
+                            data={data && data}
+                            loading={isPending}
+                            location={data && data.horses[0].stable.location}
+                        />
                         <Col className='profile-body-properties'>
                             <div className='profile-container'>
                                 <div className='profile-container-title'>
@@ -105,7 +109,12 @@ function HorseOwnerProfile() {
                                     </div>
                                 </div>
                             </div>
-                            <AboutUser content={data && data.description} loading={isPending} isValid={validateUser} handlefetch={handlefetch} />
+                            <AboutUser
+                                content={data && data.description}
+                                loading={isPending}
+                                isValid={validateUser}
+                                handlefetch={handlefetch}
+                            />
                             <div className='profile-container'>
                                 <div className='profile-container-title'>
                                     <span>Calendar</span>
@@ -159,9 +168,12 @@ function HorseOwnerProfile() {
                                     <span>Stables</span>
                                 </div>
                                 <div className='profile-container-scrollable'>
-                                    {/* <StableCards /> */}
+                                    <StableCards
+                                        stable={data && data.horses[0].stable}
+                                    />
                                 </div>
                             </div>
+                            <ImageGallery />
                             <Reviews />
                         </Col>
                     </Container>

@@ -6,7 +6,7 @@ import './style/reviews.css'
 
 function Reviews() {
     return (
-        <div className='profile-container mt-2'>
+        <div className='profile-container'>
             <div className='review-container-header'>
                 <div className='profile-container-title'>
                     Reviews
