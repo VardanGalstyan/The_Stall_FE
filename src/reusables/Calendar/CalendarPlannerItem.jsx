@@ -6,7 +6,6 @@ function CalendarPlannerItem({ booking }) {
 
     const date = new Date(booking.booking_date).toString().split(' ').slice(1, 4).join(' ')
 
-    console.log(booking);
     return (
         <div className='calendar-planner-item'>
             <div className='calendar-planner-constants'>

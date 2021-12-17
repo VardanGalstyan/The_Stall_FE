@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
 import { Col } from 'react-bootstrap'
 import Loader from 'react-loader-spinner'
-import { BsThreeDots } from 'react-icons/bs'
 import AboutUserModal from './AboutUserModal'
 import './style/aboutUser.css'
+import DropDownOption from '../DropDownOption.jsx/DropDownOption'
 
 function BodyAboutUs({ content, loading, isValid, handlefetch }) {
 
-    const role = localStorage.getItem('role')
-
 
     const [isShow, setIsShow] = useState(false)
-    const [settings, setSettings] = useState(false)
     const [modalShow, setModalShow] = useState(false);
     const showTheText = !isShow ? "Show More..." : "Show less..."
 
@@ -30,36 +27,20 @@ function BodyAboutUs({ content, loading, isValid, handlefetch }) {
                     :
                     <>
                         <div className='profile-container-title'>
-                            <span>About us</span>
+                            <span>About Me</span>
                             {
                                 isValid &&
-                                <>
-                                    <span
-                                        className='profile-aboutUs-options'
-                                        onClick={() => setSettings(!settings)}
-                                    >
-                                        <BsThreeDots />
-                                    </span>
-                                    {
-                                        settings &&
-                                        <div className='container-item-settings-button'>
-                                            <span onClick={() => {
-                                                setModalShow(true)
-                                                setSettings(false)
-                                            }}
-                                                className='edit-button'>Edit</span>
-                                            <span className='hide-button'>Hide</span>
-                                        </div>
-                                    }
-                                </>
+                                <DropDownOption setModalShow={() => setModalShow(true)} />
                             }
                         </div>
-                        <div className={`${isShow ? 'show-more' : 'show-less'} profile-container-aboutUs-content`}>{content}</div>
+                        {
+                            <div className={`${isShow ? 'show-more' : 'show-less'} profile-container-aboutUs-content`}>{content}</div>
+                        }
                         <div
-                            className={`${content && content.length < 200 ? 'd-none' : 'd-block'} profile-content-aboutUs-button`}
+                            className={`${content && content.length < 400 ? 'd-none' : 'd-block'} profile-content-aboutUs-button`}
                             onClick={() => setIsShow(!isShow)}
                         >
-                            {showTheText}
+                            {content && showTheText}
                         </div>
                         <AboutUserModal
                             show={modalShow}

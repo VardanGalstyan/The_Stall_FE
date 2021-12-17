@@ -18,7 +18,7 @@ function RegisterModal(props) {
 
     const history = useHistory()
     const [isLoading, setIsLoading] = useState(false)
-    const [isError, setIsError] = useState(true)
+    const [isError, setIsError] = useState(false)
     const [role, setRole] = useState('')
     const [validated, setValidated] = useState(false)
     const [user, setUser] = useState(initialState)

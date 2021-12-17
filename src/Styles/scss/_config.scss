@@ -130,46 +130,6 @@
     }
 }
 
-@media (min-width: 1200px) {
-    .profile-body-properties {
-        width: 60% !important;
-    }
-}
-
-@media (max-width: 1200px) {
-    .profile-body-properties {
-        width: 60% !important;
-    }
-}
-
-@media (max-width: 993px) {
-    .profile-property-images {
-        img {
-            height: 100px !important;
-        }
-    }
-
-    .profile-body-properties {
-        width: 55% !important;
-    }
-}
-
-@media (max-width: 771px) {
-    #profile-body {
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    .profile-owner-profile {
-        width: 100% !important;
-    }
-
-    .profile-body-properties {
-        width: 100% !important;
-    }
-}
-
 //Profile body end
 
 .container-holder {
@@ -270,6 +230,13 @@
     text-align: center;
 }
 
+.main-loader {
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
 @media (min-width: 1200px) {
     .profile-body-properties {
         width: 60% !important;
@@ -326,96 +293,42 @@
     }
 }
 
-// a {
-//     text-decoration: none !important;
-// }
+@media (min-width: 1200px) {
+    .profile-body-properties {
+        width: 60% !important;
+    }
+}
 
-// .form-group {
-//     input,
-//     .form-control {
-//         height: 50px;
-//         font-size: 18px;
-//         color: rgba(255, 255, 255, 0.986);
-//         font-family: "Cairo", sans-serif;
-//         border: none;
-//         font-weight: 600;
-//         background-color: rgba(255, 255, 255, 0.041);
-//         width: 300px;
+@media (max-width: 1200px) {
+    .profile-body-properties {
+        width: 60% !important;
+    }
+}
 
-//         &::placeholder {
-//             background-color: transparent;
-//             color: rgba(240, 234, 234, 0.986);
-//         }
+@media (max-width: 993px) {
+    .profile-property-images {
+        img {
+            height: 100px !important;
+        }
+    }
 
-//         &:focus {
-//             background-color: transparent;
-//             border: none;
-//             box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.555);
-//             outline: none;
-//             color: rgba(255, 255, 255, 0.692);
-//         }
-//     }
-// }
+    .profile-body-properties {
+        width: 55% !important;
+    }
+}
 
-// .incorrectCredentials {
-//     color: white;
-//     font-size: 20px;
-//     font-family: "Cairo", sans-serif;
-//     font-weight: 700;
-//     margin-bottom: 10px;
+@media (max-width: 771px) {
+    #profile-body {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
 
-//     svg {
-//         margin-left: 5px;
-//         font-size: 25px;
+    .profile-owner-profile {
+        width: 100% !important;
+    }
 
-//         &:hover {
-//             background-color: white;
-//             color: black;
-//             border-radius: 50%;
-//             cursor: pointer;
-//         }
-//     }
-// }
-
-// .userProfileImage {
-//     border-radius: 50%;
-//     width: 200px;
-//     height: 200px;
-//     border: solid rgb(255, 255, 255) 5px;
-//     object-fit: cover;
-//     -webkit-animation: flip-in-ver-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-//     animation: flip-in-ver-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-//     cursor: pointer;
-//     background-color: white;
-//     font-family: "Cairo", sans-serif;
-//     font-size: 15px;
-
-//     p {
-//         margin: 0px;
-//     }
-
-//     @-webkit-keyframes flip-in-ver-right {
-//         0% {
-//             -webkit-transform: rotateY(-80deg);
-//             transform: rotateY(-80deg);
-//             opacity: 0;
-//         }
-//         100% {
-//             -webkit-transform: rotateY(0);
-//             transform: rotateY(0);
-//             opacity: 1;
-//         }
-//     }
-//     @keyframes flip-in-ver-right {
-//         0% {
-//             -webkit-transform: rotateY(-80deg);
-//             transform: rotateY(-80deg);
-//             opacity: 0;
-//         }
-//         100% {
-//             -webkit-transform: rotateY(0);
-//             transform: rotateY(0);
-//             opacity: 1;
-//         }
-//     }
-// }
+    .profile-body-properties {
+        width: 100% !important;
+    }
+}

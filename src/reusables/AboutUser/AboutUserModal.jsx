@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
+import { useParams } from 'react-router-dom'
 
 function AboutUserModal(props) {
 
@@ -7,12 +8,13 @@ function AboutUserModal(props) {
     const role = localStorage.getItem('role')
     const [isLoading, setIsLoading] = useState(false)
     const [description, setDescription] = useState({ description: '' })
+    const { id } = useParams()
 
     const handleUpdateDescription = async (e) => {
         try {
             e.preventDefault()
             setIsLoading(true)
-            const response = await fetch(`http://localhost:3001/${role}/me`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/${role}/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -35,6 +37,8 @@ function AboutUserModal(props) {
             console.log(error)
         }
     }
+
+    console.log(process.env.BASE_URL);
 
     return (
         <Modal

@@ -3,7 +3,7 @@ import './utils.css'
 function Loader() {
     return (
         <div className='loader'>
-            <img src='https://i.pinimg.com/originals/f4/06/70/f4067002c56532d9b275dd881a6f3d8f.gif' alt='loader'></img>
+            {/* <img src={'https://res.cloudinary.com/di8iypeft/image/upload/v1639769153/the_Stall/loader_nrum9c.gif'} alt='loader'></img> */}
             <div className="loading">
                 <div className="loading-text">
                     <span className="loading-text-words">L</span>

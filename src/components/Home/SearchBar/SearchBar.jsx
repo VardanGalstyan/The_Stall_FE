@@ -6,13 +6,12 @@ import { ImRadioUnchecked, ImRadioChecked2 } from 'react-icons/im'
 import { MdCancel } from 'react-icons/md'
 import { Container } from 'react-bootstrap'
 
-function SearchBar() {
+function SearchBar({ search, searchVal, setToSearch }) {
 
     const [isActive, setIsActive] = useState(false)
     const [isStableChecked, setIsStableChecked] = useState(false)
     const [isHorseChecked, setIsHorseChecked] = useState(false)
-    const [searchValue, setSearchValue] = useState('')
-    const [toSearch, setToSearch] = useState('')
+
 
     const handleFilterClick = (e) => {
         const value = e.currentTarget.children[0].innerText
@@ -26,18 +25,18 @@ function SearchBar() {
     }
 
     const handleSearch = () => {
-        setToSearch(searchValue)
-        setSearchValue('')
+        setToSearch(searchVal)
+        search('')
     }
 
     return (
         <Container id="search-container">
             <div className={`search-bar ${isActive && 'dropDown-activated-style'}`}>
                 {
-                    searchValue !== '' ?
+                    searchVal !== '' ?
                         <MdCancel
                             className={`eraseSearch-icon`}
-                            onClick={() => setSearchValue('')}
+                            onClick={() => search('')}
                         /> :
                         <BsSearch
                             className={`search-icon`}
@@ -46,13 +45,13 @@ function SearchBar() {
                 <input
                     type="text"
                     placeholder='Search...'
-                    value={searchValue}
+                    value={searchVal}
                     onChange={(e) =>
-                        setSearchValue(e.target.value)
+                        search(e.target.value)
                     }
                 />
                 {
-                    searchValue.length >= 3 &&
+                    searchVal.length >= 3 &&
                     <div
                         onClick={handleSearch}
                         className={`sendSearchValue-icon`}
@@ -65,7 +64,7 @@ function SearchBar() {
                     isActive &&
                     <div className={`search-filter-dropDown ${isActive ? "slide-in" : "slide-out"}`}>
                         <div onClick={(e) => handleFilterClick(e)} className='filteredBy-stables'>
-                            <span >Stables</span>
+                            <span>Stables</span>
                             {
                                 isStableChecked ? <ImRadioChecked2 className='stableChecked-radio' /> : <ImRadioUnchecked />
                             }

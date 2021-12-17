@@ -22,6 +22,34 @@
         flex-wrap: wrap;
         overflow: scroll;
 
+        .no-booking-available {
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 25%;
+
+            .book-a-ride {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                font-size: 16px;
+
+                .book-ride-icon {
+                    background-color: $yellow;
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
+                    color: white;
+                    cursor: pointer;
+
+                    &:hover {
+                        color: #3b3b3b;
+                    }
+                }
+            }
+        }
+
         .calendar-planner-header {
             display: flex;
             justify-content: center;
