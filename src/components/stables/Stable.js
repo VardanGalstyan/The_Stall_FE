@@ -12,7 +12,7 @@ import { useParams } from 'react-router';
 function Stable() {
 
     const { id } = useParams()
-    const { data } = useFetch(`${process.env.REACT_APP_BASE_URL}stables/${id}`)
+    const { data } = useFetch(`${process.env.REACT_APP_BASE_URL}/stables/${id}`)
 
     return (
         <Container fluid className='usersProfile'>

@@ -24,7 +24,7 @@ function HorseProfile() {
 
         try {
             setIsPending(true)
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}horses/${id}`)
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/horses/${id}`)
             if (response.ok) {
                 const data = await response.json()
                 setData(data)

@@ -14,7 +14,7 @@ function AboutUserModal(props) {
         try {
             e.preventDefault()
             setIsLoading(true)
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}${role}/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/${role}/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

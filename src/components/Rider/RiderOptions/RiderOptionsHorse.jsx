@@ -20,7 +20,7 @@ function RiderOptionsHorse({ horses }) {
 
     const handleUserDataFetch = async () => {
         try {
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}rider/me`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/rider/me`, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -38,8 +38,8 @@ function RiderOptionsHorse({ horses }) {
     const handleRequest = async (horseId) => {
         try {
             const endpoint = userData.horses.every(foundHorse => foundHorse._id !== horseId)
-                ? `${process.env.REACT_APP_BASE_URL}rider/me/${id}/request`
-                : `${process.env.REACT_APP_BASE_URL}rider/me/${id}/recall`
+                ? `${process.env.REACT_APP_BASE_URL}/rider/me/${id}/request`
+                : `${process.env.REACT_APP_BASE_URL}/rider/me/${id}/recall`
 
             const response = await fetch(endpoint, {
                 headers: {

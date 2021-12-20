@@ -50,7 +50,7 @@ function GeoModal(props) {
     const fetchData = async () => {
         try {
             setIsLoading(true)
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}stables`)
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/stables`)
             const { stables } = await response.json()
             if (stables) {
                 setStables(stables)

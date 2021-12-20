@@ -25,7 +25,7 @@ function StableOwnerMainProfile() {
 
         try {
             setIsPending(true)
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}stableowner/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/stableowner/${id}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

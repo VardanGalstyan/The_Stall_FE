@@ -23,7 +23,7 @@ function RiderProfile() {
     const handlefetch = async () => {
         try {
             setIsPending(true)
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}rider/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/rider/${id}`, {
                 headers: {
                     'Authorization': token
                 }

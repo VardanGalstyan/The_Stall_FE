@@ -60,7 +60,7 @@ function AddHorseModal(props) {
                     setIsLoading(true)
                     const formData = new FormData()
                     formData.append('avatar', image)
-                    const res = await fetch(`${process.env.REACT_APP_BASE_URL}horseOwner/me/horse/${id}/avatar`, {
+                    const res = await fetch(`${process.env.REACT_APP_BASE_URL}/horseOwner/me/horse/${id}/avatar`, {
                         method: "POST",
                         body: formData,
                         headers: {
@@ -82,7 +82,7 @@ function AddHorseModal(props) {
                 }
             } else {
                 setIsLoading(true)
-                const response = await fetch(`${process.env.REACT_APP_BASE_URL}horseOwner/me/horse`, {
+                const response = await fetch(`${process.env.REACT_APP_BASE_URL}/horseOwner/me/horse`, {
                     method: "POST",
                     body: JSON.stringify(horse),
                     headers: {
@@ -96,7 +96,7 @@ function AddHorseModal(props) {
                     setId(data._id)
                     const formData = new FormData()
                     formData.append('avatar', image)
-                    const res = await fetch(`${process.env.REACT_APP_BASE_URL}horseOwner/me/horse/${data._id}/avatar`, {
+                    const res = await fetch(`${process.env.REACT_APP_BASE_URL}/horseOwner/me/horse/${data._id}/avatar`, {
                         method: "POST",
                         body: formData,
                         headers: {

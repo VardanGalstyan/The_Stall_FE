@@ -18,7 +18,7 @@ function App() {
   const role = localStorage.getItem('role')
 
 
-  const { data } = useFetch(`${process.env.REACT_APP_BASE_URL}${role}/me`, token)
+  const { data } = useFetch(`${process.env.REACT_APP_BASE_URL}/${role}/me`, token)
   const id = data && data._id
 
 
