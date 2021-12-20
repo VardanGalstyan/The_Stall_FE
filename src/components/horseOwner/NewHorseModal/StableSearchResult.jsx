@@ -12,7 +12,7 @@ function StableSearchResult(props) {
 
     const handleStableSearch = async () => {
         try {
-            const response = await fetch(`http://localhost:3001/stables`)
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}stables`)
             if (response.ok) {
                 const stables = await response.json()
                 setStables(stables)

@@ -20,7 +20,7 @@ function RegisterModal(props) {
     const [isLoading, setIsLoading] = useState(false)
     const [isError, setIsError] = useState(false)
     const [role, setRole] = useState('')
-    const [validated, setValidated] = useState(false)
+    const [ setValidated] = useState(false)
     const [user, setUser] = useState(initialState)
 
     const validEmail = validator.isEmail(user['contacts.email'])
@@ -46,7 +46,7 @@ function RegisterModal(props) {
             setValidated(true)
             try {
                 setIsLoading(true)
-                const response = await fetch(`http://localhost:3001/${role}/register`, {
+                const response = await fetch(`${process.env.REACT_APP_BASE_URL}${role}/register`, {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',

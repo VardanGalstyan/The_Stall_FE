@@ -38,7 +38,7 @@ function LoginModal(props) {
         e.preventDefault()
         try {
             setIsLoading(true)
-            const response = await fetch(`http://localhost:3001/${role}/login`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}${role}/login`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -48,7 +48,6 @@ function LoginModal(props) {
             });
             if (response.ok) {
                 const data = await response.json()
-                console.log('response', data);
                 localStorage.setItem('token', data.accessToken)
                 localStorage.setItem('role', role)
                 localStorage.setItem('user', data.id)

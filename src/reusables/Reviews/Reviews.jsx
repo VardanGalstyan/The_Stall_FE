@@ -1,6 +1,5 @@
 import React from 'react'
 import { Rating } from 'react-simple-star-rating'
-import { Col } from 'react-bootstrap'
 import SingleReview from './SingleReview'
 import './style/reviews.css'
 

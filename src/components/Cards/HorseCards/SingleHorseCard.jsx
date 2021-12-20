@@ -19,7 +19,7 @@ function SingleHorseCard({ horse, loading, name }) {
 
     return (
 
-        <div id='home-single-horse-card'>
+        <div id='home-single-horse-card' key={horse._id}>
             {
                 loading ?
 

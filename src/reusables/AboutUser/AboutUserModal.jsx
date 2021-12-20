@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 
@@ -14,7 +14,7 @@ function AboutUserModal(props) {
         try {
             e.preventDefault()
             setIsLoading(true)
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/${role}/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}${role}/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -23,22 +23,19 @@ function AboutUserModal(props) {
                 body: JSON.stringify(description)
             })
             if (response.ok) {
-                const data = await response.json()
                 setIsLoading(false)
                 props.onHide()
                 props.handlefetch()
 
             } else {
-                const error = await response.json()
                 setIsLoading(false)
+                throw new Error('Something went wrong')
             }
 
         } catch (error) {
             console.log(error)
         }
     }
-
-    console.log(process.env.BASE_URL);
 
     return (
         <Modal

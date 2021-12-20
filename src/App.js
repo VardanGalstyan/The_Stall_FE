@@ -9,13 +9,18 @@ import StableOwnerMainProfile from './components/stableOwner/StableOwnerMainProf
 import RiderProfile from './components/Rider/RiderProfile';
 import HorseOwnerProfile from './components/horseOwner/HorseOwnerProfile';
 import HorseProfile from './components/Horse/HorseProfile';
+import useFetch from './utils/useFetch';
 
 
 function App() {
 
   const token = localStorage.getItem('token')
   const role = localStorage.getItem('role')
-  const id = localStorage.getItem('id')
+
+
+  const { data } = useFetch(`${process.env.REACT_APP_BASE_URL}${role}/me`, token)
+  const id = data && data._id
+
 
 
   return (

@@ -27,7 +27,7 @@ function Feed() {
         history.push('/home')
     }
 
-    const { data } = useFetch(`http://localhost:3001/${role}/me`, token)
+    const { data } = useFetch(`${process.env.REACT_APP_BASE_URL}${role}/me`, token)
 
 
     return (

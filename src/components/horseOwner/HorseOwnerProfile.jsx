@@ -30,7 +30,7 @@ function HorseOwnerProfile() {
     const handlefetch = async () => {
         try {
             setIsPending(true)
-            const response = await fetch(`http://localhost:3001/horseOwner/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}horseOwner/${id}`, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
@@ -57,8 +57,7 @@ function HorseOwnerProfile() {
         handlefetch()
         window.scrollTo(0, 0)
         validateUser()
-        console.log('another data to check', data && data);
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

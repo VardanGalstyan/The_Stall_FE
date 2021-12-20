@@ -23,7 +23,7 @@ function RiderProfile() {
     const handlefetch = async () => {
         try {
             setIsPending(true)
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/rider/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}rider/${id}`, {
                 headers: {
                     'Authorization': token
                 }
@@ -44,6 +44,7 @@ function RiderProfile() {
 
     useEffect(() => {
         handlefetch()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const isValid = () => id === data._id

@@ -19,13 +19,13 @@ function StableOwnerMainProfile() {
     const [error, setError] = useState(false)
     const token = localStorage.getItem('token')
     const { id } = useParams()
-    console.log(data);
+ 
 
     const handleFetch = async () => {
 
         try {
             setIsPending(true)
-            const response = await fetch(`http://localhost:3001/stableowner/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}stableowner/${id}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -47,6 +47,7 @@ function StableOwnerMainProfile() {
 
     useEffect(() => {
         handleFetch()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

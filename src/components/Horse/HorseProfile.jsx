@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './style/horse.css'
 import Feed from '../Navbar/Feed'
 import ProfileHeader from '../../reusables/ProfileHeader/ProfileHeader'
@@ -6,7 +6,7 @@ import { Container, Col } from 'react-bootstrap'
 import UserProfile from '../../reusables/UserProfile/UserProfile'
 import AboutUser from '../../reusables/AboutUser/AboutUser'
 import Calendar from '../../reusables/Calendar/CalendarPlanner'
-import StableCards from '../Cards/StableCards/StableCards'
+// import StableCards from '../Cards/StableCards/StableCards'
 import Reviews from '../../reusables/Reviews/Reviews'
 import Footer from '../Footer/Footer'
 import ImageGallery from '../Gallery/ImageGallery'
@@ -17,12 +17,33 @@ import { useParams } from 'react-router-dom'
 function HorseProfile() {
 
     const { id } = useParams()
-    const { data, isPending, error } = useFetch(`http://localhost:3001/horses/${id}`)
+    const [data, setData] = useState(null)
+    const [isPending, setIsPending] = useState(true)
+
+    const handlefetch = async () => {
+
+        try {
+            setIsPending(true)
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}horses/${id}`)
+            if (response.ok) {
+                const data = await response.json()
+                setData(data)
+                setIsPending(false)
+
+            } else {
+                setIsPending(false)
+                throw new Error('Something went wrong')
+            }
+        } catch (error) {
+
+        }
+    }
 
     const name = data && `${data.horse_owner.first_name} ${data.horse_owner.surname}`
 
     useEffect(() => {
         window.scrollTo(0, 0)
+        handlefetch()
     }, [])
 
     return (
@@ -79,7 +100,7 @@ function HorseProfile() {
                             <span>Calendar</span>
                         </div>
                         <div className='profile-container-flex'>
-                            <Calendar bookings={data && data.bookings} loading={isPending} />
+                            <Calendar bookings={data && data.bookings} loading={isPending} handlefetch={() => handlefetch()} />
                         </div>
                     </div>
                     <div className='profile-container'>

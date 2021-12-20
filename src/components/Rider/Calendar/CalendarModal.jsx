@@ -8,7 +8,7 @@ import 'react-calendar/dist/Calendar.css';
 function CalendarModal(props) {
 
     const token = localStorage.getItem('token')
-    const { data } = useFetch('http://localhost:3001/rider/me', token)
+    const { data } = useFetch(`${process.env.REACT_APP_BASE_URL}rider/me`, token)
     const bookingDates = data && data.bookings
     const [value, onChange] = useState(new Date())
 

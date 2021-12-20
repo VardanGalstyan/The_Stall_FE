@@ -19,34 +19,138 @@
         font-weight: 600;
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
-        overflow: scroll;
 
-        .no-booking-available {
-            text-align: center;
-            font-size: 14px;
+        .calendar-booking-details {
+            overflow: scroll;
+            font-size: 16px;
             font-weight: 500;
-            margin-top: 25%;
+            flex-direction: column;
+            display: flex;
+            margin-top: 20px;
+            padding-top: 10px;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
 
-            .book-a-ride {
+            .calendar-planner-container {
+                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-                align-items: center;
-                font-size: 16px;
+                width: 95%;
+                padding: 5px 10px;
+                margin-bottom: 10px;
+                cursor: pointer;
 
-                .book-ride-icon {
-                    background-color: $yellow;
-                    width: 25px;
-                    height: 25px;
-                    border-radius: 50%;
-                    color: white;
-                    cursor: pointer;
+                &:hover {
+                    background-color: #c3bfbf13;
+                }
 
-                    &:hover {
-                        color: #3b3b3b;
+                .calendar-planner-item {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    border-radius: 3px;
+                    font-size: 10px;
+                    gap: 5px;
+                    border-bottom: 1px solid #e5e5e570;
+                    padding-bottom: 10px;
+
+                    .calendar-planner-titles {
+                        .planner-title {
+                            font-weight: 600;
+                            font-size: 13px;
+                        }
+
+                        display: flex;
+                        flex-direction: column;
+                        margin-right: 5px;
+                    }
+
+                    .calendar-planner-content {
+                        gap: 5px;
+                        margin: 0;
+                        padding: 0;
+
+                        .planner-message {
+                            text-align: center;
+                        }
+                    }
+
+                    .calendar-planner-date-location {
+                        display: flex;
+                        flex-direction: column;
+                        font-size: 10px;
+                        font-weight: 500;
+                        padding: 0px 10px;
+
+                        .planner-date {
+                            white-space: nowrap;
+                            font-weight: 600;
+                            font-size: 12px;
+                        }
                     }
                 }
+                .calendar-planner-activity {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    margin-top: 5px;
+                    flex-wrap: wrap;
+
+                    span {
+                        padding: 2px 7px;
+                        border-radius: 2px;
+                        background-color: $blue;
+                        color: white;
+                        font-size: 10px;
+                        font-weight: 600;
+                    }
+
+                    .private-buttons {
+                        .delete-button {
+                            svg {
+                                height: 35px;
+                                width: 35px;
+                                padding: 3px;
+                                border-radius: 50%;
+                                color: $yellow;
+                                cursor: pointer;
+                            }
+                        }
+
+                        .edit-button {
+                            svg {
+                                height: 20px;
+                                width: 20px;
+                                padding: 2px;
+                                border-radius: 50%;
+                                color: #fff;
+                                cursor: pointer;
+                                background-color: $yellow;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .book-a-ride {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            gap: 10px;
+            border: 1px solid #3b3b3b1e;
+            padding: 2px 10px;
+            cursor: pointer;
+            border-radius: 2px;
+            margin: 0px 10px;
+
+            &:hover {
+                color: #3b3b3b;
+                background-color: $blue;
+                color: white;
             }
         }
 
@@ -60,65 +164,58 @@
                 padding: 2px 5px;
             }
         }
+    }
+}
 
-        .calendar-planner-item {
-            display: flex;
-            line-height: 20px;
-            justify-content: space-around;
-            align-items: center;
-            background-color: #f5f5f5;
-            border-radius: 7px;
-            padding: 0 5px;
-            cursor: pointer;
-            margin-bottom: 5px;
-            &:hover {
-                background-color: #f0f0f0;
+.booking-modal-activities-form-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+
+    .activity-item {
+        display: flex;
+        align-items: center;
+        border: 1px solid #3b3b3b1e;
+        color: #3b3b3b;
+        font-size: 11px;
+        padding: 2px 7px;
+        border-radius: 2px;
+        cursor: pointer;
+        gap: 4px;
+
+        &:hover {
+            background-color: rgba(245, 245, 245, 0.507);
+        }
+
+        .remove-button {
+            svg {
+                height: 18px;
+                width: 18px;
+                border-radius: 50%;
+                color: #3b3b3b;
+                cursor: pointer;
+                z-index: 2;
             }
+        }
+    }
+    .activity-item-joint {
+        display: flex;
+        align-items: center;
+        border: 1px solid $yellow;
+        color: #3b3b3b;
+        font-size: 11px;
+        padding: 2px 7px;
+        border-radius: 2px;
+        cursor: pointer;
+        gap: 4px;
 
-            .calendar-planner-constants {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                gap: 20px;
-
-                .planner-date,
-                .planner-title {
-                    font-size: 12px;
-                    font-weight: 600;
-                    color: #3b3b3b;
-                    margin-right: 8px;
-                }
-
-                .planner-date {
-                    padding: 0 3px;
-                    border-radius: 4px;
-                    font-size: 10px;
-                }
-            }
-
-            .private-buttons {
-                .delete-button {
-                    svg {
-                        height: 35px;
-                        width: 35px;
-                        padding: 3px;
-                        border-radius: 50%;
-                        color: $yellow;
-                        cursor: pointer;
-                    }
-                }
-
-                .edit-button {
-                    svg {
-                        height: 20px;
-                        width: 20px;
-                        padding: 2px;
-                        border-radius: 50%;
-                        color: #fff;
-                        cursor: pointer;
-                        background-color: $yellow;
-                    }
-                }
+        .remove-button {
+            svg {
+                height: 18px;
+                width: 18px;
+                border-radius: 50%;
+                color: #3b3b3b;
+                cursor: pointer;
             }
         }
     }
@@ -154,5 +251,11 @@
     .calendar-planner-details {
         width: 100%;
         height: 100% !important;
+    }
+}
+
+.calendar {
+    .react-calendar {
+        font-family: "Montserrat", sans-serif !important;
     }
 }

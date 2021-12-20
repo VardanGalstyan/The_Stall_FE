@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import './style/stable.css'
 import { Container, Col } from 'react-bootstrap'
-import { GiHorseHead, GiStable, GiPerson } from 'react-icons/gi'
 import { useParams } from 'react-router-dom'
 import Feed from '../Navbar/Feed'
 import ProfileHeader from '../../reusables/ProfileHeader/ProfileHeader'
@@ -18,7 +17,7 @@ import InfoHeader from '../../reusables/InfoHeader/InfoHeader'
 function Stable() {
 
     const { id } = useParams()
-    const { data, isPending, error } = useFetch(`http://localhost:3001/stables/${id}`)
+    const { data, isPending } = useFetch(`${process.env.REACT_APP_BASE_URL}stables/${id}`)
 
     const name = data && `${data.stable_owner && data.stable_owner.first_name} ${data.stable_owner && data.stable_owner.surname}`
 

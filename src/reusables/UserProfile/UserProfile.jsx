@@ -47,7 +47,7 @@ function UserProfile(props) {
                             }
                         </div>
                         <div className='user-profile-title'>
-                            <span>{props.name && props.name || name}</span>
+                            <span>{props.name ? props.name : name}</span>
                             <div className='user-contact-details'>
                                 <span onClick={() => handleContactDetails(setLocation, location)}><ImLocation2 /></span>
                                 <span onClick={() => handleContactDetails(setPhone, phone)}><IoCall /></span>

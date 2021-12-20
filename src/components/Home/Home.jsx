@@ -18,8 +18,8 @@ function Home() {
     const [modalShow, setModalShow] = useState(false);
     const [toSearch, setToSearch] = useState('')
 
-    const { data, isPending, error } = useFetch('http://localhost:3001/horses')
-    const stables = useFetch(`http://localhost:3001/stables/`)
+    const { data, isPending } = useFetch(`${process.env.REACT_APP_BASE_URL}horses`)
+    const stables = useFetch(`${process.env.REACT_APP_BASE_URL}stables`)
 
     return (
         <>

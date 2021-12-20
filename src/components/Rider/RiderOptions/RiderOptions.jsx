@@ -6,8 +6,7 @@ import useFetch from '../../../utils/useFetch'
 function RiderOptions() {
 
     const token = localStorage.getItem("token");
-    const { data } = useFetch('http://localhost:3001/rider/me', token)
-    console.log(data);
+    const { data } = useFetch(`${process.env.REACT_APP_BASE_URL}rider/me`, token)
 
     return (
         <Row className='riderOptions'>
