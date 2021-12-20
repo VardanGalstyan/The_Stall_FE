@@ -16,11 +16,7 @@ function App() {
 
   const token = localStorage.getItem('token')
   const role = localStorage.getItem('role')
-
-
-  const { data } = useFetch(`${process.env.REACT_APP_BASE_URL}/${role}/me`, token)
-  const id = data && data._id
-
+  const user = localStorage.getItem('user')
 
 
   return (
@@ -30,7 +26,7 @@ function App() {
           <Route exact path='/' render={() => {
             return (
               token ?
-                <Redirect to={`${role}/${id}`} /> :
+                <Redirect to={`/${role}/${user}`} /> :
                 <Redirect to='/home' />
             )
           }} />
