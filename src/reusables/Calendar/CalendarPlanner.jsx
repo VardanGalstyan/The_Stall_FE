@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Calendar from 'react-calendar'
 import { isSameDay } from 'date-fns'
 import './style/calendarStyle.css'
+import './style/calendarBackup.css'
 import CalendarPlannerDetails from './CalendarPlannerDetails'
 
 

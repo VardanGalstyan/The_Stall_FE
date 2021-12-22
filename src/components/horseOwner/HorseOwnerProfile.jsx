@@ -30,7 +30,7 @@ function HorseOwnerProfile() {
     const handlefetch = async () => {
         try {
             setIsPending(true)
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}horseOwner/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/horseOwner/${id}`, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }

@@ -38,7 +38,7 @@ function LoginModal(props) {
         e.preventDefault()
         try {
             setIsLoading(true)
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}${role}/login`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/${role}/login`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

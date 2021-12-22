@@ -64,7 +64,7 @@ function CalendarModal(props) {
         try {
             e.preventDefault()
             setIsLoading(true)
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}rider/me/bookings`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/rider/me/bookings`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

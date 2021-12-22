@@ -45,7 +45,7 @@ function CalendarPlannerDetails({ bookings, value, handlefetch }) {
             <div className='calendar-booking-details'>
                 {
                     bookings && bookings.length !== 0 ?
-                        bookings && bookings.map(booking =>
+                        bookings && bookings.sort((a, b) => new Date(b.booking_date) - new Date(a.booking_date)).map(booking =>
                             <CalendarPlannerItem
                                 key={booking.id}
                                 booking={booking}

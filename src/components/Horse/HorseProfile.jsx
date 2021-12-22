@@ -6,11 +6,10 @@ import { Container, Col } from 'react-bootstrap'
 import UserProfile from '../../reusables/UserProfile/UserProfile'
 import AboutUser from '../../reusables/AboutUser/AboutUser'
 import Calendar from '../../reusables/Calendar/CalendarPlanner'
-// import StableCards from '../Cards/StableCards/StableCards'
+import StableCards from '../Cards/StableCards/StableCards'
 import Reviews from '../../reusables/Reviews/Reviews'
 import Footer from '../Footer/Footer'
 import ImageGallery from '../Gallery/ImageGallery'
-import useFetch from '../../utils/useFetch.js'
 import { useParams } from 'react-router-dom'
 
 
@@ -24,7 +23,7 @@ function HorseProfile() {
 
         try {
             setIsPending(true)
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}horses/${id}`)
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/horses/${id}`)
             if (response.ok) {
                 const data = await response.json()
                 setData(data)
@@ -103,20 +102,13 @@ function HorseProfile() {
                             <Calendar bookings={data && data.bookings} loading={isPending} handlefetch={() => handlefetch()} />
                         </div>
                     </div>
-                    <div className='profile-container'>
-                        <div className='profile-container-title'>
-                            <span>Gallery</span>
-                        </div>
-                        <div className='profile-container-flex'>
-                            <ImageGallery />
-                        </div>
-                    </div>
+                    <ImageGallery />
                     <div className='profile-container'>
                         <div className='profile-container-title'>
                             <span>Stables</span>
                         </div>
                         <div className='profile-container-scrollable'>
-                            {/* <StableCards /> */}
+                            <StableCards stable={data && data.stable} />
                         </div>
                     </div>
                     <Reviews />
