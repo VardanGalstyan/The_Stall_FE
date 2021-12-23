@@ -20,9 +20,9 @@ function RegisterModal(props) {
     const [isLoading, setIsLoading] = useState(false)
     const [isError, setIsError] = useState(false)
     const [role, setRole] = useState('')
-    const [ setValidated] = useState(false)
+    const [validated, setValidated] = useState(false)
     const [user, setUser] = useState(initialState)
-
+    const userId = localStorage.getItem('user')
     const validEmail = validator.isEmail(user['contacts.email'])
     // const validPassword = validator.isStrongPassword(user.password)
     const validPassword = user.password.length >= 4
@@ -58,12 +58,12 @@ function RegisterModal(props) {
                     const data = await response.json()
                     localStorage.setItem('token', data.accessToken)
                     localStorage.setItem('role', role)
-                    localStorage.setItem('user', data._id)
+                    localStorage.setItem('user', data.savedUser._id)
+                    history.push(`/${role}/${data.savedUser._id}`)
                     setTimeout(() => {
-                        history.push(`/${role}/${data._id}`)
                         setIsLoading(false)
                         setValidated(false)
-                    }, 1000)
+                    }, 1500)
                 } else {
                     setIsError(true)
                     setIsLoading(false)
@@ -115,7 +115,7 @@ function RegisterModal(props) {
                             as="select"
                             onChange={e => setRole(e.target.value)}
                         >
-                            <option value={false}></option>
+                            <option> Select the Role</option>
                             <option value='horseOwner'>Horse Owner</option>
                             <option value='rider'>Rider</option>
                             <option value='stableOwner'>Stable Owner</option>
