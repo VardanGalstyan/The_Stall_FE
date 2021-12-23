@@ -14,10 +14,12 @@ import Loader from '../../utils/Loader'
 import { useParams } from 'react-router-dom'
 import DropDownOption from '../../reusables/DropDownOption.jsx/DropDownOption'
 
+
 function RiderProfile() {
 
     const token = localStorage.getItem('token')
     const [isPending, setIsPending] = useState(false)
+    const [cords, setCords] = useState(null)
     const [data, setData] = useState(null)
     const { id } = useParams()
 
@@ -43,13 +45,29 @@ function RiderProfile() {
 
     }
 
+    // const geoLocate = () => {
+    //     if ('geolocation' in navigator) {
+    //         navigator.geolocation.getCurrentPosition(position => {
+    //             setCords({ lat: position.coords.latitude, lng: position.coords.longitude })
+    //         });
+    //     } else {
+    //         console.log("Geolocation is invalid!");
+    //     }
+    // }
+
     useEffect(() => {
         handlefetch()
+        // geoLocate()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const isValid = () => id === data._id
     const userName = `${data && data.first_name} ${data && data.surname}`
+
+    // const location = {
+    //     "coordinates": [cords && cords.lng, cords && cords.lat],
+    //     "formatted_address": "Stuttgart, Germany",
+    // }
 
     return (
         <div className='container-holder'>
@@ -65,7 +83,8 @@ function RiderProfile() {
                         <Container className='profile-body'>
                             <UserProfile
                                 data={data && data}
-                                handlefetch={handlefetch}
+                                avatar={data && data.avatar}
+                                // location={location}
                             />
                             <Col className='profile-body-properties'>
                                 <div className='profile-container'>
@@ -120,7 +139,11 @@ function RiderProfile() {
                                         <span>Horses</span>
                                     </div>
                                     <div className='profile-container-scrollable'>
-
+                                        {
+                                            data && data.horses.map(horse => (
+                                                <SingleHorseCard horse={horse} />
+                                            ))
+                                        }
                                     </div>
                                 </div>
                                 <div className='profile-container'>

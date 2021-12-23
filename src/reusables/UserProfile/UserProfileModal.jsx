@@ -14,7 +14,7 @@ function UserProfileModal(props) {
     const history = useHistory()
     const { id } = useParams()
 
-
+    console.log(props.data);
 
     const initialState = {
         first_name: `${props.data && props.data.first_name}`,
