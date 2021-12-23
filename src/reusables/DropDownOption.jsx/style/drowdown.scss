@@ -1,0 +1,41 @@
+.drop-down-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+
+    .profile-dropDown-options {
+        cursor: pointer;
+    }
+
+    .container-item-settings-button {
+        position: absolute;
+        justify-content: center;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        right: 0;
+        top: 30px;
+        background-color: #fff;
+        width: 200px;
+        border-radius: 3px;
+        z-index: 2;
+        box-shadow: #3b3b3b4b 0px 0px 5px;
+
+        span {
+            font-size: 12px;
+            padding: 5px 10px;
+            font-weight: 600;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 1px solid #e6e6e652;
+
+            &:hover {
+                background-color: #a8a8a823;
+                color: #3b3b3b;
+            }
+        }
+    }
+}

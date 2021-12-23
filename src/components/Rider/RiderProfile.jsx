@@ -12,6 +12,7 @@ import Footer from '../Footer/Footer'
 import AboutUser from '../../reusables/AboutUser/AboutUser'
 import Loader from '../../utils/Loader'
 import { useParams } from 'react-router-dom'
+import DropDownOption from '../../reusables/DropDownOption.jsx/DropDownOption'
 
 function RiderProfile() {
 
@@ -23,7 +24,7 @@ function RiderProfile() {
     const handlefetch = async () => {
         try {
             setIsPending(true)
-            const response = await fetch(`${process.env.REACT_APP_BASE_URL}rider/${id}`, {
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/rider/${id}`, {
                 headers: {
                     'Authorization': token
                 }
@@ -64,11 +65,13 @@ function RiderProfile() {
                         <Container className='profile-body'>
                             <UserProfile
                                 data={data && data}
+                                handlefetch={handlefetch}
                             />
                             <Col className='profile-body-properties'>
                                 <div className='profile-container'>
                                     <div className='profile-container-title'>
                                         <span>Experience</span>
+                                        <DropDownOption />
                                     </div>
                                     <div className='profile-body-experience-content'>
                                         <div className='profile-body-experience-item'>
@@ -106,6 +109,7 @@ function RiderProfile() {
                                 <div className='profile-container'>
                                     <div className='profile-container-title'>
                                         <span>Calendar</span>
+                                        <DropDownOption />
                                     </div>
                                     <div className='profile-container-flex'>
                                         <Calendar bookings={data && data.bookings} />

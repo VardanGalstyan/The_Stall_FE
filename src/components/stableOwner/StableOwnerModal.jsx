@@ -47,7 +47,7 @@ function StableOwnerModal(props) {
                     setIsLoading(true)
                     const formData = new FormData()
                     formData.append('avatar', image)
-                    const res = await fetch(`${process.env.REACT_APP_BASE_URL}stableowner/me/stable/${id}/avatar`, {
+                    const res = await fetch(`${process.env.REACT_APP_BASE_URL}/stableowner/me/stable/${id}/avatar`, {
                         method: "POST",
                         body: formData,
                         headers: {
@@ -69,7 +69,7 @@ function StableOwnerModal(props) {
                 }
             } else {
                 setIsLoading(true)
-                const response = await fetch(`${process.env.REACT_APP_BASE_URL}stableowner/me/stable`, {
+                const response = await fetch(`${process.env.REACT_APP_BASE_URL}/stableowner/me/stable`, {
                     method: "POST",
                     body: JSON.stringify(stable),
                     headers: {
@@ -83,7 +83,7 @@ function StableOwnerModal(props) {
                     setId(data._id)
                     const formData = new FormData()
                     formData.append('avatar', image)
-                    const res = await fetch(`${process.env.REACT_APP_BASE_URL}stableowner/me/stable/${data._id}/avatar`, {
+                    const res = await fetch(`${process.env.REACT_APP_BASE_URL}/stableowner/me/stable/${data._id}/avatar`, {
                         method: "POST",
                         body: formData,
                         headers: {

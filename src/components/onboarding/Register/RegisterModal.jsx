@@ -46,7 +46,7 @@ function RegisterModal(props) {
             setValidated(true)
             try {
                 setIsLoading(true)
-                const response = await fetch(`${process.env.REACT_APP_BASE_URL}${role}/register`, {
+                const response = await fetch(`${process.env.REACT_APP_BASE_URL}/${role}/register`, {
                     method: 'POST',
                     headers: {
                         'Accept': 'application/json',

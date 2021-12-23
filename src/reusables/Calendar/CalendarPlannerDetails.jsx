@@ -19,8 +19,6 @@ function CalendarPlannerDetails({ bookings, value, handlefetch }) {
     //     return `${yearValue}, ${monthValue}, ${dayValue}`
     // }
 
-
-
     return (
         <div className='calendar-planner-details' >
             <div className='calendar-planner-header'>
@@ -47,7 +45,7 @@ function CalendarPlannerDetails({ bookings, value, handlefetch }) {
                     bookings && bookings.length !== 0 ?
                         bookings && bookings.map(booking =>
                             <CalendarPlannerItem
-                                key={booking.id}
+                                key={booking._id}
                                 booking={booking}
                             />
                         )

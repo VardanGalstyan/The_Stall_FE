@@ -9,6 +9,8 @@ import { IoLogoWhatsapp } from 'react-icons/io'
 import { FaMapPin } from 'react-icons/fa'
 import GoogleMap from '../GoogleMap/GoogleMap'
 import Loader from 'react-loader-spinner'
+import DropDownOption from '../DropDownOption.jsx/DropDownOption'
+import UserProfileModal from './UserProfileModal'
 
 function UserProfile(props) {
 
@@ -20,6 +22,7 @@ function UserProfile(props) {
     const [phone, setPhone] = useState(false)
     const [email, setEmail] = useState(false)
     const [message, setMessage] = useState(false)
+    const [modalShow, setModalShow] = React.useState(false);
 
 
     const handleContactDetails = (setValue) => {
@@ -39,11 +42,12 @@ function UserProfile(props) {
                     </Col>
                     :
                     <Col className='user-profile' lg={4} xl={3}>
+                        <DropDownOption setModalShow={() => setModalShow(true)} />
                         <div className='user-profile-header'>
                             {
-                                !props.avatar
+                                !props.data
                                     ? <img src="https://autohaus-lemke.de/site/assets/files/1085/platzhalter-mann.jpg" alt="user-thumbnail" />
-                                    : <img src={props.avatar} alt="profile-cover" />
+                                    : <img src={props.data && props.data.avatar} alt="profile-cover" />
                             }
                         </div>
                         <div className='user-profile-title'>
@@ -92,6 +96,12 @@ function UserProfile(props) {
                                 <button>Send</button>
                             </div>
                         }
+                        <UserProfileModal
+                            show={modalShow}
+                            onHide={() => setModalShow(false)}
+                            handlefetch={props.handlefetch}
+                            data={props.data}
+                        />
                     </Col>
             }
         </>

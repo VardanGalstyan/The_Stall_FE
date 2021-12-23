@@ -1,3 +1,4 @@
+import './style/drowdown.css'
 import React, { useState } from 'react'
 import { BsThreeDots } from 'react-icons/bs'
 
@@ -6,9 +7,9 @@ function DropDownOption({ setModalShow }) {
     const [settings, setSettings] = useState(false)
 
     return (
-        <>
+        <div className='drop-down-container'>
             <span
-                className='profile-aboutUs-options'
+                className='profile-dropDown-options'
                 onClick={() => setSettings(!settings)}
             >
                 <BsThreeDots />
@@ -24,7 +25,7 @@ function DropDownOption({ setModalShow }) {
                     <span className='hide-button'>Hide</span>
                 </div>
             }
-        </>
+        </div>
     )
 }
 

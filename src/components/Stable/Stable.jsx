@@ -17,7 +17,7 @@ import InfoHeader from '../../reusables/InfoHeader/InfoHeader'
 function Stable() {
 
     const { id } = useParams()
-    const { data, isPending } = useFetch(`${process.env.REACT_APP_BASE_URL}stables/${id}`)
+    const { data, isPending } = useFetch(`${process.env.REACT_APP_BASE_URL}/stables/${id}`)
 
     const name = data && `${data.stable_owner && data.stable_owner.first_name} ${data.stable_owner && data.stable_owner.surname}`
 

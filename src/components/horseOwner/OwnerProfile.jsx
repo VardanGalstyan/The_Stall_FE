@@ -6,7 +6,7 @@ import useFetch from '../../utils/useFetch'
 
 export default function OwnerProfile() {
 
-    const { stables } = useFetch(`${process.env.REACT_APP_BASE_URL}stables`)
+    const { stables } = useFetch(`${process.env.REACT_APP_BASE_URL}/stables`)
     const { id } = useParams()
 
 

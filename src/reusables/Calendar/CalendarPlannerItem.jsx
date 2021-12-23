@@ -23,8 +23,8 @@ function CalendarPlannerItem({ booking }) {
             </div>
             <div className='calendar-planner-activity'>
                 {
-                    booking && booking.activities.map(activity => (
-                        <span key={activity._id}>{activity}</span>
+                    booking && booking.activities.map((activity, i) => (
+                        <span key={booking._id+i}>{activity}</span>
                     ))
                 }
             </div>

@@ -18,8 +18,8 @@ function Home() {
     const [modalShow, setModalShow] = useState(false);
     const [toSearch, setToSearch] = useState('')
 
-    const { data, isPending } = useFetch(`${process.env.REACT_APP_BASE_URL}horses`)
-    const stables = useFetch(`${process.env.REACT_APP_BASE_URL}stables`)
+    const { data, isPending } = useFetch(`${process.env.REACT_APP_BASE_URL}/horses`)
+    const stables = useFetch(`${process.env.REACT_APP_BASE_URL}/stables`)
 
     return (
         <>

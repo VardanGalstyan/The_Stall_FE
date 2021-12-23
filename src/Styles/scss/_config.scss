@@ -176,36 +176,6 @@
                 color: #ffcc56;
             }
         }
-
-        .container-item-settings-button {
-            position: absolute;
-            justify-content: center;
-            flex-direction: column;
-            display: flex;
-            align-items: center;
-            right: 0px;
-            top: 30px;
-            background-color: #fff;
-            width: 200px;
-            border-radius: 3px;
-            z-index: 2;
-            box-shadow: #3b3b3b4b 0px 0px 5px;
-
-            span {
-                font-size: 12px;
-                padding: 5px 10px;
-                font-weight: 600;
-                width: 100%;
-                text-align: center;
-                cursor: pointer;
-                border-bottom: 1px solid #e6e6e652;
-
-                &:hover {
-                    background-color: #a8a8a823;
-                    color: #3b3b3b;
-                }
-            }
-        }
     }
 
     .profile-container-scrollable {
@@ -235,6 +205,137 @@
     justify-content: center;
     align-items: center;
     display: flex;
+}
+
+.user-profile-modal,
+.add-stable-modal,
+.add-horse-modal {
+    font-family: "Montserrat", sans-serif !important;
+    .modal-content {
+        background: #fff;
+        color: #3b3b3b;
+
+        .modal-header {
+            border-top: rgba(109, 109, 109, 0.13) 1px solid;
+        }
+
+        .modal-body {
+            text-align: center;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+
+            @media only screen and (max-width: 990px) {
+                form {
+                    display: flex !important;
+                    flex-direction: column !important;
+                    justify-content: center;
+                    align-items: center;
+                    text-align: center;
+                }
+            }
+
+            form {
+                position: relative;
+                display: flex;
+                align-items: center;
+                width: 100%;
+
+                .modal-avatar {
+                    margin-bottom: 20px;
+
+                    img {
+                        border-radius: 50%;
+                        background-color: white;
+                        padding: 5px;
+                        width: 200px;
+                        height: 200px;
+                        object-fit: cover;
+                        position: relative;
+                        border: #ffcc56 2px solid;
+
+                        &::after {
+                            content: "";
+                            background-color: rgba(255, 255, 255, 0.397);
+                            width: 100%;
+                            z-index: 2;
+                            position: absolute;
+                        }
+                    }
+
+                    .add-horse-image,
+                    .add-user-avatar {
+                        position: absolute;
+                        right: 20%;
+                        bottom: 0%;
+                        border-radius: 50px;
+                        padding: 10px;
+                        color: rgba(37, 36, 36, 0.959);
+                        background-color: rgba(192, 192, 192, 0.911);
+                        width: 44px;
+                        height: 44px;
+                        cursor: pointer;
+
+                        input {
+                            color: transparent;
+                            width: 20px;
+                            height: 20px;
+                            position: absolute;
+                            opacity: 0;
+                            cursor: pointer;
+                        }
+
+                        svg {
+                            font-size: 22px;
+                        }
+
+                        &:hover {
+                            background-color: rgba(22, 22, 22, 0.65);
+                            cursor: pointer;
+                            color: white;
+                            transition: 0.3s;
+                        }
+                    }
+                }
+
+                .user-profile-modal-form,
+                .add-stable-modal-form,
+                .add-horse-modal-form {
+                    .form-control {
+                        width: 100% !important;
+                    }
+
+                    .form-group {
+                        .form-control {
+                            height: 50px;
+                            font-size: 14px;
+                            color: #3b3b3bb4;
+                            font-family: "Cairo", sans-serif;
+                            border: none;
+                            background-color: #ffcc5632 !important;
+                            width: 300px;
+
+                            &::placeholder {
+                                background-color: transparent;
+                                color: #3b3b3b;
+                            }
+
+                            &:focus {
+                                background-color: transparent !important;
+                                box-shadow: 0 0 0 0.1rem rgba(255, 204, 86, 0.267) !important;
+                                outline: none;
+                                color: #3b3b3b;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .modal-footer {
+            border-top: rgba(109, 109, 109, 0.13) 1px solid;
+        }
+    }
 }
 
 @media (min-width: 1200px) {
