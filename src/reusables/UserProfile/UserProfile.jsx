@@ -14,7 +14,10 @@ import UserProfileModal from './UserProfileModal'
 
 function UserProfile(props) {
 
-    const name = props.data && `${props.data.first_name} ${props.data.surname}`
+    const { data } = props
+
+
+    const name = data && `${data.first_name} ${data.surname}`
     const detailedLocation = props.location && props.location.formatted_address.split(' ').slice(0, 2).join(' ')
     const cityAndCountry = props.location && props.location.formatted_address.split(' ').slice(3, 8).join(' ')
 
@@ -38,16 +41,21 @@ function UserProfile(props) {
             {
                 props.loading ?
                     <Col className='user-profile' lg={4} xl={3}>
-                        <Loader type="ThreeDots" color="#3b3b3b" height={25} width={25} />
+                        <Loader
+                            type="ThreeDots"
+                            color="#3b3b3b"
+                            height={25}
+                            width={25}
+                        />
                     </Col>
                     :
                     <Col className='user-profile' lg={4} xl={3}>
                         <DropDownOption setModalShow={() => setModalShow(true)} />
                         <div className='user-profile-header'>
                             {
-                                !props.data
+                                data && !data.avatar
                                     ? <img src="https://autohaus-lemke.de/site/assets/files/1085/platzhalter-mann.jpg" alt="user-thumbnail" />
-                                    : <img src={props.data && props.data.avatar} alt="profile-cover" />
+                                    : <img src={data && data.avatar} alt="profile-cover" />
                             }
                         </div>
                         <div className='user-profile-title'>
@@ -77,22 +85,45 @@ function UserProfile(props) {
                         {
                             phone &&
                             <div className='user-profile-details-mobile'>
-                                <div className='mobile-number'>
-                                    <span className='details-mobile-icon'><ImMobile /></span>
-                                    <span className='details-mobile-text'>{`+ ${props.contacts && props.contacts.phone}`}</span>
-                                </div>
-                                <div className='whatsapp-number'>
-                                    <span className='details-whatsapp-icon'><IoLogoWhatsapp /></span>
-                                    <span className='details-whatsapp-text'>{`+ ${props.contacts && props.contacts.phone}`}</span>
-                                </div>
+                                {
+                                    data && data.contacts.phone &&
+                                    <div className='mobile-number'>
+                                        <span className='details-mobile-icon'><ImMobile /></span>
+                                        <span className='details-mobile-text'>{` ${props.contacts && props.contacts.phone}`}</span>
+                                    </div>
+                                }
+                                {
+                                    data && data.contacts.whatsApp &&
+                                    <div className='whatsapp-number'>
+                                        <span className='details-whatsapp-icon'><IoLogoWhatsapp /></span>
+                                        <span className='details-whatsapp-text'>{` ${props.contacts && props.contacts.whatsApp}`}</span>
+                                    </div>
+                                }
+                                {
+                                    data && data.contacts.web &&
+                                    <div className='whatsapp-number'>
+                                        <span className='details-whatsapp-icon'><IoLogoWhatsapp /></span>
+                                        <span className='details-whatsapp-text'>{` ${props.contacts && props.contacts.web}`}</span>
+                                    </div>
+                                }
                             </div>
                         }
                         {
                             email &&
                             <div className='user-profile-details-email'>
-                                <input placeholder="Your Email" type="email" />
-                                <input placeholder="Subject" type="email" />
-                                <textarea placeholder='Tell us more...' rows='4' type="text" />
+                                <input
+                                    placeholder="Your Email"
+                                    type="email"
+                                />
+                                <input
+                                    placeholder="Subject"
+                                    type="email"
+                                />
+                                <textarea
+                                    placeholder='Tell us more...'
+                                    rows='4'
+                                    type="text"
+                                />
                                 <button>Send</button>
                             </div>
                         }
@@ -100,7 +131,7 @@ function UserProfile(props) {
                             show={modalShow}
                             onHide={() => setModalShow(false)}
                             handlefetch={props.handlefetch}
-                            data={props.data}
+                            data={data}
                         />
                     </Col>
             }

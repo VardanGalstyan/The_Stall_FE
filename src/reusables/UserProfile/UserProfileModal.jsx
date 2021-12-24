@@ -9,25 +9,20 @@ import { AiOutlineCheckCircle } from 'react-icons/ai'
 
 function UserProfileModal(props) {
 
+    const { data, handlefetch, onHide } = props
+
     const role = localStorage.getItem('role')
     const token = localStorage.getItem('token')
     const history = useHistory()
     const { id } = useParams()
 
-    console.log(props.data);
-
     const initialState = {
-        first_name: `${props.data && props.data.first_name}`,
-        surname: props.data && props.data.surname,
-        "contacts.email": props.data && props.data.contacts.email,
-        "contacts.web": props.data && props.data.contacts.web,
-        "contacts.phone": props.data && props.data.contacts.phone,
-        "contacts.whatsApp": '',
-        address: props.data && props.data.address,
-        avatar: props.data && props.data.avatar,
-        'address.street_name': props.data && props.data.location.formatted_address.split(',')[0],
-        'address.city': props.data && props.data.location.formatted_address.split(',')[1],
-        'address.country': props.data && props.data.location.formatted_address.split(',')[2],
+        first_name: data && data.first_name,
+        surname: data && data.surname,
+        avatar: data && data.avatar,
+        "contacts.web": data && data.contacts.web !== null ? data.contacts.web : '',
+        "contacts.phone": data && data.contacts.phone !== null ? data.contacts.phone : '',
+        "contacts.whatsApp": data && data.contacts.whatsApp !== null ? data.contacts.whatsApp : '',
     }
 
 
@@ -37,8 +32,6 @@ function UserProfileModal(props) {
     const [userProfile, setUserProfile] = useState(initialState)
     const [isDone, setIsDone] = useState(false)
     const [error, setError] = useState(null)
-
-
 
     const handleError = () => {
         if (imageNull) {
@@ -51,12 +44,44 @@ function UserProfileModal(props) {
         }
     }
 
+    const handleDataUpdate = async () => {
+        try {
+            setIsLoading(true)
+            const response = await fetch(`${process.env.REACT_APP_BASE_URL}/${role}/${id}`, {
+                method: "PUT",
+                body: JSON.stringify({ ...userProfile }),
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            if (response.ok) {
+                setIsLoading(false)
+                setIsDone(true)
+                setUserProfile({ ...initialState })
+                handlefetch()
+                onHide()
+                setTimeout(() => {
+                    setImage(null)
+                    setIsDone(false)
+                }, 200)
+            } else {
+                setIsLoading(false)
+                setImageNull(true)
+                setError(true)
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            if (imageNull) {
+            if (data && data.avatar === undefined) {
                 if (image === null) {
-                    setError(true)
+                    handleDataUpdate()
                 } else {
                     setIsLoading(true)
                     const formData = new FormData()
@@ -69,60 +94,14 @@ function UserProfileModal(props) {
                         }
                     })
                     if (res.ok) {
-                        setIsLoading(false)
-                        setIsDone(true)
-                        setImageNull(false)
-                        setUserProfile({ ...initialState })
-                        props.onHide()
-                        setTimeout(() => {
-                            setImage(null)
-                            setIsDone(false)
-                        }, 200)
+                        handleDataUpdate()
                     }
+
                 }
             } else {
-                setIsLoading(true)
-                const response = await fetch(`${process.env.REACT_APP_BASE_URL}/${role}/${id}`, {
-                    method: "PUT",
-                    body: JSON.stringify({ ...userProfile }),
-                    headers: {
-                        "Authorization": `Bearer ${token}`,
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    }
-                })
-                if (response.ok) {
-                    const data = await response.json()
-                    const formData = new FormData()
-                    formData.append('avatar', image)
-                    const res = await fetch(`${process.env.REACT_APP_BASE_URL}/${role}/me/avatar`, {
-                        method: "POST",
-                        body: formData,
-                        headers: {
-                            Authorization: `Bearer ${token}`
-                        }
-                    })
-                    if (res.ok) {
-                        setIsDone(true)
-                        setIsLoading(false)
-                        setUserProfile({ ...initialState })
-                        props.handlefetch()
-                        props.onHide()
-                        setTimeout(() => {
-                            setImage(null)
-                            setIsDone(false)
-                        }, 200)
-
-                    } else {
-                        setIsLoading(false)
-                        setImageNull(true)
-                        setError(true)
-                    }
-                } else {
-                    setIsLoading(false)
-                    setError(true)
-                }
+                handleDataUpdate()
             }
+
         } catch (error) {
             history.push('/error')
             console.log(error);
@@ -134,7 +113,7 @@ function UserProfileModal(props) {
         <Modal
             {...props}
             size="lg"
-            aria- labelledby="contained-modal-title-vcenter"
+            aria-labelledby="contained-modal-title-vcenter"
             centered
             className='user-profile-modal'
         >
@@ -147,8 +126,8 @@ function UserProfileModal(props) {
                 <Form onSubmit={handleSubmit}>
                     <Col md={4} className='modal-avatar'>
                         {
-                            props.data && props.data.avatar ?
-                                <img src={props.data && props.data.avatar} alt="update-avatar" />
+                            data && data.avatar ?
+                                <img src={data && data.avatar} alt="update-avatar" />
                                 : <img src="https://autohaus-lemke.de/site/assets/files/1085/platzhalter-mann.jpg" alt="update-avatar" />
 
                         }
@@ -185,7 +164,7 @@ function UserProfileModal(props) {
                                     type='phone'
                                     placeholder='Phone'
                                     value={userProfile["contacts.phone"]}
-                                    onChange={(e) => setUserProfile({ ...userProfile, ["contacts.phone"]: e.target.value })}
+                                    onChange={(e) => setUserProfile({ ...userProfile, "contacts.phone": e.target.value })}
                                 />
                             </Form.Group>
                             <Form.Group as={Col}>
@@ -193,51 +172,15 @@ function UserProfileModal(props) {
                                     type='phone'
                                     placeholder='WhatsApp'
                                     value={userProfile["contacts.whatsApp"]}
-                                    onChange={(e) => setUserProfile({ ...userProfile, ["contacts.whatsApp"]: e.target.value })}
+                                    onChange={(e) => setUserProfile({ ...userProfile, "contacts.whatsApp": e.target.value })}
                                 />
                             </Form.Group>
-                        </Row>
-                        <Row>
                             <Form.Group as={Col}>
                                 <Form.Control
                                     type='text'
                                     placeholder='Web'
                                     value={userProfile["contacts.web"]}
-                                    onChange={(e) => setUserProfile({ ...userProfile, ["contacts.web"]: e.target.value })}
-                                />
-                            </Form.Group>
-                            <Form.Group as={Col} md={7}>
-                                <Form.Control
-                                    type='email'
-                                    placeholder='E-mail'
-                                    value={userProfile["contacts.email"]}
-                                    onChange={(e) => setUserProfile({ ...userProfile, ["contacts.email"]: e.target.value })}
-                                />
-                            </Form.Group>
-                        </Row>
-                        <Row>
-                            <Form.Group as={Col} md={5}>
-                                <Form.Control
-                                    type='text'
-                                    placeholder='Street'
-                                    value={userProfile["address.street_name"]}
-                                    onChange={(e) => setUserProfile({ ...userProfile, ["address.street_name"]: e.target.value })}
-                                />
-                            </Form.Group>
-                            <Form.Group as={Col}>
-                                <Form.Control
-                                    type='text'
-                                    placeholder='City'
-                                    value={userProfile["address.city"]}
-                                    onChange={(e) => setUserProfile({ ...userProfile, ["address.city"]: e.target.value })}
-                                />
-                            </Form.Group>
-                            <Form.Group as={Col}>
-                                <Form.Control
-                                    type='text'
-                                    placeholder='Country'
-                                    value={userProfile["address.country"]}
-                                    onChange={(e) => setUserProfile({ ...userProfile, ["address.country"]: e.target.value })}
+                                    onChange={(e) => setUserProfile({ ...userProfile, "contacts.web": e.target.value })}
                                 />
                             </Form.Group>
                         </Row>
@@ -251,7 +194,7 @@ function UserProfileModal(props) {
                                                     <span onClick={handleError}><AiOutlineCheckCircle /></span>
                                                     <span
                                                         onClick={() => {
-                                                            props.onHide()
+                                                            onHide()
                                                             setUserProfile({ ...initialState })
                                                         }}
                                                     >
@@ -273,7 +216,7 @@ function UserProfileModal(props) {
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={() => {
-                    props.onHide()
+                    onHide()
                     setUserProfile({ ...initialState })
                     setImageNull(false)
                     setError(false)

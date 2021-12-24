@@ -37,7 +37,7 @@
                     border-radius: 4px;
                     padding: 0px 15px;
                     display: flex;
-                    align-items: end;
+                    align-items: flex-end;
 
                     .properties-title {
                         font-size: 16px;
@@ -129,7 +129,6 @@
     }
 }
 
-//Profile body end
 
 .container-holder {
     position: relative;

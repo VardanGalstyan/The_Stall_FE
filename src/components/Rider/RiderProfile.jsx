@@ -23,7 +23,8 @@ function RiderProfile() {
     const [data, setData] = useState(null)
     const { id } = useParams()
 
-    const handlefetch = async () => {
+
+    const handleFetch = async () => {
         try {
             setIsPending(true)
             const response = await fetch(`${process.env.REACT_APP_BASE_URL}/rider/${id}`, {
@@ -56,18 +57,20 @@ function RiderProfile() {
     // }
 
     useEffect(() => {
-        handlefetch()
+        handleFetch()
         // geoLocate()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const isValid = () => id === data._id
     const userName = `${data && data.first_name} ${data && data.surname}`
+    const uniqueHorses = [...new Map(data && data.horses.map(horse => [horse._id, horse])).values()]
 
     // const location = {
     //     "coordinates": [cords && cords.lng, cords && cords.lat],
     //     "formatted_address": "Stuttgart, Germany",
     // }
+
 
     return (
         <div className='container-holder'>
@@ -84,7 +87,9 @@ function RiderProfile() {
                             <UserProfile
                                 data={data && data}
                                 avatar={data && data.avatar}
-                                // location={location}
+                                handlefetch={handleFetch}
+                                location={data && data.location}
+                                contacts={data && data.contacts}
                             />
                             <Col className='profile-body-properties'>
                                 <div className='profile-container'>
@@ -123,7 +128,7 @@ function RiderProfile() {
                                     content={data && data.description}
                                     loading={isPending}
                                     isValid={isValid}
-                                    handlefetch={handlefetch}
+                                    handlefetch={handleFetch}
                                 />
                                 <div className='profile-container'>
                                     <div className='profile-container-title'>
@@ -140,8 +145,8 @@ function RiderProfile() {
                                     </div>
                                     <div className='profile-container-scrollable'>
                                         {
-                                            data && data.horses.map(horse => (
-                                                <SingleHorseCard horse={horse} />
+                                            uniqueHorses.map((horse, i) => (
+                                                <SingleHorseCard key={horse._id + i} horse={horse} />
                                             ))
                                         }
                                     </div>

@@ -9,7 +9,6 @@ import StableOwnerMainProfile from './components/stableOwner/StableOwnerMainProf
 import RiderProfile from './components/Rider/RiderProfile';
 import HorseOwnerProfile from './components/horseOwner/HorseOwnerProfile';
 import HorseProfile from './components/Horse/HorseProfile';
-import useFetch from './utils/useFetch';
 
 
 function App() {

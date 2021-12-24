@@ -4,7 +4,7 @@ import validator from 'validator'
 import { VscError } from 'react-icons/vsc'
 import '../Styles/onboarding.css'
 import { useHistory } from 'react-router'
-import { Modal, Button, Form } from 'react-bootstrap'
+import { Modal, Button, Form, Row, Col } from 'react-bootstrap'
 
 
 function RegisterModal(props) {
@@ -13,21 +13,29 @@ function RegisterModal(props) {
         first_name: "",
         surname: "",
         "contacts.email": "",
+        "address.street_name": "",
+        "address.city": "",
+        "address.company": "",
         password: ""
     }
 
-    const history = useHistory()
     const [isLoading, setIsLoading] = useState(false)
     const [isError, setIsError] = useState(false)
     const [role, setRole] = useState('')
     const [validated, setValidated] = useState(false)
     const [user, setUser] = useState(initialState)
-    const userId = localStorage.getItem('user')
+
+    const history = useHistory()
+
+    // V A L I D A T I O N
     const validEmail = validator.isEmail(user['contacts.email'])
     // const validPassword = validator.isStrongPassword(user.password)
     const validPassword = user.password.length >= 4
     const validFirstName = user.first_name.length >= 2
     const validSurname = user.surname.length >= 2
+
+
+
 
     const handleClose = () => {
         props.onHide()
@@ -90,47 +98,52 @@ function RegisterModal(props) {
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={handleSubmit}>
-                    <Form.Group>
-                        <Form.Control
-                            required
-                            isValid={validFirstName}
-                            type="text"
-                            placeholder="First name"
-                            value={user.first_name}
-                            onChange={(e) => setUser({ ...user, first_name: e.target.value })}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Control
-                            required
-                            isValid={validSurname}
-                            type="text"
-                            placeholder="Surname"
-                            value={user.surname}
-                            onChange={(e) => setUser({ ...user, surname: e.target.value })}
-                        />
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Control
-                            as="select"
-                            onChange={e => setRole(e.target.value)}
-                        >
-                            <option> Select the Role</option>
-                            <option value='horseOwner'>Horse Owner</option>
-                            <option value='rider'>Rider</option>
-                            <option value='stableOwner'>Stable Owner</option>
-                        </Form.Control>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Control
-                            required
-                            isValid={validEmail}
-                            type="email"
-                            placeholder="Enter email"
-                            value={user['contacts.email']}
-                            onChange={(e) => setUser({ ...user, "contacts.email": e.target.value })}
-                        />
-                    </Form.Group>
+                    <Row>
+                        <Form.Group as={Col}>
+                            <Form.Control
+                                required
+                                isValid={validFirstName}
+                                type="text"
+                                placeholder="First name"
+                                value={user.first_name}
+                                onChange={(e) => setUser({ ...user, first_name: e.target.value })}
+                            />
+                        </Form.Group>
+                        <Form.Group as={Col}>
+                            <Form.Control
+                                required
+                                isValid={validSurname}
+                                type="text"
+                                placeholder="Surname"
+                                value={user.surname}
+                                onChange={(e) => setUser({ ...user, surname: e.target.value })}
+                            />
+                        </Form.Group>
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col} md={7}>
+                            <Form.Control
+                                required
+                                isValid={validEmail}
+                                type="email"
+                                placeholder="Enter email"
+                                value={user['contacts.email']}
+                                onChange={(e) => setUser({ ...user, "contacts.email": e.target.value })}
+                            />
+                        </Form.Group>
+                        <Form.Group as={Col}>
+                            <Form.Control
+                                as="select"
+                                onChange={e => setRole(e.target.value)}
+                            >
+                                <option> Select the Role</option>
+                                <option value='horseOwner'>Horse Owner</option>
+                                <option value='rider'>Rider</option>
+                                <option value='stableOwner'>Stable Owner</option>
+                            </Form.Control>
+                        </Form.Group>
+                    </Row>
+
                     <Form.Group>
                         <Form.Control
                             required
@@ -140,10 +153,35 @@ function RegisterModal(props) {
                             value={user.password}
                             onChange={(e) => setUser({ ...user, password: e.target.value })}
                         />
-                        {/* <Form.Text id="passwordHelpInline" muted>
-                            Must be 8-20 characters long.
-                        </Form.Text> */}
                     </Form.Group>
+                    <Row>
+                        <Form.Group as={Col}>
+                            <Form.Control
+                                type='text'
+                                placeholder='Street'
+                                value={user["address.street_name"]}
+                                onChange={(e) => setUser({ ...user, "address.street_name": e.target.value })}
+                            />
+                        </Form.Group>
+                    </Row>
+                    <Row>
+                        <Form.Group as={Col} md={6}>
+                            <Form.Control
+                                type='text'
+                                placeholder='City'
+                                value={user["address.city"]}
+                                onChange={(e) => setUser({ ...user, "address.city": e.target.value })}
+                            />
+                        </Form.Group>
+                        <Form.Group as={Col}>
+                            <Form.Control
+                                type='text'
+                                placeholder='Country'
+                                value={user["address.country"]}
+                                onChange={(e) => setUser({ ...user, "address.country": e.target.value })}
+                            />
+                        </Form.Group>
+                    </Row>
                     {
                         isError &&
                         <div className='incorrectCredentials'>
